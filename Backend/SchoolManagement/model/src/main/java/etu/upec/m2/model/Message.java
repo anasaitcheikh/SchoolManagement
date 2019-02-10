@@ -12,6 +12,13 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+@IdClass(MessageId.class)
 public class Message {
+    @Id
+    private Long senderId;
+    @Id
+    private Long receiverId;
+    
+    private String msg;
     
 }
