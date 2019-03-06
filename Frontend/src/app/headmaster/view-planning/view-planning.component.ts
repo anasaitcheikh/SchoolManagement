@@ -13,6 +13,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class ViewPlanningComponent implements OnInit {
   Subscriber: Subscription;
+  is_done=false;
   edt;
   user;
   classId: number;
@@ -49,7 +50,11 @@ export class ViewPlanningComponent implements OnInit {
   }
 
   comparator (time, date, expected_day, expect_time) : boolean{
-    return this.isthis_week(date) && time ==expect_time && this.parse_date(date)==expected_day;
+    if(this.isthis_week(date) && time ==expect_time && this.parse_date(date)==expected_day)
+      {   this.is_done= true;
+            return true;
+      }
+      return false;
   }
 
 isthis_week(date) {

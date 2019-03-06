@@ -12,7 +12,7 @@ export let MENU_ITEM_HEADMASTER = [
     },
     {
       path: 'uploadcorse',
-      title: 'Upload Course Materials',
+      title: 'Course Materials',
       icon: 'book'
   },
 
@@ -20,35 +20,6 @@ export let MENU_ITEM_HEADMASTER = [
     path: 'message',
     title: 'Message',
     icon: 'envelope'
-  },
-
-  {
-    path: '',
-    title: 'Classrooms',
-    icon: 'home',
-    children: [
-      {
-        path: 'viewClassrooms',
-        title: 'All Classrooms'
-      },
-    ]
-  },
-
-  {
-    path: '',
-    title: 'Staffs',
-    icon: 'user',
-    children: [
-      {
-        path: 'addStaff',
-        title: 'Add Staff'
-      },
-      {
-        path: 'staffs',
-        title: 'All Staffs',
-
-      },
-    ]
   },
 
   {
@@ -67,6 +38,19 @@ export let MENU_ITEM_HEADMASTER = [
       },
     ]
   },
+
+  {
+    path: '',
+    title: 'Classrooms',
+    icon: 'home',
+    children: [
+      {
+        path: 'viewClassrooms',
+        title: 'All Classrooms'
+      },
+    ]
+  },
+
     {
         path: '',
         title: 'Teachers',
@@ -97,6 +81,23 @@ export let MENU_ITEM_HEADMASTER = [
             title: 'All Students'
           },
       ]
+  },
+
+  {
+    path: '',
+    title: 'Staffs',
+    icon: 'user',
+    children: [
+      {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },
+      {
+        path: 'staffs',
+        title: 'All Staffs',
+
+      },
+    ]
   },
 
 ];

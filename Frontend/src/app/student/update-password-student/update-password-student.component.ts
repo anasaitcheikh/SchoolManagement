@@ -15,7 +15,7 @@ export class UpdatePasswordStudentComponent implements OnInit {
   confirm : string;
   user;  
   Subscriber: Subscription;
-  statutAlert=true;
+  statutAlert: boolean;
 
   constructor(private UserService: UserService, private LoginService: LoginService, private router: Router) { }
 
@@ -30,8 +30,15 @@ export class UpdatePasswordStudentComponent implements OnInit {
   change_password(){
     if(this.new_p == this.confirm){
     this.Subscriber = this.UserService.reset_password(this.old_p,this.new_p,this.user.id).subscribe(
-      sen => console.log(sen),
-      error => console.log(error)
+      sen => {
+        this.statutAlert = true;
+        window.location.reload(true);
+        console.log(sen)
+      },
+      error => {
+        this.statutAlert = false;
+        console.log(error)
+      }
     );
   }else{
   this.statutAlert=false;
