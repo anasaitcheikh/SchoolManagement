@@ -1,5 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
-import { PagesComponent } from './pages/pages.component';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { HeadmasterComponent } from './headmaster/headmaster.component';
 
 const appRoutes: Routes = [
   {
