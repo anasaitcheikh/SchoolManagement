@@ -19,7 +19,7 @@
               <td>{{ c.level }}</td>
               <td>{{ c.grade }}</td>
               <td>
-                <button (click)="student_list(c.id)" class="btn btn-success">Show Student List</button>
+                <button [routerLink]="['../allstud', c.id]" class="btn btn-success">Show Student List</button>
               </td>
   
             </tr>

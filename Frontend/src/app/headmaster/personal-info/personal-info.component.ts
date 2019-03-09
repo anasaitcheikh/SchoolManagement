@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class PersonalInfoComponent implements OnInit {
   //------------- perso info -----------------------
+  statutAlert= true;
   user;
   firstName;
   lastName;
@@ -37,10 +38,16 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   change_password(){
-    this.Subscriber = this.UserService.reset_password(this.old_p,this.new_p,this.user.id).subscribe(
-      sen => console.log(sen),
-      error => console.log(error)
-    );
+    if(this.new_p == this.confirm){
+        this.Subscriber = this.UserService.reset_password(this.old_p,this.new_p,this.user.id).subscribe(
+          sen => console.log(sen),
+          error =>{ console.log(error); 
+            this.statutAlert=false;
+          }
+        );
+    } else{
+      this.statutAlert=false;
+    }
   }
 
 }

@@ -12,7 +12,7 @@ import { Router } from '@angular/router'
 })
 export class AddClassComponent implements OnInit, OnDestroy {
   private _addClassSubscriber: Subscription
-
+  statutAlert: boolean;
   constructor(private classService: ClassService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -32,8 +32,12 @@ export class AddClassComponent implements OnInit, OnDestroy {
      console.log('class', _class);
      this._addClassSubscriber = this.classService.addClass(_class).subscribe(
        newClass => {console.log('add class successfull', newClass),
+         this.statutAlert = true;
        this.router.navigate(['/headmaster/classes'])},
-       error => console.log(error)
+       error => {
+         this.statutAlert = false;
+         console.log(error)
+       }
     );
   }
 }

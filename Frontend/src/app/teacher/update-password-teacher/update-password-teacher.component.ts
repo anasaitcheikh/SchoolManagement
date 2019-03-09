@@ -11,7 +11,8 @@ import {UserService} from '../../../services/user.service';
 export class UpdatePasswordTeacherComponent implements OnInit {
   old_p : string;
   new_p : string;
-  conf_new : string;
+  confirm : string;
+  statutAlert=true;
   user;  
   Subscriber: Subscription;
 
@@ -26,10 +27,14 @@ export class UpdatePasswordTeacherComponent implements OnInit {
   }
 
   change_password(){
+    if(this.new_p == this.confirm){
     this.Subscriber = this.UserService.reset_password(this.old_p,this.new_p,this.user.id).subscribe(
       sen => console.log(sen),
       error => console.log(error)
     );
-  }
+  }else{
+  this.statutAlert=false;
+}
+}
 
 }

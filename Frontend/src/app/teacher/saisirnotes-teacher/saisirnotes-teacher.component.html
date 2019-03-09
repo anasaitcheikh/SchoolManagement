@@ -1,6 +1,6 @@
-<div class="col-md-12">
+<div class="row">
   <card cardTitle="Enter Grades">
-    <form (submit)="changescore()" class="form-group">
+    <form class="form-group">
 
       <label class="control-label">Class</label>
       <select id="select1" (change)="get_students($event.target.value)" class="form-control" ngModel name="studentClass">
@@ -25,4 +25,11 @@
       <button type="button" (click)="add_mark()" class="btn btn-primary">Submit</button>
     </form>
   </card>
+</div>
+
+<div class="alert alert-success" style="height: 10%" *ngIf="statutAlert">
+  <strong>GRADE HAS BEEN ADDED !</strong>
+</div>
+<div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+  <strong>ERROR WHILE ADDING GRADE!</strong>
 </div>

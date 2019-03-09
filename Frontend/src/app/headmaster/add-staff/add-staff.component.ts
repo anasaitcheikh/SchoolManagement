@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 export class AddStaffComponent implements OnInit, OnDestroy {
   _addStaffSubscriber: Subscription;
   constructor(private staffService: StaffService, private LoginService: LoginService, private router: Router) { }
-
+  statutAlert: boolean
   ngOnInit() {
     if(! this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
@@ -30,7 +30,10 @@ export class AddStaffComponent implements OnInit, OnDestroy {
     this._addStaffSubscriber = this.staffService.addStaff(staff).subscribe(
       newStaff => {
                  this.router.navigate(['/headmaster/staffs'])},
-      error => console.log(error)
+      error => {
+        this.statutAlert = false;
+        console.log(error)
+      }
     );
   }
 

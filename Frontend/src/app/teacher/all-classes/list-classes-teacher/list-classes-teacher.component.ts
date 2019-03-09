@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LoginService } from '../../../services/login.service';
+import { LoginService } from '../../../../services/login.service';
 import { Router } from '@angular/router';
-import {ClassService} from '../../../services/class.service';
-import { Class } from '../../../utils/types';
+import {ClassService} from '../../../../services/class.service';
+import { Class } from '../../../../utils/types';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-list-classes-teacher',
