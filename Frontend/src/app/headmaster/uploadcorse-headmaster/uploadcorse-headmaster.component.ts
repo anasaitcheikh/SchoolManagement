@@ -21,7 +21,7 @@ export class UploadcorseHeadmasterComponent implements OnInit, OnDestroy {
   DOWNLOAD_RESSOURCE = `${API_SERVER.BASE_URI}/${RESOURCE_NAME}`;
 
   fileToUpload: File = null;
-  description: string = 'hehe';
+  description: string = '';
 
   courseMaterials: CourseMaterial[] = [];
 

@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-md-8">
+<div class="row center">
+    <div class="col-md-offset-2 col-md-8">
         <card cardTitle="Drop a course material" isCollapse="flase">
             <form #f="ngForm">
                 <div class="form-group">
@@ -8,7 +8,7 @@
                             <input type="file" id="file" (change)="handleFileInput($event.target.files)">
                         </div>
                         <div class="col-md-4">
-                            <input type="text" (ngModel) = "description" class="" name="description" id="description" />
+                            <input type="text" placeholder="description" [(ngModel)] = "description" class="" name="description" id="description" />
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary" (click)="uploadFile()">Upload</button>
@@ -20,8 +20,8 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-8">
+<div class="row center">
+    <div class="col-md-offset-2 col-md-8">
         <card cardTitle="Course Materials" isCollapse="flase">
             <div class="row">
                 <div class="col-md-5">
@@ -61,6 +61,7 @@
                         </p>
                     </div>
                 </div>
+                <hr>
             </div>
         </card>
     </div>
