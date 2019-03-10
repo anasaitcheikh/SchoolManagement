@@ -7,6 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 
 /* components */
 import { StudentComponent } from './student.component';
+import { IndexStudentComponent } from './index-student/index-student.component';
+import { IconStudentComponent } from './icon-student/icon-student.component';
+import { FormStudentComponent } from './form-student/form-student.component';
+import { ChartsStudentComponent } from './charts-student/charts-student.component';
 
 @NgModule({
     imports: [
@@ -16,7 +20,11 @@ import { StudentComponent } from './student.component';
         routing
     ],
     declarations: [
-        StudentComponent
+        StudentComponent,
+        IndexStudentComponent,
+        IconStudentComponent,
+        FormStudentComponent,
+        ChartsStudentComponent
         ]
 })
 export class StudentModule { }

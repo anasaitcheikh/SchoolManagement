@@ -10,16 +10,16 @@ export const childRoutes: Routes = [
         path: 'student',
         component: StudentComponent,
         children: [
-            { path: '', redirectTo: 'index', pathMatch: 'full' },
-            { path: 'index', loadChildren: './index/index.module#IndexModule' },
-            { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
-            { path: 'icon', loadChildren: './icon/icon.module#IconModule' },
-            { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
-            { path: 'form', loadChildren: './form/form.module#FormModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'ui', loadChildren: './ui/ui.module#UIModule' },
-            { path: 'table', loadChildren: './table/table.module#TableModule' },
-            { path: 'menu-levels', loadChildren: './menu-levels/menu-levels.module#MenuLevelsModule' },
+            { path: '', redirectTo: 'index-student', pathMatch: 'full' },
+            { path: 'index-student', loadChildren: './index-student/index-student.module#IndexStudentModule' },
+            { path: 'editor-student', loadChildren: './editor-student/editor-student.module#EditorStudentModule' },
+            { path: 'icon-student', loadChildren: './icon-student/icon-student.module#IconStudentModule' },
+            { path: 'profile-student', loadChildren: './profile-student/profile-student.module#ProfileStudentModule' },
+            { path: 'form-student', loadChildren: './form-student/form-student.module#FormStudentModule' },
+            { path: 'charts-student', loadChildren: './charts-student/charts-student.module#ChartsStudentModule' },
+            { path: 'ui-student', loadChildren: './ui-student/ui-student.module#UiStudentModule' },
+            { path: 'table-student', loadChildren: './table-student/table-student.module#TableStudentModule' },
+            { path: 'menu-levels-student', loadChildren: './menu-levels-student/menu-levels-student.module#MenuLevelsStudentModule' }
         ]
     }
 ];
