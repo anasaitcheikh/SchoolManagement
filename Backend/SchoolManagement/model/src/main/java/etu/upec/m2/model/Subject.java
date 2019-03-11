@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -12,6 +13,9 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-public class Subject {
+public class Subject implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
     
 }

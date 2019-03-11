@@ -13,5 +13,8 @@ import javax.persistence.*;
  */
 @Entity
 public class Staff {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
     
 }

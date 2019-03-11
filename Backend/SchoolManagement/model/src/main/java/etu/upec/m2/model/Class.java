@@ -14,6 +14,9 @@ import javax.persistence.*;
  */
 @Entity
 public class Class {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
     
     @OneToMany
     List<Student> student;

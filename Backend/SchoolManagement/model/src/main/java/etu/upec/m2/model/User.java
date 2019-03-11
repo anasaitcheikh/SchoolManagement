@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -13,20 +14,21 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-@Table(
-    uniqueConstraints = @UniqueConstraint(columnNames={"email"})
-)
-public abstract class User {
-    
-    
+@Table(uniqueConstraints = @UniqueConstraint(columnNames={"email"}))
+
+@NamedQueries({
+    @NamedQuery(name = "findUserById", query = "SELECT u FROM User u WHERE u.id =:id"),
+    @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),
+})
+public abstract class User implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     protected Long id;
     
-    protected String email, Lastname, firstname, password;
+    protected String email, lastname, firstname, password;
     
     @Temporal(TemporalType.DATE)
-    protected Date BirthDate; 
+    protected Date birthDate; 
     
     @Enumerated(EnumType.STRING)
     protected UserStatus status;
@@ -48,11 +50,11 @@ public abstract class User {
     }
 
     public String getLastname() {
-        return Lastname;
+        return lastname;
     }
 
     public void setLastname(String Lastname) {
-        this.Lastname = Lastname;
+        this.lastname = Lastname;
     }
 
     public String getFirstname() {
@@ -72,11 +74,11 @@ public abstract class User {
     }
 
     public Date getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
     public void setBirthDate(Date BirthDate) {
-        this.BirthDate = BirthDate;
+        this.birthDate = BirthDate;
     }
 
     public UserStatus getStatus() {
@@ -86,7 +88,4 @@ public abstract class User {
     public void setStatus(UserStatus status) {
         this.status = status;
     }
-    
-    
-    
 }
