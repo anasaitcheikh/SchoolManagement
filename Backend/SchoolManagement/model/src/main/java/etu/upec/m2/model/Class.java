@@ -14,7 +14,6 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-<<<<<<< HEAD
 public class Class implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,12 +26,6 @@ public class Class implements Serializable {
     private ClassLevel level;
     
     private int grade;
-=======
-public class Class {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
     
     @OneToMany
     List<Student> students;

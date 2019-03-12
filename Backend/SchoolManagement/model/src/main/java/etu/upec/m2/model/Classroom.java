@@ -13,7 +13,6 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-<<<<<<< HEAD
 public class Classroom implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -52,12 +51,5 @@ public class Classroom implements Serializable {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    
-    
-=======
-public class Classroom {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
+   
 }

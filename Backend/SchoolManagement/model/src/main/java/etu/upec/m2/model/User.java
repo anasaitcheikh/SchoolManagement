@@ -14,13 +14,6 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-<<<<<<< HEAD
-@Table(
-    uniqueConstraints = @UniqueConstraint(columnNames={"email"})
-)
-public abstract class User implements Serializable {
-   
-=======
 @Table(uniqueConstraints = @UniqueConstraint(columnNames={"email"}))
 
 @NamedQueries({
@@ -28,7 +21,7 @@ public abstract class User implements Serializable {
     @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),
 })
 public abstract class User implements Serializable {
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     protected Long id;
@@ -36,11 +29,7 @@ public abstract class User implements Serializable {
     @Enumerated(EnumType.STRING)
     protected UserStatus status;
     
-<<<<<<< HEAD
     protected String email, password, lastname, firstname;
-=======
-    protected String email, lastname, firstname, password;
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
     
     @Temporal(TemporalType.DATE)
     protected Date birthDate; 
@@ -65,14 +54,11 @@ public abstract class User implements Serializable {
         return lastname;
     }
 
-<<<<<<< HEAD
+
     public void setLastname(String lastname) {
         this.lastname = lastname;
-=======
-    public void setLastname(String Lastname) {
-        this.lastname = Lastname;
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
     }
+
 
     public String getFirstname() {
         return firstname;
@@ -94,13 +80,9 @@ public abstract class User implements Serializable {
         return birthDate;
     }
 
-<<<<<<< HEAD
+
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-=======
-    public void setBirthDate(Date BirthDate) {
-        this.birthDate = BirthDate;
->>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
     }
 
     public UserStatus getStatus() {
