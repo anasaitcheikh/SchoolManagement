@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -12,6 +13,7 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+<<<<<<< HEAD
 public class Subject {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,5 +38,11 @@ public class Subject {
     public void setName(SubjectName name) {
         this.name = name;
     }
+=======
+public class Subject implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
+>>>>>>> 9c49d45e34a8d954b7743135b6224771cd558173
     
 }

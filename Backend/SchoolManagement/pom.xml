@@ -8,9 +8,9 @@
   <name>SchoolManagement</name>
   <modules>
     <module>ear</module>
-    <module>web</module>
     <module>ejb</module>
     <module>model</module>
+    <module>web</module>
   </modules>
     <dependencies>
         <!--dependency>
