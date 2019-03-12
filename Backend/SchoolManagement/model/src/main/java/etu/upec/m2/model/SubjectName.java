@@ -7,8 +7,8 @@ package etu.upec.m2.model;
 
 /**
  *
- * @author ademoub
+ * @author Nouhayla
  */
-public enum UserStatus {
-    HEADMASTER, TEACHER, STUDENT
+public enum SubjectName {
+    MATHEMATICS, SCIENCE, PHYSICS, CHEMISTRY, GEOGRAPHY, HISTORY, FRENCH, ENGLISH
 }

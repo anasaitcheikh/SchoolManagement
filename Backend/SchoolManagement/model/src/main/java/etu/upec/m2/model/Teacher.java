@@ -16,4 +16,12 @@ public class Teacher extends User{
     
     @Enumerated(EnumType.STRING)
     private TeacherSpecialty specialty;
+
+    public TeacherSpecialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(TeacherSpecialty specialty) {
+        this.specialty = specialty;
+    }
 }
