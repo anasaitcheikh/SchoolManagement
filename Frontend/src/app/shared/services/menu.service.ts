@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
-//import { MENU_ITEM } from '../../student/menu';
-import { MENU_ITEM } from '../../headmaster/menu';
+import { MENU_ITEM_STUDENT } from '../../student/menu';
+import { MENU_ITEM_TEACHER } from '../../teacher/menu';
+import { MENU_ITEM_HEADMASTER } from '../../headmaster/menu';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
 
 @Injectable()
 export class menuService {
-
+    MENU_ITEM: any;
   constructor(public _globalService: GlobalService, private _router: Router) {
-    this.getNodePath(MENU_ITEM);
+    console.log(_router.url.search('student'));
+    
+    if (_router.url.search('student') > 0) {
+
+      this.MENU_ITEM = MENU_ITEM_STUDENT;
+    }
+    else if (_router.url.search('teacher') > 0) {
+      this.MENU_ITEM = MENU_ITEM_TEACHER;
+    }
+    else{
+      this.MENU_ITEM = MENU_ITEM_TEACHER;
+    }
+
+
+    this.getNodePath(this.MENU_ITEM);
   }
 
  private parent_node = null;
@@ -45,7 +60,7 @@ export class menuService {
   protected creatRouterLink(nodeId: any) {
     this.node = null;
     this.parent_node = null;
-    const menuObj = this.queryParentNode(MENU_ITEM, nodeId);
+    const menuObj = this.queryParentNode(this.MENU_ITEM, nodeId);
     if (menuObj.parent_node && menuObj.parent_node.path) {
       this.path_item.unshift(menuObj.parent_node.path);
       return this.creatRouterLink(menuObj.parent_node.path);
@@ -67,11 +82,11 @@ export class menuService {
         console.log(index.routerLink);
         index.routerLink.unshift('/', 'pages');
       }
-    })
+    });
   }
 
   public putSidebarJson() {
-    return MENU_ITEM;
+    return this.MENU_ITEM;
   }
 
   public selectItem(item) {

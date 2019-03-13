@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -13,5 +14,27 @@ import javax.persistence.*;
  */
 @Entity
 public class Subject {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     
+    private Long id;
+    
+    @Enumerated(EnumType.STRING)
+    private SubjectName name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public SubjectName getName() {
+        return name;
+    }
+
+    public void setName(SubjectName name) {
+        this.name = name;
+    }
 }

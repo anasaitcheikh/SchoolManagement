@@ -13,7 +13,6 @@ import java.util.Objects;
  * @author Fadwa
  */
 public class MessageId implements Serializable{
-
     Long senderId;
     Long receiverId;
     

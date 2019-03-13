@@ -7,8 +7,8 @@ package etu.upec.m2.model;
 
 /**
  *
- * @author ademo
+ * @author ademoub
  */
 public enum TeacherSpecialty {
-    
+    MATHEMATICS, SCIENCE, PHYSICS, CHEMISTRY, GEOGRAPHY, HISTORY, FRENCH, ENGLISH
 }

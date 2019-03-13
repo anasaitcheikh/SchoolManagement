@@ -1,4 +1,4 @@
-export let MENU_ITEM = [
+export let MENU_ITEM_HEADMASTER = [
     {
         path: 'index',
         title: 'Dashboard',

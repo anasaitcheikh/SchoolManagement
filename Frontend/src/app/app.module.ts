@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+
 import { HeadmasterModule } from './headmaster/headmaster.module';
+
 import { LoginModule } from './login/login.module';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';

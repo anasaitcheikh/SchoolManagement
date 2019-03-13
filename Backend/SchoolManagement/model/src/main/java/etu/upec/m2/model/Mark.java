@@ -14,5 +14,8 @@ import javax.persistence.*;
 
 @Entity
 public class Mark {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
     
 }

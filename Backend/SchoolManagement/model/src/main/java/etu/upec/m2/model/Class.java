@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
@@ -13,9 +14,61 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-public class Class {
+public class Class implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    
+    private String name;
+    private int schoolYear;
+    
+    @Enumerated(EnumType.STRING)
+    private ClassLevel level;
+    
+    private int grade;
     
     @OneToMany
-    List<Student> student;
+    List<Student> students;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSchoolYear() {
+        return schoolYear;
+    }
+
+    public void setSchoolYear(int schoolYear) {
+        this.schoolYear = schoolYear;
+    }
+
+    public ClassLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(ClassLevel level) {
+        this.level = level;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
     
 }

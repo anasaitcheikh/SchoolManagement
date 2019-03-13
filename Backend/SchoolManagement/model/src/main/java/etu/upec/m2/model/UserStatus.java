@@ -7,7 +7,7 @@ package etu.upec.m2.model;
 
 /**
  *
- * @author ademo
+ * @author ademoub
  */
 public enum UserStatus {
     HEADMASTER, TEACHER, STUDENT

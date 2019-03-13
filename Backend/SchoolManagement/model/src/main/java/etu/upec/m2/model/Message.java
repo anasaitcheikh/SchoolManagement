@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -12,12 +13,11 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-@IdClass(MessageId.class)
-public class Message {
+public class Message implements Serializable {
     @Id
-    private Long senderId;
-    @Id
-    private Long receiverId;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    protected Long id;
+
     
     private String msg;
     

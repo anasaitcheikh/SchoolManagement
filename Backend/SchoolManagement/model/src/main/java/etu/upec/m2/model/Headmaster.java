@@ -12,6 +12,6 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
-public class Headmaster {
+public class Headmaster extends User{
     
 }
