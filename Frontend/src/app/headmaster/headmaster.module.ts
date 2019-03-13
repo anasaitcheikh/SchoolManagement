@@ -8,8 +8,6 @@ import { SharedModule } from '../shared/shared.module';
 /* components */
 import { HeadmasterComponent } from './headmaster.component';
 
-
-
 @NgModule({
     imports: [
         CommonModule,
@@ -18,7 +16,7 @@ import { HeadmasterComponent } from './headmaster.component';
         routing
     ],
     declarations: [
-        HeadmasterComponent,
+        HeadmasterComponent
     ]
 })
 export class HeadmasterModule { }

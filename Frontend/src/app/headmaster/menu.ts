@@ -1,112 +1,64 @@
-export let MENU_ITEM_HEADMASTER = [
+export let MENU_ITEM = [
     {
         path: 'index',
         title: 'Dashboard',
         icon: 'dashboard'
     },
-    //{
-      //  path: 'editor',
-      //  title: 'Pell Editor',
-       // icon: 'pencil'
-    //},
-   // {
-     //   path: 'icon',
-       // title: 'Icon',
-        //icon: 'diamond'
-    //},
+    {
+        path: 'editor',
+        title: 'Pell Editor',
+        icon: 'pencil'
+    },
+    {
+        path: 'icon',
+        title: 'Icon',
+        icon: 'diamond'
+    },
     {
         path: 'profile',
         title: 'User Profile',
         icon: 'user'
     },
-
     {
-        path: 'teachers',
-        title: 'Enseignants',
-        icon: '',
+        path: 'ui',
+        title: 'UI Element',
+        icon: 'paint-brush',
         children: [
-         {
-           path: 'allTeachers',
-           title: 'Tous les enseignants'
-         },
-         {
-           path: 'addTeacher',
-           title: 'Ajouter un enseignant'
-      }
-    ]
-  },
-
-  {
-        path: 'students',
-        title: 'Etudiants',
-        icon: '',
-        children: [
-         {
-          path: 'allStudents',
-          title: 'Tous les etudiants'
-         },
-        {
-          path: 'addStudents',
-          title: 'Ajouter un etudiant'
-        }
-      ]
-  },
-
-  {
-    path: 'planning',
-    title: 'Emplois du temps',
-    icon: '',
-    children: [
-      {
-        path: 'requestModifyPlanning',
-        title: 'Demandes de modification'
-      },
-      //{
-        //path: 'addStudents',
-        //title: 'Ajouter un etudiant'
-     // }
-    ]
-  },
-   //{
-     //   path: 'ui',
-       // title: 'UI Element',
-       // icon: 'paint-brush',
-        //children: [
-          //  {
-            //    path: 'grid',
-              //  title: 'Bootstrap Grid'
-            //},
-            //{
-              //  path: 'buttons',
-                //title: 'Buttons'
-           // },
-            //{
-              //  path: 'notification',
-               // title: 'Notification'
-            //},
-            //{
-              //  path: 'tabs',
-                //title: 'Tabs'
-            //},
-            //{
-              //  path: 'file-tree',
-                //title: 'File Tree'
-            //},
-            //{
-              //  path: 'modals',
-                //title: 'Modals'
-            //},
-            //{
-              //  path: 'progress-bar',
-                //title: 'ProgressBar'
-            //},
+            {
+                path: 'grid',
+                title: 'Bootstrap Grid'
+            },
+            {
+                path: 'buttons',
+                title: 'Buttons'
+            },
+            {
+                path: 'notification',
+                title: 'Notification'
+            },
+            {
+                path: 'tabs',
+                title: 'Tabs'
+            },
+            {
+                path: 'file-tree',
+                title: 'File Tree'
+            },
+            {
+                path: 'modals',
+                title: 'Modals'
+            },
+            {
+                path: 'progress-bar',
+                title: 'ProgressBar'
+            },
             /*  {
                  path: 'loading',
                  title: 'Loading'
              }, */
-      //  ]
-    //},
-   /* {
+        ]
+    },
+    {
         path: 'form',
         title: 'Forms',
         icon: 'check-square-o',
@@ -128,8 +80,8 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Ng2-Select'
             }
         ]
-    },*/
-    /*{
+    },
+    {
         path: 'charts',
         title: 'Charts',
         icon: 'bar-chart',
@@ -139,8 +91,8 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Echarts'
             }
         ]
-    },*/
-    /*{
+    },
+    {
         path: 'table',
         title: 'Tables',
         icon: 'table',
@@ -175,5 +127,5 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Menu Level2'
             }
         ]
-    },*/
+    },
 ];

@@ -1,32 +1,24 @@
 import { Injectable } from '@angular/core';
 import { MENU_ITEM_STUDENT } from '../../student/menu';
 import { MENU_ITEM_TEACHER } from '../../teacher/menu';
-import { MENU_ITEM_HEADMASTER } from '../../headmaster/menu';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
 
 @Injectable()
 export class menuService {
-    MENU_ITEM: any;
+    MENU_ITEM : any;
   constructor(public _globalService: GlobalService, private _router: Router) {
-    console.log(_router.url.search('student'));
+    console.log(_router.url.search("student"))
     
-    if (_router.url.search('student') > 0) {
-
-      this.MENU_ITEM = MENU_ITEM_STUDENT;
-    }
-    else if (_router.url.search('teacher') > 0) {
-      this.MENU_ITEM = MENU_ITEM_TEACHER;
-    }
-    else{
-      this.MENU_ITEM = MENU_ITEM_TEACHER;
-    }
-
+    if(_router.url.search("student")>0)
+     this.MENU_ITEM = MENU_ITEM_STUDENT;
+    else
+     this.MENU_ITEM = MENU_ITEM_TEACHER;
 
     this.getNodePath(this.MENU_ITEM);
   }
 
- private parent_node = null;
+  private parent_node = null;
   private node = null;
   private path_item = [];
 
@@ -78,11 +70,9 @@ export class menuService {
       } else {
         this.path_item = [index.path];
         index.routerLink = this.creatRouterLink(index.path);
-        console.log('index router link');
-        console.log(index.routerLink);
-        index.routerLink.unshift('/', 'pages');
+        //index.routerLink.unshift('/', 'student');
       }
-    });
+    })
   }
 
   public putSidebarJson() {
@@ -90,18 +80,14 @@ export class menuService {
   }
 
   public selectItem(item) {
-    console.log('select item');
-    console.log(item);
     item.forEach(element => {
       if (element.routerLink) {
         element.isActive = this._router.isActive(this._router.createUrlTree(element.routerLink), true);
         if (element.isActive)
           //this._globalService._isActived(element);
           this._globalService.dataBusChanged('isActived', element);
-      } else if (element.children) {
+      } else if (element.children)
         this.selectItem(element.children);
-
-      }
     });
   }
 
