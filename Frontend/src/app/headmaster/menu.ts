@@ -1,64 +1,118 @@
 export let MENU_ITEM_HEADMASTER = [
     {
-        path: 'index',
+        path: 'dashboardHeadmaster',
         title: 'Dashboard',
         icon: 'dashboard'
     },
+    //{
+      //  path: 'editor',
+      //  title: 'Pell Editor',
+       // icon: 'pencil'
+    //},
+   // {
+     //   path: 'icon',
+       // title: 'Icon',
+        //icon: 'diamond'
+    //},
     {
-        path: 'editor',
-        title: 'Pell Editor',
-        icon: 'pencil'
-    },
-    {
-        path: 'icon',
-        title: 'Icon',
-        icon: 'diamond'
-    },
-    {
-        path: 'profile',
+        path: 'userInfo',
         title: 'User Profile',
         icon: 'user'
     },
+
     {
-        path: 'ui',
-        title: 'UI Element',
-        icon: 'paint-brush',
+      path: 'bookRoom',
+      title: 'Reserver une salle',
+      icon: 'home'
+    },
+
+    {
+        path: '',
+        title: 'Enseignants',
+        icon: '',
         children: [
-            {
-                path: 'grid',
-                title: 'Bootstrap Grid'
-            },
-            {
-                path: 'buttons',
-                title: 'Buttons'
-            },
-            {
-                path: 'notification',
-                title: 'Notification'
-            },
-            {
-                path: 'tabs',
-                title: 'Tabs'
-            },
-            {
-                path: 'file-tree',
-                title: 'File Tree'
-            },
-            {
-                path: 'modals',
-                title: 'Modals'
-            },
-            {
-                path: 'progress-bar',
-                title: 'ProgressBar'
-            },
+         {
+           path: '',
+           title: 'Tous les enseignants'
+         },
+         {
+           path: 'addTeacher',
+           title: 'Ajouter un enseignant'
+      }
+    ]
+  },
+
+  {
+        path: '',
+        title: 'Etudiants',
+        icon: '',
+        children: [
+         {
+          path: 'allStudents',
+          title: 'Tous les etudiants'
+         },
+        {
+          path: 'addStudent',
+          title: 'Ajouter un etudiant'
+        }
+      ]
+  },
+
+  {
+    path: 'planning',
+    title: 'Emplois du temps',
+    icon: '',
+    children: [
+      {
+        path: 'requestModifyPlanning',
+        title: 'Demandes de modification'
+      },
+      //{
+        //path: 'addStudents',
+        //title: 'Ajouter un etudiant'
+     // }
+    ]
+  },
+   //{
+     //   path: 'ui',
+       // title: 'UI Element',
+       // icon: 'paint-brush',
+        //children: [
+          //  {
+            //    path: 'grid',
+              //  title: 'Bootstrap Grid'
+            //},
+            //{
+              //  path: 'buttons',
+                //title: 'Buttons'
+           // },
+            //{
+              //  path: 'notification',
+               // title: 'Notification'
+            //},
+            //{
+              //  path: 'tabs',
+                //title: 'Tabs'
+            //},
+            //{
+              //  path: 'file-tree',
+                //title: 'File Tree'
+            //},
+            //{
+              //  path: 'modals',
+                //title: 'Modals'
+            //},
+            //{
+              //  path: 'progress-bar',
+                //title: 'ProgressBar'
+            //},
             /*  {
                  path: 'loading',
                  title: 'Loading'
              }, */
-        ]
-    },
-    {
+      //  ]
+    //},
+   /* {
         path: 'form',
         title: 'Forms',
         icon: 'check-square-o',
@@ -80,8 +134,8 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Ng2-Select'
             }
         ]
-    },
-    {
+    },*/
+    /*{
         path: 'charts',
         title: 'Charts',
         icon: 'bar-chart',
@@ -91,8 +145,8 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Echarts'
             }
         ]
-    },
-    {
+    },*/
+    /*{
         path: 'table',
         title: 'Tables',
         icon: 'table',
@@ -127,5 +181,5 @@ export let MENU_ITEM_HEADMASTER = [
                 title: 'Menu Level2'
             }
         ]
-    },
+    },*/
 ];

@@ -8,15 +8,18 @@ import { SharedModule } from '../shared/shared.module';
 /* components */
 import { HeadmasterComponent } from './headmaster.component';
 
+
+
 @NgModule({
     imports: [
         CommonModule,
         LayoutModule,
         SharedModule,
+      //CUSTOM_ELEMENTS_SCHEMA,
         routing
     ],
     declarations: [
-        HeadmasterComponent
+        HeadmasterComponent,
     ]
 })
 export class HeadmasterModule { }
