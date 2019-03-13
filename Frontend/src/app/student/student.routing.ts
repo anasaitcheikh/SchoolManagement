@@ -10,16 +10,12 @@ export const childRoutes: Routes = [
         path: 'student',
         component: StudentComponent,
         children: [
-            { path: '', redirectTo: 'index-student', pathMatch: 'full' },
-            { path: 'index-student', loadChildren: './index-student/index-student.module#IndexStudentModule' },
-            { path: 'editor-student', loadChildren: './editor-student/editor-student.module#EditorStudentModule' },
-            { path: 'icon-student', loadChildren: './icon-student/icon-student.module#IconStudentModule' },
-            { path: 'profile-student', loadChildren: './profile-student/profile-student.module#ProfileStudentModule' },
-            { path: 'form-student', loadChildren: './form-student/form-student.module#FormStudentModule' },
-            { path: 'charts-student', loadChildren: './charts-student/charts-student.module#ChartsStudentModule' },
-            { path: 'ui-student', loadChildren: './ui-student/ui-student.module#UiStudentModule' },
-            { path: 'table-student', loadChildren: './table-student/table-student.module#TableStudentModule' },
-            { path: 'menu-levels-student', loadChildren: './menu-levels-student/menu-levels-student.module#MenuLevelsStudentModule' }
+            { path: '', redirectTo: 'profile', pathMatch: 'full' },
+            { path: 'profile', loadChildren: './profile-student/profile-student.module#ProfileStudentModule' },
+            { path: 'result', loadChildren: './result-student/result-student.module#ResultStudentModule' },
+            { path: 'timetable',  loadChildren: './timetable-student/timetable-student.module#TimetableStudentModule' },
+            { path: 'message', loadChildren: './message-student/message-student.module#MessageStudentModule' },
+            { path: 'update-password', loadChildren: './update-password-student/update-password-student.module#UpdatePasswordStudentModule' }
         ]
     }
 ];

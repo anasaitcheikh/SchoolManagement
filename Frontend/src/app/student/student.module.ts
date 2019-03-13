@@ -7,10 +7,9 @@ import { SharedModule } from '../shared/shared.module';
 
 /* components */
 import { StudentComponent } from './student.component';
-import { IndexStudentComponent } from './index-student/index-student.component';
-import { IconStudentComponent } from './icon-student/icon-student.component';
-import { FormStudentComponent } from './form-student/form-student.component';
-import { ChartsStudentComponent } from './charts-student/charts-student.component';
+import { MessageStudentComponent } from './message-student/message-student.component';
+import { ResultStudentComponent } from './result-student/result-student.component';
+import { TimetableStudentComponent } from './timetable-student/timetable-student.component';
 
 @NgModule({
     imports: [
@@ -21,10 +20,6 @@ import { ChartsStudentComponent } from './charts-student/charts-student.componen
     ],
     declarations: [
         StudentComponent,
-        IndexStudentComponent,
-        IconStudentComponent,
-        FormStudentComponent,
-        ChartsStudentComponent
         ]
 })
 export class StudentModule { }
