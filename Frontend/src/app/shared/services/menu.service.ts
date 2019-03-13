@@ -3,6 +3,7 @@ import { MENU_ITEM_STUDENT } from '../../student/menu';
 import { MENU_ITEM_TEACHER } from '../../teacher/menu';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
+import { MENU_ITEM_HEADMASTER } from '../../headmaster/menu';
 
 @Injectable()
 export class menuService {
@@ -12,8 +13,10 @@ export class menuService {
     
     if(_router.url.search("student")>0)
      this.MENU_ITEM = MENU_ITEM_STUDENT;
-    else
+    else if(_router.url.search("teacher")>0)
      this.MENU_ITEM = MENU_ITEM_TEACHER;
+    else
+     this.MENU_ITEM = MENU_ITEM_HEADMASTER;
 
     this.getNodePath(this.MENU_ITEM);
   }
