@@ -1,15 +1,36 @@
 export let MENU_ITEM = [
     {
-        path: 'index',
-        title: 'Dashboard',
-        icon: 'dashboard'
+        path: 'edt',
+        title: 'Timetable',
+        icon: 'calendar',
+       /* children: [
+            {
+                path: '../edit-edt',
+                title: 'Edit Timetable'
+            }
+        ]*/
     },
     {
-        path: 'editor',
-        title: 'Pell Editor',
+        path: 'edit-edt',
+        title: 'Edit Timetable',
         icon: 'pencil'
     },
     {
+        path: 'saisirnotes',
+        title: 'Enter grades',
+        icon: 'check-square-o'
+    },
+    {
+        path: 'message',
+        title: 'Messages',
+        icon: 'far fa-envelope'
+    },
+    {
+        path: 'update-password',
+        title: 'Update Password',
+        icon: 'pencil'
+    },
+   /* {
         path: 'icon',
         title: 'Icon',
         icon: 'diamond'
@@ -52,10 +73,10 @@ export let MENU_ITEM = [
                 path: 'progress-bar',
                 title: 'ProgressBar'
             },
-            /*  {
+              {
                  path: 'loading',
                  title: 'Loading'
-             }, */
+             }, 
         ]
     },
     {
@@ -127,5 +148,5 @@ export let MENU_ITEM = [
                 title: 'Menu Level2'
             }
         ]
-    },
+    },*/
 ];

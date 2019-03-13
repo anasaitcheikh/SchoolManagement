@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 /* components */
 import { TeacherComponent } from './teacher.component';
 
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -16,7 +18,7 @@ import { TeacherComponent } from './teacher.component';
         routing
     ],
     declarations: [
-        TeacherComponent
+        TeacherComponent,
     ]
 })
 export class TeacherModule { }
