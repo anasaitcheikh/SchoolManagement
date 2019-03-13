@@ -25,12 +25,12 @@ export class SidebarComponent implements OnInit {
   }
 
   public _sidebarToggle() {
-    // this._globalService._sidebarToggleState(true);
-    /* this._globalService.sidebarToggle$.subscribe(sidebarToggle => {
+    this._globalService._sidebarToggleState(true);
+    this._globalService.sidebarToggle$.subscribe(sidebarToggle => {
       this.sidebarToggle = sidebarToggle;
     }, error => {
       console.log('Error: ' + error);
-    }); */
+    });
     this._globalService.data$.subscribe(data => {
       if (data.ev === 'sidebarToggle') {
         this.sidebarToggle = data.value;

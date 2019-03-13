@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MENU_ITEM } from '../../student/menu';
+//import { MENU_ITEM } from '../../student/menu';
+import { MENU_ITEM } from '../../headmaster/menu';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
 
@@ -10,7 +11,7 @@ export class menuService {
     this.getNodePath(MENU_ITEM);
   }
 
-  private parent_node = null;
+ private parent_node = null;
   private node = null;
   private path_item = [];
 
@@ -62,6 +63,8 @@ export class menuService {
       } else {
         this.path_item = [index.path];
         index.routerLink = this.creatRouterLink(index.path);
+        console.log('index router link');
+        console.log(index.routerLink);
         index.routerLink.unshift('/', 'pages');
       }
     })
@@ -72,14 +75,18 @@ export class menuService {
   }
 
   public selectItem(item) {
+    console.log('select item');
+    console.log(item);
     item.forEach(element => {
       if (element.routerLink) {
         element.isActive = this._router.isActive(this._router.createUrlTree(element.routerLink), true);
         if (element.isActive)
           //this._globalService._isActived(element);
           this._globalService.dataBusChanged('isActived', element);
-      } else if (element.children)
+      } else if (element.children) {
         this.selectItem(element.children);
+
+      }
     });
   }
 
