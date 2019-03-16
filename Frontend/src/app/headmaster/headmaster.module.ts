@@ -10,6 +10,11 @@ import { HeadmasterComponent } from './headmaster.component';
 
 
 
+
+
+
+
+
 @NgModule({
     imports: [
         CommonModule,
