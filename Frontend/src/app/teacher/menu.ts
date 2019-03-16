@@ -26,6 +26,11 @@ export let MENU_ITEM_TEACHER = [
         icon: 'check-square-o'
     },
     {
+        path: 'students-list',
+        title: 'Students List',
+        icon: 'list'
+    },
+    {
         path: 'message',
         title: 'Messages',
         icon: 'far fa-envelope'

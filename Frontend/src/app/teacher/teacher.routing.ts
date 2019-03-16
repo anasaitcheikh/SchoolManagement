@@ -17,6 +17,7 @@ export const childRoutes: Routes = [
             { path: 'message', loadChildren: './message-teacher/message-teacher.module#MessageTeacherModule' },
             { path: 'update-password', loadChildren: './update-password-teacher/update-password-teacher.module#UpdatePasswordTeacherModule' },
             { path: 'saisirnotes', loadChildren: './saisirnotes-teacher/saisirnotes-teacher.module#SaisirnotesTeacherModule' },
+            { path: 'students-list', loadChildren: './list-student-teacher/list-student-teacher.module#ListStudentTeacherModule' },
         ]
     }
 ];
