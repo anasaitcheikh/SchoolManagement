@@ -11,6 +11,11 @@ export let MENU_ITEM_TEACHER = [
         ]*/
     },
     {
+        path: 'profile',
+        title: 'Profile',
+        icon: 'user'
+    },
+    {
         path: 'edit-edt',
         title: 'Edit Timetable',
         icon: 'pencil'
@@ -30,12 +35,8 @@ export let MENU_ITEM_TEACHER = [
         title: 'Update Password',
         icon: 'pencil'
     },
+    
    /* {
-        path: 'icon',
-        title: 'Icon',
-        icon: 'diamond'
-    },
-    {
         path: 'profile',
         title: 'User Profile',
         icon: 'user'
