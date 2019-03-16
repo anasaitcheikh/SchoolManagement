@@ -34,7 +34,11 @@ export let MENU_ITEM_HEADMASTER = [
       title: 'Reserver une salle',
       icon: 'home'
     },
-
+    {
+      path: 'addClass',
+      title: 'Add Class',
+      icon: 'plus-square'
+    },
     {
         path: '',
         title: 'Enseignants',

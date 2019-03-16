@@ -14,6 +14,7 @@ export const childRoutes: Routes = [
             { path: 'dashboardHeadmaster', loadChildren: './index-headmaster/index-headmaster.module#IndexHeadmasterModule' },
            // { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
            // { path: 'icon', loadChildren: './icon/icon.module#IconModule' },
+           { path: 'addClass', loadChildren: './add-class/add-class.module#AddClassModule' },
             { path: 'addStudent', loadChildren: './add-student/add-student.module#AddStudentModule' },
             { path: 'addTeacher', loadChildren: './add-teacher/add-teacher.module#AddTeacherModule' },
             { path: 'allStudents', loadChildren: './all-students/all-students.module#AllStudentsModule' },
