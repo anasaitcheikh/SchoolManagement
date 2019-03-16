@@ -15,11 +15,6 @@ export let MENU_ITEM_HEADMASTER = [
         //icon: 'diamond'
     //},
     {
-       path: 'timetable-edit',
-       title: 'Create/Edit Timetable',
-        icon: 'pencil'
-    },
-    {
         path: 'userInfo',
         title: 'User Profile',
         icon: 'user'
@@ -80,6 +75,10 @@ export let MENU_ITEM_HEADMASTER = [
         path: 'requestModifyPlanning',
         title: 'Demandes de modification'
       },
+      {
+        path: 'timetable-edit',
+        title: 'Create/Edit Timetable',
+     }
       //{
         //path: 'addStudents',
         //title: 'Ajouter un etudiant'
