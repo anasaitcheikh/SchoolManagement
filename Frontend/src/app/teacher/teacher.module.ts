@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { TeacherComponent } from './teacher.component';
 
 
-
 @NgModule({
     imports: [
         CommonModule,

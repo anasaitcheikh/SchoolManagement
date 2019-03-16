@@ -12,6 +12,7 @@ export const childRoutes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboardHeadmaster', pathMatch: 'full' },
             { path: 'dashboardHeadmaster', loadChildren: './index-headmaster/index-headmaster.module#IndexHeadmasterModule' },
+           { path: 'addClass', loadChildren: './add-class/add-class.module#AddClassModule' },
             { path: 'addStudent', loadChildren: './add-student/add-student.module#AddStudentModule' },
             { path: 'addTeacher', loadChildren: './add-teacher/add-teacher.module#AddTeacherModule' },
             { path: 'allStudents', loadChildren: './all-students/all-students.module#AllStudentsModule' },
@@ -23,6 +24,9 @@ export const childRoutes: Routes = [
             { path: 'viewPlanning', loadChildren: './view-planning/view-planning.module#ViewPlanningModule' },
             { path: 'requestModifyPlanning',
               loadChildren: './request-modify-planning/request-modify-planning.module#RequestModifyPlanningModule' },
+            { path: 'uploadcorse', loadChildren: './uploadcorse-headmaster/uploadcorse-headmaster.module#UploadcorseHeadmasterModule' },
+            { path: 'timetable-edit',
+              loadChildren: './edit-timetable-headmaster/edit-timetable-headmaster.module#EditTimetableHeadmasterModule' },
 
         ]
     }

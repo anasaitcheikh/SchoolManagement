@@ -10,13 +10,21 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'My Profile',
         icon: 'image'
     },
-
+    {
+      path: 'uploadcorse',
+      title: 'Upload Corse Materials',
+      icon: 'book'
+  },
     {
       path: 'bookRoom',
       title: 'Book Room',
       icon: 'home'
     },
-
+    {
+      path: 'addClass',
+      title: 'Add Class',
+      icon: 'plus-square'
+    },
     {
         path: '',
         title: 'Teachers',
@@ -62,6 +70,12 @@ export let MENU_ITEM_HEADMASTER = [
         path: 'requestModifyPlanning',
         title: 'Planning change requests'
       },
+
+      {
+        path: 'timetable-edit',
+        title: 'Create/Edit Timetable',
+     }
+
     ]
   },
 

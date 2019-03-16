@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -13,9 +14,49 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Mark {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
+public class Mark implements Serializable {
+    @EmbeddedId private MarkId id;
+    
+    private double mark;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_student", referencedColumnName = "id")
+    private Student student;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_subject", referencedColumnName = "id")
+    private Subject subject;
+
+    public MarkId getId() {
+        return id;
+    }
+
+    public void setId(MarkId id) {
+        this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public double getMark() {
+        return mark;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
+    }    
     
 }
