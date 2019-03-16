@@ -20,6 +20,7 @@ import { HeadmasterComponent } from './headmaster.component';
     ],
     declarations: [
         HeadmasterComponent,
+        
     ]
 })
 export class HeadmasterModule { }
