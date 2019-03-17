@@ -7,9 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 
 /* components */
 import { StudentComponent } from './student.component';
-import { MessageStudentComponent } from './message-student/message-student.component';
-import { ResultStudentComponent } from './result-student/result-student.component';
-import { TimetableStudentComponent } from './timetable-student/timetable-student.component';
 
 @NgModule({
     imports: [
