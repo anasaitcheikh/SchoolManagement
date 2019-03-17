@@ -1,12 +1,13 @@
+<form #f = "ngForm" class="form-group">
 <div class="col-md-12">
   <card cardTitle="Add Class">
-    <form class="form-group">
+    <!--form class="form-group"!-->
       <label class="control-label">Class name</label>
-      <input type="text" class="form-control" placeholder="Enter a name for the class">
+      <input type="text" class="form-control" placeholder="Enter a name for the class" ngModel name="className">
       <br>
 
       <label class="control-label">Year</label>
-      <select name="select" id="select1" class="form-control">
+      <select name="select" id="select1" class="form-control" ngModel name="year">
         <option value="option1">1999</option>
         <option value="option2">2000</option>
         <option value="option3">2001</option>
@@ -34,7 +35,7 @@
       <br>
 
       <label class="control-label">Class level</label>
-      <select name="select" id="select2" class="form-control">
+      <select name="select" id="select2" class="form-control" ngModel name="classLevel">
         <option value="option1">ELEMENTARY</option>
         <option value="option2">MIDDLE</option>
         <option value="option3">HIGH</option>
@@ -43,7 +44,7 @@
 
 
       <label class="control-label">Grade</label>
-      <select name="select" id="select2" class="form-control">
+      <select name="select" id="select2" class="form-control" ngModel name="classGrade">
         <option value="option1">1st</option>
         <option value="option2">2nd</option>
         <option value="option3">3th</option>
@@ -59,7 +60,8 @@
       </select>
       <br>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <button type="submit" class="btn btn-primary" (click)="addClass(f.value)">Add</button>
+    <!--/form!-->
   </card>
 </div>
+</form>
