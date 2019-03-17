@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router'
 import { LoginService } from '../../services/login.service';
 import { Subscription } from 'rxjs/Subscription';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private _loginSubscriber: Subscription
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private tokenService: TokenService) { }
 
   ngOnInit() {
     
@@ -34,8 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._loginSubscriber = this.loginService.login(this.email, this.password)
       .subscribe(
         token => {
-          console.log("login successful!");
-          console.log("token ", token);
+          this.tokenService.setToken(JSON.parse(JSON.stringify(token)).token)
         },
         error => {
           console.log(error);

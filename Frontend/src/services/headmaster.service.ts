@@ -33,12 +33,12 @@ export class HeadmasterService {
   }
 
   getAllStudents() {
-    const req = this.http.get(API_SERVER.BASE_URI + "xxx",);
+    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
     return req;
   }
 
   getAllTeachers() {
-    const req = this.http.get(API_SERVER.BASE_URI + "xxx",);
+    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
     return req;
   }
 

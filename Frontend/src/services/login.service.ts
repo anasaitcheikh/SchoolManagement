@@ -14,17 +14,7 @@ export class LoginService {
       {
         email: login,
         password: password
-      }).pipe(
-        map(
-          user => {
-            // login successful if there's a jwt token in the response
-            if (user) {
-              // store user details and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem('currentUser', JSON.stringify(user));
-              console.log("user insert on local storage");
-            }
-            return user;
-          }));
+      })
   }
 
   logout() {

@@ -12,8 +12,10 @@ import {UserService} from '../services/user.service';
 import {StudentService} from '../services/student.service';
 import {TeacherService} from '../services/teacher.service';
 import {HeadmasterService} from '../services/headmaster.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from '../services/login.service';
+import { TokenInterceptor } from '../interceptors/token.interceptor';
+import { TokenService } from '../services/token.service';
 
 @NgModule({
   imports: [
@@ -35,7 +37,13 @@ import { LoginService } from '../services/login.service';
       StudentService,
       TeacherService,
       HeadmasterService,
-      LoginService
+      LoginService,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+      },
+      TokenService
     ],
   bootstrap: [AppComponent]
 })
