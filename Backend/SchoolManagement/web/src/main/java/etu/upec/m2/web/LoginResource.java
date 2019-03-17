@@ -15,6 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -44,9 +45,16 @@ public class LoginResource {
 
     @POST
     public Response login(Headmaster headmaster) {
-        User user = headmasterService.getHeadmasterByEmailAndPassword(headmaster.getEmail(), headmaster.getPassword());
-
-        /*if (user == null) {
+        String email = headmaster.getEmail();
+        String password = headmaster.getPassword();
+        
+        User user = null;
+        
+        user = headmasterService.getHeadmasterByEmailAndPassword(email, password);
+        
+        System.err.println("user "+user);
+        
+        if (user == null) {
             user = teacherService.getTeacherByEmailAndPassword(email, password);
         }
 
@@ -57,7 +65,7 @@ public class LoginResource {
                     .status(Response.Status.UNAUTHORIZED)
                     .entity(user)
                     .build();
-        }*/
+        }
         
         if (user == null) {
             return Response
@@ -68,16 +76,19 @@ public class LoginResource {
         
         return Response
                 .status(Response.Status.OK)
-                .entity(generateToken(user))
+                .entity("{\"token\": \""+generateToken(user)+"\"}")
                 .build();
     }
     
     private String generateToken(User user) {
-        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, 2);
+        
+        Key key = JwtKeySingleton.getKey();
         String jws = Jwts
                 .builder()
-                .setSubject(user.getEmail())
-                .setExpiration(new Date((LocalDateTime.now().getMinute() + 120) * 1000000))
+                .setSubject("{id: " + user.getId() + ", email: \"" + user.getEmail() + "\", status: \"" + user.getStatus().toString() + "\"}")
+                .setExpiration(new Date(calendar.getTimeInMillis()))
                 .signWith(key)
                 .compact();
         return jws;

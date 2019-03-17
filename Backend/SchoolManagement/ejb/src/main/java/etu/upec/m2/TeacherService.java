@@ -5,6 +5,7 @@
  */
 package etu.upec.m2;
 
+import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.Teacher;
 import etu.upec.m2.model.TeacherSpecialty;
 import etu.upec.m2.model.UserStatus;
@@ -87,4 +88,12 @@ public class TeacherService implements ITeacherService {
         return teacher.getId();
     }
     
+    @Override
+    public Teacher getTeacherByEmailAndPassword(String email, String password) {
+        TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByEmailAndPassword", Teacher.class);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        
+        return query.getSingleResult();
+    }
 }

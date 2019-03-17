@@ -23,4 +23,5 @@ public interface IStudentService {
     List<Student> getAllStudent();
     Student getStudentById(Long id);
     Long resetPassword(Long id, String oldPassword, String newPassword);
+    Student getStudentByEmailAndPassword(String email, String password);
 }

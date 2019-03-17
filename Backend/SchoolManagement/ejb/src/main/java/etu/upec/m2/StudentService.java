@@ -90,4 +90,12 @@ public class StudentService implements IStudentService {
         return student.getId();
     }
     
+    @Override
+    public Student getStudentByEmailAndPassword(String email, String password) {
+        TypedQuery<Student> query =  em.createNamedQuery("findStudentByEmailAndPassword", Student.class);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        
+        return query.getSingleResult();
+    }
 }
