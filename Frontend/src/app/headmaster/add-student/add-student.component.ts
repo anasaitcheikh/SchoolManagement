@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HeadmasterService} from '../../../services/headmaster.service';
 
 @Component({
   selector: 'app-add-student',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private headmasterService: HeadmasterService) { }
 
   ngOnInit() {
   }
