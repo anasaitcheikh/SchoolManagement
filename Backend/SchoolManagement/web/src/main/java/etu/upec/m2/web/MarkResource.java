@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
 @Path("mark")
 @Produces(MediaType.APPLICATION_JSON)
 public class MarkResource {
-    /*
+    
     @EJB
     IMarkService markService;
     
@@ -44,15 +44,18 @@ public class MarkResource {
     }
     
     @GET
-    @Path("{id}")
-    public Response getMark(@PathParam("id")MarkId id) {
+    @Path("{idSudent}/{idSubject}")
+    public Response getMark(@PathParam("idSudent")Long idStudent,@PathParam("idSubject")Long idSubject ) {
+        MarkId id = new MarkId();
+        id.setStudentId(idStudent);
+        id.setSubjectId(idSubject);
         Mark mark = markService.getMarkById(id);
         return Response
                 .status(Response.Status.OK)
                 .entity(mark)
                 .build();
     }
-    
+    /*
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)

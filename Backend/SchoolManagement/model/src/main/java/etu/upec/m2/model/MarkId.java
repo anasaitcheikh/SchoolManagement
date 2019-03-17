@@ -16,4 +16,21 @@ import javax.persistence.Embeddable;
 public class MarkId implements Serializable{
     long studentId;
     long subjectId;
+
+    public long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
+
+    public long getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(long subjectId) {
+        this.subjectId = subjectId;
+    }
+    
 }
