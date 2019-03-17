@@ -18,5 +18,14 @@ export class UserService {
     return req;
   }
 
+  saisirnotes(firstname  : string, lastname : string, score  : string, subject : string) {
+    return this.http.post(API_SERVER.BASE_URI + "xxx",
+      {
+        firstname  : firstname,
+        lastname : lastname,
+        mark  : score,
+        subject : subject
+      })
+  }
 
 }
