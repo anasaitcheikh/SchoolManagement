@@ -18,10 +18,12 @@ import javax.persistence.*;
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id")
 })
 public class Mark implements Serializable {
-    @EmbeddedId private MarkId id;
+    @EmbeddedId 
+    private MarkId id;
     
     private double mark;
     
+    /*
     @ManyToOne
     @JoinColumn(name = "id_student", referencedColumnName = "id")
     private Student student;
@@ -29,7 +31,7 @@ public class Mark implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_subject", referencedColumnName = "id")
     private Subject subject;
-
+*/
     public MarkId getId() {
         return id;
     }
@@ -37,7 +39,7 @@ public class Mark implements Serializable {
     public void setId(MarkId id) {
         this.id = id;
     }
-
+/*
     public Student getStudent() {
         return student;
     }
@@ -53,7 +55,7 @@ public class Mark implements Serializable {
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
-
+*/
     public double getMark() {
         return mark;
     }

@@ -29,10 +29,10 @@ public class Class implements Serializable {
     private ClassLevel level;
     
     private int grade;
-    
+    /*
     @OneToMany
     List<Student> students;
-
+*/
     public Long getId() {
         return id;
     }
