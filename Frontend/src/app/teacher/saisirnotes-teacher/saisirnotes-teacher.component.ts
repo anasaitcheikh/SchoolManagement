@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaisirnotesTeacherComponent implements OnInit {
 
+  firstname  : string;
+  lastname : string;
+  score  : string;
+  subject : string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changescore(){
+    console.log(this.firstname);
+    console.log(this.lastname);
+    console.log(this.score);
+    console.log(this.subject);
   }
 
 }

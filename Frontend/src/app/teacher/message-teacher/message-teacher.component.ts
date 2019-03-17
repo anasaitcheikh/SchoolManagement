@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageTeacherComponent implements OnInit {
 
+  email : string;
+  object : string;
+  message : string;
   default_data: Array<any>;
 
   constructor() { }
@@ -17,6 +20,11 @@ export class MessageTeacherComponent implements OnInit {
       { sender: 'Simon@lol.fr', object: 'baliz la'},
       { sender: 'Jane@lol.fr', object: 'wala wala 3awtani' },
   ];
+  }
+  send(){
+    console.log(this.email);
+    console.log(this.object);
+    console.log(this.message);
   }
 
 }
