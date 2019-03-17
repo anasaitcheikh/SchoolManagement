@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package etu.upec.m2.web;
 
-import etu.upec.m2.IMarkService;
-import etu.upec.m2.model.Mark;
-import etu.upec.m2.model.MarkId;
+import etu.upec.m2.ISubjectService;
+import etu.upec.m2.model.Subject;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,17 +23,17 @@ import javax.ws.rs.core.Response;
  *
  * @author Nouhayla
  */
-@Path("mark")
+@Path("subject")
 @Produces(MediaType.APPLICATION_JSON)
-public class MarkResource {
-    
+public class SubjectResource {
+          
     @EJB
-    IMarkService markService;
+    ISubjectService subjectService;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createMark(Mark mark) {
-        MarkId result_id = markService.createMark(mark);
+    public Response createSubject(Subject subject) {
+        Long result_id = subjectService.createSubject(subject);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
@@ -45,19 +42,19 @@ public class MarkResource {
     
     @GET
     @Path("{id}")
-    public Response getMark(@PathParam("id")MarkId id) {
-        Mark mark = markService.getMarkById(id);
+    public Response getSubject(@PathParam("id")Long id) {
+        Subject subject = subjectService.getSubjectById(id);
         return Response
                 .status(Response.Status.OK)
-                .entity(mark)
+                .entity(subject)
                 .build();
     }
     
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateMark(@PathParam("id")MarkId id,Mark mark) {
-        MarkId result_id=markService.updateMark(id, mark);
+    public Response updateSubject(@PathParam("id")Long id,Subject subject) {
+        Long result_id=subjectService.updateSubject(id, subject);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
@@ -66,8 +63,8 @@ public class MarkResource {
     
     @DELETE
     @Path("{id}")
-    public Response deleteMark(@PathParam("id")MarkId id) {
-        MarkId result_id=markService.deleteMark(id);
+    public Response deleteSubject(@PathParam("id")Long id) {
+        Long result_id=subjectService.deleteSubject(id);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
