@@ -13,4 +13,12 @@ export class AddStudentComponent implements OnInit {
   ngOnInit() {
   }
 
+  addStudent(value) {
+     console.log('click on add student');
+     console.log(value.firstname);
+     console.log(value.lastname);
+     console.log(value.email);
+     console.log(value.password);
+     console.log(value.class);
+  }
 }

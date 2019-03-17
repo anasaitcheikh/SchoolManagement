@@ -12,4 +12,19 @@ export class EditTimetableHeadmasterComponent implements OnInit {
   ngOnInit() {
   }
 
+  createTimeTable(table){
+     console.log('click on create time table');
+     console.log(table.day);
+    console.log(table.fromTo);
+    console.log(table.subject);
+    console.log(table.classRoom);
+ }
+
+  modifyTimeTable(table){
+    console.log('click on modify time table');
+    console.log(table.day);
+    console.log(table.fromTo);
+    console.log(table.subject);
+    console.log(table.classRoom);
+  }
 }

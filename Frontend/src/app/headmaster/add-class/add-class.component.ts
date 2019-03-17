@@ -12,4 +12,11 @@ export class AddClassComponent implements OnInit {
   ngOnInit() {
   }
 
+  addClass(classe){
+     console.log('click on add class');
+     console.log(classe.className);
+     console.log(classe.classGrade);
+     console.log(classe.classLevel);
+     console.log(classe.year);
+}
 }

@@ -20,7 +20,6 @@ import { HeadmasterComponent } from './headmaster.component';
         CommonModule,
         LayoutModule,
         SharedModule,
-      //CUSTOM_ELEMENTS_SCHEMA,
         routing
     ],
     declarations: [

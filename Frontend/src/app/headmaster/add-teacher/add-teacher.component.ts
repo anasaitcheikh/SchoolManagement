@@ -12,4 +12,13 @@ export class AddTeacherComponent implements OnInit {
   ngOnInit() {
   }
 
+  addTeacher(teacher){
+     console.log('click on add teaher');
+     console.log(teacher.firstname);
+    console.log(teacher.lastname);
+    console.log(teacher.email);
+    console.log(teacher.password);
+    console.log(teacher.class);
+    console.log(teacher.course);
+  }
 }
