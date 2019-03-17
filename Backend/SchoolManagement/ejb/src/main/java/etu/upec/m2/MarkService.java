@@ -9,6 +9,7 @@ import etu.upec.m2.model.Mark;
 import etu.upec.m2.model.MarkId;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
@@ -21,6 +22,7 @@ import javax.persistence.TypedQuery;
  *
  * @author ademo
  */
+@Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class MarkService implements IMarkService {
 
