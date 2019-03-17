@@ -13,6 +13,7 @@ import {StudentService} from '../services/student.service';
 import {TeacherService} from '../services/teacher.service';
 import {HeadmasterService} from '../services/headmaster.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from '../services/login.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
       UserService,
       StudentService,
       TeacherService,
-      HeadmasterService
+      HeadmasterService,
+      LoginService
     ],
   bootstrap: [AppComponent]
 })
