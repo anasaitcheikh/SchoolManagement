@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditEdtTeacherComponent implements OnInit {
 
+  day: string;
+  fromto : string;
+  subject : string;
+  classroom : string; 
+
   constructor() { }
 
   ngOnInit() {
+  }
+  edit_edt(){
+    console.log(this.day);
+    console.log(this.fromto);
+    console.log(this.subject);
+    console.log(this.classroom);
+
   }
 
 }

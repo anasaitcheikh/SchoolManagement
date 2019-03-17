@@ -1,16 +1,16 @@
 <div class="col-md-12">
   <card cardTitle="Enter Subjects Score">
-    <form class="form-group">
+    <form class="form-group" (submit)="send()">
       <label class="control-label">Firstname of the student</label>
-      <input type="text" class="form-control" placeholder="Firstname">
+      <input name="firstn" [(ngModel)]="firstn" type="text" class="form-control" placeholder="Firstname">
       <br>
 
       <label class="control-label">Lastname of the student</label>
-      <input type="text" class="form-control" placeholder="Lastname">
+      <input name="lastn" [(ngModel)]="lastn" type="text" class="form-control" placeholder="Lastname">
       <br>
 
-      <label class="control-label">Subject</label>
-      <select name="select" id="select1" class="form-control">
+      <label  class="control-label">Subject</label>
+      <select name="subject" [(ngModel)]="subject" id="select1" class="form-control">
         <option value="option1">option1</option>
         <option value="option2">option2</option>
         <option value="option3">option3</option>
@@ -19,7 +19,7 @@
       <br>
 
       <label class="control-label">Score</label>
-      <input type="number" min="0" max="20" class="form-control" placeholder="0">
+      <input name="score" [(ngModel)]="score" type="number" min="0" max="20" class="form-control" placeholder="0">
       <br>
 
       <button type="submit" class="btn btn-primary">Submit</button>
