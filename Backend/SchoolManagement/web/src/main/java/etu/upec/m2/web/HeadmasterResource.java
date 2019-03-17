@@ -24,11 +24,18 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import etu.upec.m2.IUserService;
 import etu.upec.m2.model.Headmaster;
+import etu.upec.m2.web.jwtannotation.JWTTokenRequired;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Path("headmaster")
 @Produces(MediaType.APPLICATION_JSON)
+@JWTTokenRequired
 public class HeadmasterResource {
-
     @EJB
     IHeadmasterService headmasterService;
 
@@ -70,5 +77,16 @@ public class HeadmasterResource {
                 .status(Status.OK)
                 .entity(resul_id)
                 .build();
+    }
+    
+    private String generateToken(String login) {
+        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+        String jws = Jwts
+                .builder()
+                .setSubject(login)
+                .setExpiration(new Date((LocalDateTime.now().getMinute() + 120) * 1000000))
+                .signWith(key)
+                .compact();
+        return jws;
     }
 }
