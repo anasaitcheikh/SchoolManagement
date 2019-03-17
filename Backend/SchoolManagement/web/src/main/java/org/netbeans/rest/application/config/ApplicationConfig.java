@@ -43,6 +43,7 @@ public class ApplicationConfig extends Application {
         resources.add(etu.upec.m2.web.StudentResource.class);
         resources.add(etu.upec.m2.web.SubjectResource.class);
         resources.add(etu.upec.m2.web.TeacherResource.class);
+        resources.add(etu.upec.m2.web.LoginResource.class);
     }
     
 }
