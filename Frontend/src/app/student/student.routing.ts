@@ -10,7 +10,7 @@ export const childRoutes: Routes = [
         path: 'student',
         component: StudentComponent,
         children: [
-            { path: '', redirectTo: 'profile', pathMatch: 'full' },
+            { path: '', redirectTo: 'timetable', pathMatch: 'full' },
             { path: 'profile', loadChildren: './profile-student/profile-student.module#ProfileStudentModule' },
             { path: 'result', loadChildren: './result-student/result-student.module#ResultStudentModule' },
             { path: 'timetable',  loadChildren: './timetable-student/timetable-student.module#TimetableStudentModule' },
