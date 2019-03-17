@@ -34,19 +34,20 @@ public class JwtFilter implements ContainerRequestFilter{
     public void filter(ContainerRequestContext requestContext) throws IOException {
         Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         
-        String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-        
-        String token = authorizationHeader.substring("Bearer".length()).trim();
         try {
+            String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+        
+            String token = authorizationHeader.substring("Bearer".length()).trim();
+            
             String res = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
             
-            if(!res.equals("headmaster")){
-                requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
-            }
+            //if(!res.equals("headmaster")){
+                //requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
+            //}
         } catch (Exception e) {
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }

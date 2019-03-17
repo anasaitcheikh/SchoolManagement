@@ -22,6 +22,6 @@ public interface IHeadmasterService {
     Long updateHeadmaster(Long id, Headmaster newHeadmaster);
     List<Headmaster> getAllHeadmaster();
     Headmaster getHeadmasterById(Long id);
-    
     Long resetPassword(Long id, String oldPassword, String newPassword);
+    Headmaster getHeadmasterByEmailAndPassword(String email, String password);
 }

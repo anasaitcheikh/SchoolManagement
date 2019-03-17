@@ -15,7 +15,9 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name = "findHeadmasterById", query = "SELECT u FROM Headmaster u WHERE u.id =:id"),
     @NamedQuery(name = "findHeadByIdAndPassword", query = "SELECT u FROM Headmaster u WHERE u.id =:id AND u.password = :password"),
+    @NamedQuery(name = "findHeadmasterByEmailAndPassword", query = "SELECT u FROM Headmaster u WHERE u.email =:email AND u.password = :password"),
 })
+
 public class Headmaster extends User{
     
 }
