@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { API_SERVER } from '../utils/server.conf';
+
 @Injectable()
 export class HeadmasterService {
 
@@ -10,18 +12,19 @@ export class HeadmasterService {
     console.log('in add student method');
     console.log('student', student);
     console.log('try call API');
-    const req = this.http.post('http://localhost:8080/api/open/reunions/',
+    const req = this.http.post(API_SERVER.BASE_URI + "xxx",
       {
         data: student
       })
     return req;
   }
+  
 
   addTeacher(teacher) {
     console.log('in add teacher method');
     console.log('teacher', teacher);
     console.log('try call API');
-    const req = this.http.post('http://localhost:8080/api/open/reunions/',
+    const req = this.http.post(API_SERVER.BASE_URI + "xxx",
       {
         data: teacher
       })
@@ -30,12 +33,12 @@ export class HeadmasterService {
   }
 
   getAllStudents() {
-    const req = this.http.get(`http://localhost:8080/api/close/reunions/`);
+    const req = this.http.get(API_SERVER.BASE_URI + "xxx",);
     return req;
   }
 
   getAllTeachers() {
-    const req = this.http.get(`http://localhost:8080/api/close/reunions/`);
+    const req = this.http.get(API_SERVER.BASE_URI + "xxx",);
     return req;
   }
 
@@ -43,9 +46,14 @@ export class HeadmasterService {
     console.log('in add classe method');
     console.log('classe', classe);
     console.log('try call API');
-    const req = this.http.post('http://localhost:8080/api/open/reunions/',
+    const req = this.http.post(API_SERVER.BASE_URI + "xxx",
       {
-        data: classe
+        class: {
+          className : classe.className,
+          classGrade : classe.classGrade,
+          classLevel : classe.classLevel,
+          classYear : classe.year
+        }
       })
     return req;
   }
@@ -66,7 +74,7 @@ export class HeadmasterService {
     console.log('in add time table');
     console.log('table', table);
     console.log('try call API');
-    const req = this.http.post('http://localhost:8080/api/open/reunions/',
+    const req = this.http.post(API_SERVER.BASE_URI + "xxx",
       {
         data: table
       })
