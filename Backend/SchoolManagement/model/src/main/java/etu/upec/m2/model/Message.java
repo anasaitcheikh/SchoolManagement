@@ -18,8 +18,19 @@ public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    
+    private String object;
 
+    public String getObject() {
+        return object;
+    }
+
+    public void setObject(String object) {
+        this.object = object;
+    }
+    
     private String msg;
+    
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateAndTime;
