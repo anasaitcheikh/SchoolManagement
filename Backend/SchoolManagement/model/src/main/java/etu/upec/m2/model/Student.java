@@ -12,6 +12,10 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findStudentById", query = "SELECT u FROM Student u WHERE u.id =:id"),
+    @NamedQuery(name = "findStudentByIdAndPassword", query = "SELECT u FROM Student u WHERE u.id =:id AND u.password = :password"),
+})
 public class Student extends User{
     
     @ManyToOne(optional=true)

@@ -5,7 +5,7 @@
  */
 package etu.upec.m2;
 
-import etu.upec.m2.model.User;
+import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.UserStatus;
 import java.util.List;
 import java.util.logging.Logger;
@@ -24,67 +24,68 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class UserService implements IUserService{
+public class HeadmasterService implements IHeadmasterService{
 
-    private static Logger log = Logger.getLogger(UserService.class.getName());
+    private static Logger log = Logger.getLogger(HeadmasterService.class.getName());
     
     @PersistenceContext
     EntityManager em;
     
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-    public Long createUser(User user) {
-        em.persist(user);
-        return user.getId();
+    public Long createHeadmaster(Headmaster headmaster) {
+        em.persist(headmaster);
+        return headmaster.getId();
     }
 
     @Override
-    public Long deleteUser(Long id) {
-        em.remove(em.find(User.class, id));
+    public Long deleteHeadmaster(Long id) {
+        em.remove(em.find(Headmaster.class, id));
         return id;
     }
 
     @Override
-    public Long updateUser(Long id, User newUser) {
-        User user=getUserById(id);
-        if(user == null) {
+    public Long updateHeadmaster(Long id, Headmaster newHeadmaster) {
+        Headmaster headmaster=getHeadmasterById(id);
+        if(headmaster == null) {
             return new Long(0);
         }
-        user.setBirthDate(newUser.getBirthDate());
-        user.setEmail(newUser.getEmail());
-        user.setFirstname(newUser.getFirstname());
-        user.setLastname(newUser.getLastname());
-        user.setStatus(newUser.getStatus());
-        em.merge(user);
-        return user.getId();
+          
+        headmaster.setBirthDate(newHeadmaster.getBirthDate());
+        headmaster.setEmail(newHeadmaster.getEmail());
+        headmaster.setFirstname(newHeadmaster.getFirstname());
+        headmaster.setLastname(newHeadmaster.getLastname());
+        headmaster.setStatus(UserStatus.STUDENT);
+        em.merge(newHeadmaster);
+        return id;
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<Headmaster> getAllHeadmaster() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public User getUserById(Long id) {
-        TypedQuery<User> query =  em.createNamedQuery("findUserById", User.class);
+    public Headmaster getHeadmasterById(Long id) {
+        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterById", Headmaster.class);
         query.setParameter("id", id);
         return query.getSingleResult();
     }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        TypedQuery<User> query =  em.createNamedQuery("findUserByIdAndPassword", User.class);
+        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByIdAndPassword", Headmaster.class);
         query.setParameter("id", id);
         query.setParameter("password", oldPassword);
-        User user = query.getSingleResult();
+        Headmaster headmaster = query.getSingleResult();
         
-        if(user == null) {
+        if(headmaster == null) {
             return new Long(0);
         }
         
-        user.setPassword(newPassword);
-        em.merge(user);
-        return user.getId();
+        headmaster.setPassword(newPassword);
+        em.merge(headmaster);
+        return headmaster.getId();
     }
     
 }
