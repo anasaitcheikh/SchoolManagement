@@ -14,16 +14,16 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findMessageById", query = "SELECT u FROM Message u WHERE u.id =:id")
+})
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    protected Long id;
+
     
-    private String object;
-    
-    private String msg;
-    
-    
+    private String msg, object;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateAndTime;
     
@@ -35,6 +35,16 @@ public class Message implements Serializable {
     @JoinColumn(name = "id_recipient", referencedColumnName = "id")
     private User recipient;
 
+
+
+    public String getObject() {
+        return object;
+    }
+
+    public void setObject(String object) {
+        this.object = object;
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,15 +52,15 @@ public class Message implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getMsg() {
+    
+     public String getMsg() {
         return msg;
     }
 
     public void setMsg(String msg) {
         this.msg = msg;
     }
-
+    
     public Date getDateAndTime() {
         return dateAndTime;
     }
@@ -74,6 +84,5 @@ public class Message implements Serializable {
     public void setRecipient(User recipient) {
         this.recipient = recipient;
     }
-    
     
 }

@@ -1,19 +1,21 @@
 <div class="card card-block login-card">
   <h3 class="form-label">School Management</h3>
   <span class="form-label">sign in to continue </span>
-  <div class="form-group">
+  <form (submit)="login()"> 
+  <div class="form-group" >
     <div class="input-group">
       <span class="input-group-addon addon-left" id="username">
         <i class="fa fa-user fa-fw"></i>
       </span>
-      <input class="form-control with-primary-addon" placeholder="User Account" type="text">
+      <input name="email" [(ngModel)]="email" class="form-control with-primary-addon" placeholder="User Account" type="text">
     </div>
     <div class="input-group">
       <span class="input-group-addon addon-left" id="password">
         <i class="fa fa-lock fa-fw"></i>
       </span>
-      <input class="form-control with-primary-addon" placeholder="Password" type="password">
+      <input name="pass" [(ngModel)]="password" class="form-control with-primary-addon" placeholder="Password" type="password">
     </div>
-    <button class="btn btn-lg btn-primary">Login</button>
+    <button class="btn btn-lg btn-primary" type="submit" >Login</button>
   </div>
+  </form> 
 </div>

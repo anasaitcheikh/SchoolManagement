@@ -7,7 +7,7 @@ export let MENU_ITEM_HEADMASTER = [
 
     {
         path: 'userInfo',
-        title: 'My Profile',
+        title: 'Profile',
         icon: 'image'
     },
     {

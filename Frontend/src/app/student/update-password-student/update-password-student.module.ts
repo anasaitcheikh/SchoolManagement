@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { routing } from './update-password-student.routing';
 import { SharedModule } from '../../shared/shared.module';
 import {UpdatePasswordStudentComponent} from './update-password-student.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
       CommonModule,
       SharedModule,
-      routing
+      routing,
+      FormsModule
   ],
   declarations: [
     UpdatePasswordStudentComponent

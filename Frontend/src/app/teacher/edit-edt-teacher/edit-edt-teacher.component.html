@@ -1,35 +1,35 @@
 <div class="col-md-12">
   <card cardTitle="Edit Timetable">
-    <form class="form-group">
+    <form (submit)="edit_edt()" class="form-group">
       <label class="control-label">Day</label>
-      <select name="select" id="select1" class="form-control">
-        <option value="option1">Monday</option>
-        <option value="option2">Tuesday</option>
-        <option value="option3">Wednesday</option>
-        <option value="option4">Thursday</option>
-        <option value="option4">Friday</option>
-        <option value="option4">Saturday</option>
-        <option value="option4">Sunday</option>
+      <select [(ngModel)]="day"  name="day" id="select1" class="form-control">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
       </select>
       <br>
 
       <label class="control-label">From To</label>
-      <select name="select" id="select1" class="form-control">
-        <option value="option1">8h-9h</option>
-        <option value="option1">9h-10h</option>
-        <option value="option1">10h-11h</option>
-        <option value="option1">11h-12h</option>
-        <option value="option1">12h-13h</option>
-        <option value="option1">13h-14h</option>
-        <option value="option1">14h-15h</option>
-        <option value="option1">15h-16h</option>
-        <option value="option1">16h-17h</option>
-        <option value="option1">17h-18h</option>
+      <select [(ngModel)]="fromto" name="fromto" id="select1" class="form-control">
+        <option value="8h-9h">8h-9h</option>
+        <option value="9h-10h">9h-10h</option>
+        <option value="10h-11h">10h-11h</option>
+        <option value="11h-12h">11h-12h</option>
+        <option value="12h-13h">12h-13h</option>
+        <option value="13h-14h">13h-14h</option>
+        <option value="14h-15h">14h-15h</option>
+        <option value="15h-16h">15h-16h</option>
+        <option value="16h-17h">16h-17h</option>
+        <option value="17h-18h">17h-18h</option>
       </select>
       <br>
 
       <label class="control-label">Subject</label>
-      <select name="select" id="select1" class="form-control">
+      <select [(ngModel)]="subject" name="subject" id="select1" class="form-control">
         <option value="option1">option1</option>
         <option value="option2">option2</option>
         <option value="option3">option3</option>
@@ -38,7 +38,7 @@
       <br>
 
       <label class="control-label">Classroom</label>
-      <select name="select" id="select1" class="form-control">
+      <select [(ngModel)]="classroom" name="classroom" id="select1" class="form-control">
         <option value="option1">option1</option>
         <option value="option2">option2</option>
         <option value="option3">option3</option>

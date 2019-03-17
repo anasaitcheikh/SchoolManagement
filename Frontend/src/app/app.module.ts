@@ -8,7 +8,11 @@ import { LoginModule } from './login/login.module';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {UserService} from '../services/user.service';
+import {StudentService} from '../services/student.service';
+import {TeacherService} from '../services/teacher.service';
+import {HeadmasterService} from '../services/headmaster.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -19,11 +23,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StudentModule,
     TeacherModule,
     HeadmasterModule,
+    HttpClientModule,
     routing
   ],
   declarations: [
     AppComponent,
   ],
+  providers: [
+      UserService,
+      StudentService,
+      TeacherService,
+      HeadmasterService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

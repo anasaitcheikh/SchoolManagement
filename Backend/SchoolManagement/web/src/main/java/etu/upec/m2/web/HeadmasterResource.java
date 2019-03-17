@@ -9,6 +9,7 @@ package etu.upec.m2.web;
  *
  * @author hadji
  */
+import etu.upec.m2.IHeadmasterService;
 import etu.upec.m2.model.User;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -36,24 +37,22 @@ import java.util.Date;
 @JWTTokenRequired
 public class HeadmasterResource {
     @EJB
-    IUserService userService;
+    IHeadmasterService headmasterService;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createHeadmaster(Headmaster user) {
-        User u = this.userService.createUser(user);
-        String token = generateToken("headmaster");
+    public Response createHeadmaster(Headmaster headmaster) {
+        Long result_id = headmasterService.createHeadmaster(headmaster);
         return Response
                 .status(Status.OK)
-                .entity(u)
-                .entity(token)
+                .entity(result_id)
                 .build();
     }
 
     @GET
     @Path("{id}")
     public Response getHeadmaster(Long id) {
-        User headmaster = this.userService.getUser(id);
+        Headmaster headmaster = headmasterService.getHeadmasterById(id);
         return Response
                 .status(Status.OK)
                 .entity(headmaster)
@@ -62,21 +61,21 @@ public class HeadmasterResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateHeadmaster(Headmaster user) {
-        User headmaster = this.userService.createUser(user);
+    public Response updateHeadmaster(Long id,Headmaster headmaster) {
+        Long result_id=headmasterService.updateHeadmaster(id, headmaster);
         return Response
                 .status(Status.OK)
-                .entity(headmaster)
+                .entity(result_id)
                 .build();
     }
 
     @DELETE
     @Path("{id}")
     public Response deleteHeadmaster(Long id) {
-        User headmaster = this.userService.getUser(id);
+        Long resul_id=headmasterService.deleteHeadmaster(id);
         return Response
                 .status(Status.OK)
-                .entity(headmaster)
+                .entity(resul_id)
                 .build();
     }
     
