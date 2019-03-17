@@ -13,6 +13,9 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findSubjectById", query = "SELECT u FROM Subject u WHERE u.id =:id")
+})
 public class Subject {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

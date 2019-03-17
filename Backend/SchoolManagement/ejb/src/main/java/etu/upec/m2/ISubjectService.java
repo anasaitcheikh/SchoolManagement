@@ -17,9 +17,9 @@ import javax.ejb.Local;
 public interface ISubjectService {
      
     //dans les paramètres tu peux ajouter la class qui fais l'appel pour gérer les droit d'accès 
-    int createSubject(Subject subject);
-    int deleteSubject(Long id);
-    int updateSubject(Long id);
+    Long createSubject(Subject subject);
+    Long deleteSubject(Long id);
+    Long updateSubject(Long id, Subject newSubject);
     List<Subject> getAllSubject();
-    Subject getSubjectById();
+    Subject getSubjectById(Long id);
 }

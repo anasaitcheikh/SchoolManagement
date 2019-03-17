@@ -87,5 +87,14 @@ public class HeadmasterService implements IHeadmasterService{
         em.merge(headmaster);
         return headmaster.getId();
     }
+
+    @Override
+    public Headmaster getHeadmasterByEmailAndPassword(String email, String password) {
+        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByEmailAndPassword", Headmaster.class);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        
+        return query.getSingleResult();
+    }
     
 }
