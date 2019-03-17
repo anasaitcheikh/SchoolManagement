@@ -23,7 +23,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import etu.upec.m2.IUserService;
 import etu.upec.m2.model.Headmaster;
-import etu.upec.m2.model.UserStatus;
 
 @Path("headmaster")
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,7 +34,6 @@ public class HeadmasterResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createHeadmaster(Headmaster user) {
-        System.err.println("user " + user);
         User u = this.userService.createUser(user);
         return Response
                 .status(Status.OK)
