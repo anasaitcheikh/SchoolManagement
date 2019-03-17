@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-md-6">
     <card cardTitle="Send message">
-      <form class="form-group">
+      <form (submit)="send()" class="form-group">
         <label class="control-label">Receiver's Email</label>
-        <input type="email" class="form-control" placeholder="example@example.com">
+        <input type="email" [(ngModel)]="email" name="email" class="form-control" placeholder="example@example.com">
         <br><br>
         <label class="control-label">Object</label>
-        <input type="text" class="form-control" placeholder="Example">
+        <input type="text" [(ngModel)]="object" name="object" class="form-control" placeholder="Object">
         <br><br>
         <label class="control-label">Message</label>
-        <textarea class="form-control" placeholder="Enter here the message"></textarea>
+        <textarea [(ngModel)]="message" name="message" class="form-control" placeholder="Enter here the message"></textarea>
         <br><br>
         <button type="submit" class="btn btn-primary">Send</button>
       </form>

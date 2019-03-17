@@ -5,9 +5,10 @@
  */
 package etu.upec.m2;
 
-import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.User;
-import java.util.Date;
+import etu.upec.m2.model.UserStatus;
+import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -19,42 +20,71 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author hadji
+ * @author ademo
  */
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class UserService implements IUserService{
+
+    private static Logger log = Logger.getLogger(UserService.class.getName());
+    
     @PersistenceContext
     EntityManager em;
+    
+    @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public Long createUser(User user) {
+        em.persist(user);
+        return user.getId();
+    }
 
     @Override
-    public User getUser(Long id) {
+    public Long deleteUser(Long id) {
+        em.remove(em.find(User.class, id));
+        return id;
+    }
+
+    @Override
+    public Long updateUser(Long id, User newUser) {
+        User user=getUserById(id);
+        if(user == null) {
+            return new Long(0);
+        }
+        user.setBirthDate(newUser.getBirthDate());
+        user.setEmail(newUser.getEmail());
+        user.setFirstname(newUser.getFirstname());
+        user.setLastname(newUser.getLastname());
+        user.setStatus(newUser.getStatus());
+        em.merge(user);
+        return user.getId();
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User getUserById(Long id) {
         TypedQuery<User> query =  em.createNamedQuery("findUserById", User.class);
         query.setParameter("id", id);
         return query.getSingleResult();
     }
 
     @Override
-    public int resetPassword(Long id, String oldPassword, String newPassword) {
+    public Long resetPassword(Long id, String oldPassword, String newPassword) {
         TypedQuery<User> query =  em.createNamedQuery("findUserByIdAndPassword", User.class);
         query.setParameter("id", id);
         query.setParameter("password", oldPassword);
         User user = query.getSingleResult();
         
         if(user == null) {
-            return 0;
+            return new Long(0);
         }
         
         user.setPassword(newPassword);
         em.merge(user);
-        return 0;
+        return user.getId();
     }
     
-    @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-    public User createUser(User user) {
-        // TODO encrypt password
-        em.persist(user);
-        return user;
-    }
 }

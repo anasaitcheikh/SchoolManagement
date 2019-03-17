@@ -12,6 +12,10 @@ import javax.persistence.*;
  * @author ademoub
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findTeacherById", query = "SELECT u FROM Teacher u WHERE u.id =:id"),
+    @NamedQuery(name = "findTeacherByIdAndPassword", query = "SELECT u FROM Teacher u WHERE u.id =:id AND u.password = :password"),
+})
 public class Teacher extends User{
     
     @Enumerated(EnumType.STRING)

@@ -14,6 +14,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id")
+})
 public class Mark implements Serializable {
     @EmbeddedId private MarkId id;
     

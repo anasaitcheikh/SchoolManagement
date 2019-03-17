@@ -15,7 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames={"email"}))
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries({
     @NamedQuery(name = "findUserById", query = "SELECT u FROM User u WHERE u.id =:id"),
     @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),

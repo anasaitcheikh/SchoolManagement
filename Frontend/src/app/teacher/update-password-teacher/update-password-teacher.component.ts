@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdatePasswordTeacherComponent implements OnInit {
 
+  oldpwd : string;
+  newpwd : string;
+  confirmpwd : string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  update(){
+    console.log(this.oldpwd);
+    console.log(this.newpwd);
+    console.log(this.confirmpwd);
+
   }
 
 }

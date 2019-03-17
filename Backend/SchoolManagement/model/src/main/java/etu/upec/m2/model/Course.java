@@ -15,6 +15,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findCourseById", query = "SELECT u FROM Course u WHERE u.id =:id")
+})
 public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
