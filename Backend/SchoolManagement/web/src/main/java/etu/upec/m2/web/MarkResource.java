@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
 @Path("mark")
 @Produces(MediaType.APPLICATION_JSON)
 public class MarkResource {
-    
+    /*
     @EJB
     IMarkService markService;
     
@@ -73,5 +73,5 @@ public class MarkResource {
                 .entity(result_id)
                 .build();
     }
-
+*/
 }
