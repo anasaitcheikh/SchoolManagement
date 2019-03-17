@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookRoomComponent implements OnInit {
 
+  room : string;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  book(){
+    console.log(this.room);
   }
 
 }

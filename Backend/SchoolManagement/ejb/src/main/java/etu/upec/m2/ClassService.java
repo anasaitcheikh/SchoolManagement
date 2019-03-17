@@ -6,7 +6,6 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Class;
-import etu.upec.m2.model.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;

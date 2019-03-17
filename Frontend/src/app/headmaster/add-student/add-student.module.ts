@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { routing } from './add-student.routing';
-
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* components */
 import { AddStudentComponent } from './add-student.component';
 import {CommonModule} from '@angular/common';
@@ -13,7 +13,9 @@ import {NgxEchartsModule} from 'ngx-echarts';
     CommonModule,
     SharedModule,
     NgxEchartsModule,
-   routing
+    FormsModule,
+    ReactiveFormsModule,
+    routing
 
 
   ],

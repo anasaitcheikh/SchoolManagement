@@ -4,6 +4,7 @@ import { routing } from './book-room.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import {BookRoomComponent} from './book-room.component';
+import { FormsModule } from '@angular/forms'; 
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import {BookRoomComponent} from './book-room.component';
     CommonModule,
     SharedModule,
     NgxEchartsModule,
+    FormsModule,
     routing
   ],
   declarations: [

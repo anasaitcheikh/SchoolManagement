@@ -29,7 +29,19 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(etu.upec.m2.web.ClassResource.class);
+        resources.add(etu.upec.m2.web.ClassroomResource.class);
+        resources.add(etu.upec.m2.web.CorsFilter.class);
+        resources.add(etu.upec.m2.web.CourseMaterialResource.class);
+        resources.add(etu.upec.m2.web.CourseResource.class);
         resources.add(etu.upec.m2.web.HeadmasterResource.class);
+        resources.add(etu.upec.m2.web.JwtFilter.class);
+        resources.add(etu.upec.m2.web.MarkResource.class);
+        resources.add(etu.upec.m2.web.MessageResource.class);
+        resources.add(etu.upec.m2.web.StaffResource.class);
+        resources.add(etu.upec.m2.web.StudentResource.class);
+        resources.add(etu.upec.m2.web.SubjectResource.class);
+        resources.add(etu.upec.m2.web.TeacherResource.class);
     }
     
 }
