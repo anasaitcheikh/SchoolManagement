@@ -100,10 +100,14 @@ public class TeacherService implements ITeacherService {
     
     @Override
     public Teacher getTeacherByEmailAndPassword(String email, String password) {
-        TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByEmailAndPassword", Teacher.class);
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-        
-        return query.getSingleResult();
+        try{
+            TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByEmailAndPassword", Teacher.class);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }    
     }
 }
