@@ -6,7 +6,7 @@ export class StudentService {
 
   constructor(private  http: HttpClient) { }
 
-  showProfile(token){
+showProfile(token){
       const req = this.http.get(API_SERVER.BASE_URI +token);
       return req;
 }
@@ -29,6 +29,14 @@ updatePass(token, oldpass,newpass){
 getResult(token){
   const req = this.http.get(API_SERVER.BASE_URI+"result/" +token);
   return req;
+}
+
+getMessage(messageId: number) {
+  
+}
+
+setMessage(senderId: number, receiverId: number, receiverEmail: string, messageObject: string, messageContent: string){
+
 }
 
 

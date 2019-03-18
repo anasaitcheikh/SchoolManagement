@@ -12,7 +12,6 @@ import {
   export class TokenInterceptor implements HttpInterceptor {
     constructor(public tokenService: TokenService) {}
 
-    private token= "hello";
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let tokenHeader;
       tokenHeader = req.clone({

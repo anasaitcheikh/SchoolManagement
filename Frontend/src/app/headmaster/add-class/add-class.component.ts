@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ClassService } from '../../../services/class.service';
+import { Class } from '../../../utils/types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-class',
