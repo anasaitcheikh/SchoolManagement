@@ -17,6 +17,7 @@ import { LoginService } from '../services/login.service';
 import { TokenInterceptor } from '../interceptors/token.interceptor';
 import { TokenService } from '../services/token.service';
 import { ClassService } from '../services/class.service';
+import {StaffService} from '../services/staff.service';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { ClassService } from '../services/class.service';
         multi: true
       },
       TokenService,
-      ClassService
+      ClassService,
+      StaffService
     ],
   bootstrap: [AppComponent]
 })
