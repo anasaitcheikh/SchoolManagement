@@ -15,16 +15,41 @@ export let MENU_ITEM_HEADMASTER = [
       title: 'Upload Corse Materials',
       icon: 'book'
   },
-    {
-      path: 'bookRoom',
-      title: 'Book Room',
-      icon: 'home'
-    },
-    {
-      path: 'addClass',
-      title: 'Add Class',
-      icon: 'plus-square'
-    },
+
+
+  {
+    path: '',
+    title: 'Classes',
+    icon: 'home',
+    children: [
+      {
+        path: '',
+        title: 'Show classrooms'
+      },
+      {
+        path: 'bookRoom',
+        title: 'Book classroom',
+
+      },
+    ]
+  },
+
+  {
+    path: '',
+    title: 'Classes',
+    icon: 'plus-square',
+    children: [
+      {
+        path: '',
+        title: 'Show classes'
+      },
+      {
+        path: 'addClass',
+        title: 'Add Class',
+
+      },
+    ]
+  },
     {
         path: '',
         title: 'Teachers',
