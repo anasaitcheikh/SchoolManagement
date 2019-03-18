@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.model;
 
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -21,6 +22,9 @@ public class Student extends User{
     
     @ManyToOne(optional=true)
     private Class studentClass;
+    
+    @OneToMany(mappedBy="student")
+    private List<Mark> marks;
 
     public Class getStudentClass() {
         return studentClass;

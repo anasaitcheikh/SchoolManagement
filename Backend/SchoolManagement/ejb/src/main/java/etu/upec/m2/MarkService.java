@@ -7,6 +7,7 @@ package etu.upec.m2;
 
 import etu.upec.m2.model.Mark;
 import etu.upec.m2.model.MarkId;
+import etu.upec.m2.model.Subject;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -18,6 +19,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -70,6 +75,10 @@ public class MarkService implements IMarkService {
             //query.setParameter("subjectId", id);
             query.setParameter("id", id);
             return query.getSingleResult();
+              /*CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder(); 
+              CriteriaQuery mainQuery = criteriaBuilder.createQuery(Mark.class);
+              Root<Mark> rootPubThread = mainQuery.from(Mark.class);
+              Join<Mark, Subject> subjectJoin = rootPubThread.join(Subject.id);*/
         }catch(NoResultException e){
             return null;
         }

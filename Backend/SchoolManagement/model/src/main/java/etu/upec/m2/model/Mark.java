@@ -24,15 +24,17 @@ public class Mark implements Serializable {
     
     private double mark;
     
-    /*
+    
     @ManyToOne
-    @JoinColumn(name = "id_student", referencedColumnName = "id")
+    @MapsId("studentId")
+    @JoinColumn(name = "id_student")
     private Student student;
     
     @ManyToOne
-    @JoinColumn(name = "id_subject", referencedColumnName = "id")
+    @MapsId("subjectId")
+    @JoinColumn(name = "id_subject")
     private Subject subject;
-*/
+
     public MarkId getId() {
         return id;
     }
