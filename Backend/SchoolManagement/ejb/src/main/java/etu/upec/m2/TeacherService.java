@@ -14,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -66,17 +67,26 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public Teacher getTeacherById(Long id) {
-        TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherById", Teacher.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherById", Teacher.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByIdAndPassword", Teacher.class);
-        query.setParameter("id", id);
-        query.setParameter("password", oldPassword);
-        Teacher teacher = query.getSingleResult();
+        Teacher teacher;
+        try{
+            TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByIdAndPassword", Teacher.class);
+            query.setParameter("id", id);
+            query.setParameter("password", oldPassword);
+            teacher = query.getSingleResult();
+        }catch(NoResultException e){
+            teacher= null;
+        }
         
         if(teacher == null) {
             return new Long(0);

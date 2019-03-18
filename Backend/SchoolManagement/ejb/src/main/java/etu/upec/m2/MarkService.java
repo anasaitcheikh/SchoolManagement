@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -65,11 +66,15 @@ public class MarkService implements IMarkService {
 
     @Override
     public Mark getMarkById(MarkId id) {
-        TypedQuery<Mark> query =  em.createNamedQuery("findMarkById", Mark.class);
-        //query.setParameter("studentId", id);
-        //query.setParameter("subjectId", id);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Mark> query =  em.createNamedQuery("findMarkById", Mark.class);
+            //query.setParameter("studentId", id);
+            //query.setParameter("subjectId", id);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }

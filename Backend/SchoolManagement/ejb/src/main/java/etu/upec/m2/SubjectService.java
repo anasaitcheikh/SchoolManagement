@@ -16,6 +16,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -64,9 +65,13 @@ public class SubjectService implements ISubjectService {
 
     @Override
     public Subject getSubjectById(Long id) {
-        TypedQuery<Subject> query =  em.createNamedQuery("findSubjectById", Subject.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Subject> query =  em.createNamedQuery("findSubjectById", Subject.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 
     

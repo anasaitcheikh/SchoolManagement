@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import java.util.logging.Logger;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -64,9 +65,13 @@ public class ClassService implements IClassService{
 
     @Override
     public Class getClassById(Long id) {
-        TypedQuery<Class> query =  em.createNamedQuery("findClassById", Class.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Class> query =  em.createNamedQuery("findClassById", Class.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }

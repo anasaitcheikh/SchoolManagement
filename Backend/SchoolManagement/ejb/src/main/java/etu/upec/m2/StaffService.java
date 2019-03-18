@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -65,9 +66,13 @@ public class StaffService implements IStaffService{
 
     @Override
     public Staff getStaffById(Long id) {
-        TypedQuery<Staff> query =  em.createNamedQuery("findStaffById", Staff.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Staff> query =  em.createNamedQuery("findStaffById", Staff.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }

@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -67,17 +68,26 @@ public class HeadmasterService implements IHeadmasterService{
 
     @Override
     public Headmaster getHeadmasterById(Long id) {
-        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterById", Headmaster.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterById", Headmaster.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }    
     }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByIdAndPassword", Headmaster.class);
-        query.setParameter("id", id);
-        query.setParameter("password", oldPassword);
-        Headmaster headmaster = query.getSingleResult();
+        Headmaster headmaster;
+        try{
+            TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByIdAndPassword", Headmaster.class);
+            query.setParameter("id", id);
+            query.setParameter("password", oldPassword);
+            headmaster=query.getSingleResult();
+        }catch(NoResultException e){
+            headmaster=null;
+        }    
         
         if(headmaster == null) {
             return new Long(0);
@@ -90,11 +100,14 @@ public class HeadmasterService implements IHeadmasterService{
 
     @Override
     public Headmaster getHeadmasterByEmailAndPassword(String email, String password) {
-        TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByEmailAndPassword", Headmaster.class);
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-        
-        return query.getSingleResult();
+        try{
+            TypedQuery<Headmaster> query =  em.createNamedQuery("findHeadmasterByEmailAndPassword", Headmaster.class);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }

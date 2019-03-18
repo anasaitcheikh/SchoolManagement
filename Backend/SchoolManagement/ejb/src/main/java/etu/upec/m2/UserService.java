@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -66,17 +67,26 @@ public class UserService implements IUserService{
 
     @Override
     public User getUserById(Long id) {
-        TypedQuery<User> query =  em.createNamedQuery("findUserById", User.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<User> query =  em.createNamedQuery("findUserById", User.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        TypedQuery<User> query =  em.createNamedQuery("findUserByIdAndPassword", User.class);
-        query.setParameter("id", id);
-        query.setParameter("password", oldPassword);
-        User user = query.getSingleResult();
+        User user;
+        try{
+            TypedQuery<User> query =  em.createNamedQuery("findUserByIdAndPassword", User.class);
+            query.setParameter("id", id);
+            query.setParameter("password", oldPassword);
+            user = query.getSingleResult();
+        }catch(NoResultException e){
+            user= null;
+        }
         
         if(user == null) {
             return new Long(0);

@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -69,17 +70,26 @@ public class StudentService implements IStudentService {
 
     @Override
     public Student getStudentById(Long id) {
-        TypedQuery<Student> query =  em.createNamedQuery("findStudentById", Student.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Student> query =  em.createNamedQuery("findStudentById", Student.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        TypedQuery<Student> query =  em.createNamedQuery("findStudentByIdAndPassword", Student.class);
-        query.setParameter("id", id);
-        query.setParameter("password", oldPassword);
-        Student student = query.getSingleResult();
+        Student student;
+        try{
+            TypedQuery<Student> query =  em.createNamedQuery("findStudentByIdAndPassword", Student.class);
+            query.setParameter("id", id);
+            query.setParameter("password", oldPassword);
+            student = query.getSingleResult();
+        }catch(NoResultException e){
+            student=null;
+        }
         
         if(student == null) {
             return new Long(0);

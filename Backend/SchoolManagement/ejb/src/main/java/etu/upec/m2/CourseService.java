@@ -14,6 +14,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -55,9 +56,13 @@ public class CourseService implements ICourseService {
 
     @Override
     public Course getCourseById(Long id) {
-        TypedQuery<Course> query =  em.createNamedQuery("findCourseById", Course.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Course> query =  em.createNamedQuery("findCourseById", Course.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }    
     }
     
 }

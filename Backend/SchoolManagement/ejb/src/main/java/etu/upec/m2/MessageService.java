@@ -15,6 +15,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -67,9 +68,13 @@ public class MessageService implements IMessageService {
 
     @Override
     public Message getMessageById(Long id) {
-        TypedQuery<Message> query =  em.createNamedQuery("findMessageById", Message.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+        try{
+            TypedQuery<Message> query =  em.createNamedQuery("findMessageById", Message.class);
+            query.setParameter("id", id);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }
