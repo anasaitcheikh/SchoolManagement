@@ -16,9 +16,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u,s FROM Mark u "
-            + "JOIN Subject s on s.id= u.id.subjectId "
-            + "WHERE u.id.studentId =:studentId")
+    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u FROM Mark u WHERE u.id.studentId =:studentId")
 })
 public class Mark implements Serializable {
     @EmbeddedId 
@@ -26,15 +24,17 @@ public class Mark implements Serializable {
     
     private double mark;
     
-    /*
+    
     @ManyToOne
-    @JoinColumn(name = "id_student", referencedColumnName = "id")
+    @MapsId("studentId")
+    @JoinColumn(name = "id_student")
     private Student student;
     
     @ManyToOne
-    @JoinColumn(name = "id_subject", referencedColumnName = "id")
+    @MapsId("subjectId")
+    @JoinColumn(name = "id_subject")
     private Subject subject;
-*/
+
     public MarkId getId() {
         return id;
     }
