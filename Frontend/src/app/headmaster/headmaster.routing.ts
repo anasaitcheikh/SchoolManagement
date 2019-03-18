@@ -18,7 +18,7 @@ export const childRoutes: Routes = [
             { path: 'addStaff', loadChildren: './add-staff/add-staff.module#AddStaffModule' },
             { path: 'allStudents', loadChildren: './all-students/all-students.module#AllStudentsModule' },
             { path: 'allTeachers', loadChildren: './all-teachers/all-teachers.module#AllTeachersModule' },
-           // { path: 'allStaffs', loadChildren: './all-staffs/all-teachers.module#AllTeachersModule' },
+            { path: 'allStaffs', loadChildren: './all-staffs/all-staffs.module#AllStaffsModule' },
             { path: 'bookRoom', loadChildren: './book-room/book-room.module#BookRoomModule' },
             { path: 'userInfo', loadChildren: './personal-info/personal-info.module#PersonalInfoModule' },
             { path: 'message', loadChildren: './message-headmaster/message-headmaster.module#MessageHeadmasterModule' },
@@ -26,11 +26,9 @@ export const childRoutes: Routes = [
             { path: 'viewPlanning', loadChildren: './view-planning/view-planning.module#ViewPlanningModule' },
             { path: 'viewClasses', loadChildren: './view-classes/view-classes.module#ViewClassesModule' },
             { path: 'viewClassrooms', loadChildren: './view-classrooms/view-classrooms.module#ViewClassroomsModule' },
-            { path: 'requestModifyPlanning',
-              loadChildren: './request-modify-planning/request-modify-planning.module#RequestModifyPlanningModule' },
+            { path: 'requestModifyPlanning',loadChildren: './request-modify-planning/request-modify-planning.module#RequestModifyPlanningModule' },
             { path: 'uploadcorse', loadChildren: './uploadcorse-headmaster/uploadcorse-headmaster.module#UploadcorseHeadmasterModule' },
-            { path: 'timetable-edit',
-              loadChildren: './edit-timetable-headmaster/edit-timetable-headmaster.module#EditTimetableHeadmasterModule' },
+            { path: 'timetable-edit',loadChildren: './edit-timetable-headmaster/edit-timetable-headmaster.module#EditTimetableHeadmasterModule' },
 
         ]
     }
