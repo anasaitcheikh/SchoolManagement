@@ -11,23 +11,23 @@ export class StaffService {
   constructor(private httpClient: HttpClient) { }
 
   getStaffs(_id: number) {
-    return this.httpClient.get<Staff[]>(`${API_SERVER}/${RESOURCE_NAME}`)
+    return this.httpClient.get<Staff[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 
   getStaffById(_id: number) {
-    return this.httpClient.get<Staff>(`${API_SERVER}/${RESOURCE_NAME}/${_id}`)
+    return this.httpClient.get<Staff>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
   }
 
   addStaff(_staff: Staff) {
-    return this.httpClient.post<Staff>(`${API_SERVER}/${RESOURCE_NAME}`, {
-      staff: _staff
-    })
+    console.log('in service staff', _staff);
+    console.log(API_SERVER.BASE_URI, '/', RESOURCE_NAME)
+    return this.httpClient.post<Staff>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _staff)
+
   }
 
   updateStaff(_staff: Staff, _id: number) {
-    return this.httpClient.put<Staff>(`${API_SERVER}/${RESOURCE_NAME}/${_id}`, {
-      staff: _staff
-    })
+
+    return this.httpClient.put<Staff>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`, _staff)
   }
 
   deleteStaff(_id: number) {

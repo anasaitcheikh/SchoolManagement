@@ -18,17 +18,17 @@ export class AddClassComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    if (this._addClassSubscriber){
+    if (this._addClassSubscriber) {
       this._addClassSubscriber.unsubscribe();
     }
   }
 
-  addClass(_class: Class){
+  addClass(_class: Class) {
      console.log('click on add class');
      console.log('class', _class);
      this._addClassSubscriber = this.classService.addClass(_class).subscribe(
        newClass => console.log(newClass),
        error => console.log(error)
-    )
+    );
   }
 }
