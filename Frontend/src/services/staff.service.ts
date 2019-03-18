@@ -10,7 +10,7 @@ export class StaffService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getStaffs(_id: number) {
+  getStaffs() {
     return this.httpClient.get<Staff[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 
