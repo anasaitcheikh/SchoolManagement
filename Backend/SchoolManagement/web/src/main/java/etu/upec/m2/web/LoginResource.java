@@ -53,19 +53,12 @@ public class LoginResource {
         
         user = headmasterService.getHeadmasterByEmailAndPassword(email, password);
         
-        System.err.println("user "+user);
-        
         if (user == null) {
             user = teacherService.getTeacherByEmailAndPassword(email, password);
         }
 
         if (user == null) {
             user = studentService.getStudentByEmailAndPassword(email, password);
-
-            return Response
-                    .status(Response.Status.UNAUTHORIZED)
-                    .entity(user)
-                    .build();
         }
         
         if (user == null) {
