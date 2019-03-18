@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { API_SERVER } from '../utils/server.conf';
+
+const RESOURCE_NAME = 'headmaster'
 
 @Injectable()
 export class HeadmasterService {

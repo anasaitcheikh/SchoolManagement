@@ -1,5 +1,5 @@
 export interface  Student {
-    id?: string;
+    id?: number;
     firstname: string;
     lastname: string;
     email: string;
@@ -9,7 +9,7 @@ export interface  Student {
 }
 
 export interface Class {
-    id?: string;
+    id?: number;
     name: string;
     schoolYear: number;
     level: string;
@@ -18,7 +18,7 @@ export interface Class {
 }
 
 export interface Teacher {
-  id?: string;
+  id?: number;
   firstname: string;
   lastname: string;
   email: string;
@@ -27,8 +27,15 @@ export interface Teacher {
   speciality: string;
 }
 
+export interface Staff {
+  id?: number;
+  firstname: string;
+  role: string;
+  salary: number;
+}
+
 export interface Headmaster {
-  id?: string;
+  id?: number;
   firstname: string;
   lastname: string;
   email: string;
@@ -36,4 +43,34 @@ export interface Headmaster {
   birthDate: string;
 }
 
+export interface  Classroom {
+  id?: number;
+  capacity: number;
+  floorNumber: number;
+  roomNumber: number;
+}
 
+export interface  Subject {
+  id?: number;
+  name: String;
+}
+
+/*export enum SubjectName {
+  MATHEMATICS = "MATHEMATICS", 
+  SCIENCE = "SCIENCE", 
+  PHYSICS = "PHYSICS", 
+  CHEMISTRY = "CHEMISTRY", 
+  GEOGRAPHY = "GEOGRAPHY", 
+  HISTORY = "HISTORY", 
+  FRENCH = "FRENCH", 
+  ENGLISH = "ENGLISH"
+}
+
+export enum StaffRole {
+  CLEANER = "CLEANER", 
+  COOK = "COOK", 
+  LIBRARIAN = "LIBRARIAN", 
+  SECRETARY = "SECRETARY", 
+  MANAGER = "MANAGER"
+}
+*/

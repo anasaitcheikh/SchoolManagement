@@ -10,7 +10,7 @@ export class LoginService {
 
 
   login(login: string, password: string) {
-    return this.http.post(API_SERVER.BASE_URI + "login",
+    return this.http.post(`${API_SERVER.BASE_URI}/login`,
       {
         email: login,
         password: password
@@ -19,7 +19,7 @@ export class LoginService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('uers');
   }
 
 }

@@ -15,20 +15,62 @@ export let MENU_ITEM_HEADMASTER = [
       title: 'Upload Corse Materials',
       icon: 'book'
   },
-    {
-      path: 'bookRoom',
-      title: 'Book Room',
-      icon: 'home'
-    },
-    {
-      path: 'addClass',
-      title: 'Add Class',
-      icon: 'plus-square'
-    },
+
+
+  {
+    path: '',
+    title: 'Classrooms',
+    icon: 'home',
+    children: [
+      {
+        path: 'viewClassrooms',
+        title: 'Show classrooms'
+      },
+      {
+        path: 'bookRoom',
+        title: 'Book classroom',
+
+      },
+    ]
+  },
+
+  {
+    path: '',
+    title: 'Staffs',
+    icon: 'user',
+    children: [
+      {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },
+      {
+        path: 'allStaffs',
+        title: 'All Staffs',
+
+      },
+    ]
+  },
+
+  {
+    path: '',
+    title: 'Classes',
+    icon: 'users',
+    children: [
+      {
+        path: 'viewClasses',
+        title: 'Show classes'
+      },
+      {
+        path: 'addClass',
+        title: 'Add Class',
+
+      },
+    ]
+  },
     {
         path: '',
         title: 'Teachers',
-        icon: 'user',
+        icon: 'male',
         children: [
          {
            path: 'allTeachers',

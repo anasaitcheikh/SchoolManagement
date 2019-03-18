@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginService } from '../services/login.service';
 import { TokenInterceptor } from '../interceptors/token.interceptor';
 import { TokenService } from '../services/token.service';
+import { ClassService } from '../services/class.service';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { TokenService } from '../services/token.service';
         useClass: TokenInterceptor,
         multi: true
       },
-      TokenService
+      TokenService,
+      ClassService
     ],
   bootstrap: [AppComponent]
 })

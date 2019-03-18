@@ -11,10 +11,6 @@ import { HeadmasterComponent } from './headmaster.component';
 
 
 
-
-
-
-
 @NgModule({
     imports: [
         CommonModule,
@@ -24,7 +20,6 @@ import { HeadmasterComponent } from './headmaster.component';
     ],
     declarations: [
         HeadmasterComponent,
-        
     ]
 })
 export class HeadmasterModule { }
