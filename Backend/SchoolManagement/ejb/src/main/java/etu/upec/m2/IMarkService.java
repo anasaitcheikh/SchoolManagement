@@ -23,4 +23,5 @@ public interface IMarkService {
     MarkId updateMark(MarkId id, Mark newMark);
     List<Mark> getAllMark();
     Mark getMarkById(MarkId id);
+    List<Mark> getAllMarkByIdStudent(Long idStudent);
 }
