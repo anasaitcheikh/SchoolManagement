@@ -30,7 +30,7 @@ export interface Teacher {
 export interface Staff {
   id?: number;
   firstname: string;
-  role: StaffRole;
+  role: string;
   salary: number;
 }
 
@@ -52,10 +52,10 @@ export interface  Classroom {
 
 export interface  Subject {
   id?: number;
-  name: SubjectName;
+  name: String;
 }
 
-export enum SubjectName {
+/*export enum SubjectName {
   MATHEMATICS = "MATHEMATICS", 
   SCIENCE = "SCIENCE", 
   PHYSICS = "PHYSICS", 
@@ -73,4 +73,4 @@ export enum StaffRole {
   SECRETARY = "SECRETARY", 
   MANAGER = "MANAGER"
 }
-
+*/

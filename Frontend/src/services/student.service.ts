@@ -38,7 +38,4 @@ getMessage(messageId: number) {
 setMessage(senderId: number, receiverId: number, receiverEmail: string, messageObject: string, messageContent: string){
 
 }
-
-
-
 }

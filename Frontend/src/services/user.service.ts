@@ -7,7 +7,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  sendMessage(em : string,rec : string,obj : string,msg : string){
+  sendMessage(em : string, rec : string, obj : string, msg : string){
     const req = this.http.post(API_SERVER.BASE_URI + "XXX", {
       message: {
         id_sender: em,

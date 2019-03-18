@@ -11,26 +11,22 @@ export class ClassService {
   constructor(private httpClient: HttpClient) { }
 
   getClasses(_id: number) {
-    return this.httpClient.get<Class[]>(`${API_SERVER}/${RESOURCE_NAME}`)
+    return this.httpClient.get<Class[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 
   getClassById(_id: number) {
-    return this.httpClient.get<Class>(`${API_SERVER}/${RESOURCE_NAME}/${_id}`)
+    return this.httpClient.get<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
   }
 
   addClass(_class: Class) {
-    return this.httpClient.post<Class>(`${API_SERVER}/${RESOURCE_NAME}`, {
-      class: _class
-    })
+    return this.httpClient.post<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _class)
   }
 
   updateClass(_class: Class, _id: number) {
-    return this.httpClient.put<Class>(`${API_SERVER}/${RESOURCE_NAME}/${_id}`, {
-      class: _class
-    })
+    return this.httpClient.put<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`, _class)
   }
 
   deleteClass(_id: number) {
-    return this.httpClient.delete(`${API_SERVER}/${RESOURCE_NAME}`)
+    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 }
