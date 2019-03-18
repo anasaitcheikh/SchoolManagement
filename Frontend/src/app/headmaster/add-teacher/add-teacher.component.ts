@@ -21,7 +21,7 @@ export class AddTeacherComponent implements OnInit, OnDestroy {
       this._addTeacherSubscriber.unsubscribe();
     }
   }
-
+/*
   addTeacher(teacher : Teacher){
      console.log('click on add teacher');
      teacher.status="TEACHER";
@@ -30,4 +30,5 @@ export class AddTeacherComponent implements OnInit, OnDestroy {
        error => console.log(error)
     );
   }
+  */
 }

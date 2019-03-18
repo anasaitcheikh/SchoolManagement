@@ -18,6 +18,7 @@ import { TokenInterceptor } from '../interceptors/token.interceptor';
 import { TokenService } from '../services/token.service';
 import { ClassService } from '../services/class.service';
 import {StaffService} from '../services/staff.service';
+import { ClassroomService } from '../services/classroom.service';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {StaffService} from '../services/staff.service';
       StudentService,
       TeacherService,
       HeadmasterService,
+      ClassroomService,
       LoginService,
       {
         provide: HTTP_INTERCEPTORS,

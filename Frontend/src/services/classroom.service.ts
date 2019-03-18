@@ -10,7 +10,7 @@ export class ClassroomService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getClassrooms(_id: number) {
+  getClassrooms() {
     return this.httpClient.get<Classroom[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 
