@@ -10,6 +10,7 @@ package etu.upec.m2.web;
 import etu.upec.m2.IMarkService;
 import etu.upec.m2.model.Mark;
 import etu.upec.m2.model.MarkId;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -51,6 +52,16 @@ public class MarkResource {
         id.setSubjectId(idSubject);
         Mark mark = markService.getMarkById(id);
         return Response
+                .status(Response.Status.OK)
+                .entity(mark)
+                .build();
+    }
+    
+    @GET
+    @Path("{idSudent}")
+    public Response getAllMarkByIdStudent(@PathParam("idSudent")Long idStudent) {
+        List<Mark> mark = markService.getAllMarkByIdStudent(idStudent);
+        return Response 
                 .status(Response.Status.OK)
                 .entity(mark)
                 .build();
