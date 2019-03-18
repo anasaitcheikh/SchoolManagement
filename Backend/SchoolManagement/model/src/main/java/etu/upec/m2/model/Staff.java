@@ -52,11 +52,11 @@ public class Staff implements Serializable {
         this.lastname = lastname;
     }
 
-    public StaffRole getStatus() {
+    public StaffRole getRole() {
         return role;
     }
 
-    public void setStatus(StaffRole role) {
+    public void setRole(StaffRole role) {
         this.role = role;
     }
 

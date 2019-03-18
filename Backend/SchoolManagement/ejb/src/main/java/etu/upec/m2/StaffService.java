@@ -54,7 +54,7 @@ public class StaffService implements IStaffService{
         staff.setFirstname(newStaff.getFirstname());
         staff.setLastname(newStaff.getLastname());
         staff.setSalary(newStaff.getSalary());
-        staff.setStatus(newStaff.getStatus());
+        staff.setRole(newStaff.getRole());
         em.merge(staff);
         return id;
     }
