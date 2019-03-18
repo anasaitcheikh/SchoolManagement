@@ -53,8 +53,6 @@ public class MarkService implements IMarkService {
         }
         
         mark.setMark(newMark.getMark());
-        mark.setStudent(newMark.getStudent());
-        mark.setSubject(newMark.getSubject());
         em.merge(mark.getId());
         return id;
     }

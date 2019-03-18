@@ -15,6 +15,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name = "findTeacherById", query = "SELECT u FROM Teacher u WHERE u.id =:id"),
     @NamedQuery(name = "findTeacherByIdAndPassword", query = "SELECT u FROM Teacher u WHERE u.id =:id AND u.password = :password"),
+    @NamedQuery(name = "findTeacherByEmailAndPassword", query = "SELECT u FROM Teacher u WHERE u.email =:email AND u.password = :password"),
 })
 public class Teacher extends User{
     

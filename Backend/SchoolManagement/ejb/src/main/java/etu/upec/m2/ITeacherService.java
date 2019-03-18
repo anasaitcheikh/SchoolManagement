@@ -21,6 +21,5 @@ public interface ITeacherService {
     List<Teacher> getAllTeacher();
     Teacher getTeacherById(Long id);
     Long resetPassword(Long id, String oldPassword, String newPassword);
-    
-    
+    Teacher getTeacherByEmailAndPassword(String email, String password);
 }

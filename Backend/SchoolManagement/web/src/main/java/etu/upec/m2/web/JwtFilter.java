@@ -32,13 +32,12 @@ public class JwtFilter implements ContainerRequestFilter{
             
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+        Key key = JwtKeySingleton.getKey();
         
         try {
             String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
         
             String token = authorizationHeader.substring("Bearer".length()).trim();
-            
             String res = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(token)
@@ -49,6 +48,7 @@ public class JwtFilter implements ContainerRequestFilter{
                 //requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
             //}
         } catch (Exception e) {
+            System.err.println("Exception "+e.getMessage());
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
     }
