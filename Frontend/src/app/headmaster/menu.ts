@@ -54,7 +54,7 @@ export let MENU_ITEM_HEADMASTER = [
   {
     path: '',
     title: 'Classes',
-    icon: '',
+    icon: 'users',
     children: [
       {
         path: 'viewClasses',
@@ -70,7 +70,7 @@ export let MENU_ITEM_HEADMASTER = [
     {
         path: '',
         title: 'Teachers',
-        icon: 'user',
+        icon: 'male',
         children: [
          {
            path: 'allTeachers',
