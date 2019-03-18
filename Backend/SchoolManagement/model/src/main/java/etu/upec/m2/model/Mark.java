@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u FROM Mark u WHERE u.id.studentId =:studentId")
+    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id WHERE u.id.studentId =:studentId")
 })
 public class Mark implements Serializable {
     @EmbeddedId 

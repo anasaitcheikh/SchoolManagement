@@ -85,9 +85,9 @@ public class MarkService implements IMarkService {
     }
 
     @Override
-    public List<Mark> getAllMarkByIdStudent(Long idStudent) {
+    public List<Object[]> getAllMarkByIdStudent(Long idStudent) {
         try{
-            return em.createNamedQuery("findAllMarkByIdStudent", Mark.class)
+            return em.createNamedQuery("findAllMarkByIdStudent", Object[].class)
                                       .setParameter("studentId", idStudent)
                                       .getResultList();
         }catch(NoResultException e){

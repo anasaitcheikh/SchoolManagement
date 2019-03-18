@@ -60,7 +60,7 @@ public class MarkResource {
     @GET
     @Path("{idSudent}")
     public Response getAllMarkByIdStudent(@PathParam("idSudent")Long idStudent) {
-        List<Mark> marks = markService.getAllMarkByIdStudent(idStudent);
+        List<Object[]> marks = markService.getAllMarkByIdStudent(idStudent);
         return Response 
                 .status(Response.Status.OK)
                 .entity(marks)
