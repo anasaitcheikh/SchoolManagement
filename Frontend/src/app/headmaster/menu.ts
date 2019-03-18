@@ -36,6 +36,23 @@ export let MENU_ITEM_HEADMASTER = [
 
   {
     path: '',
+    title: 'Staffs',
+    icon: 'user',
+    children: [
+      {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },
+      {
+        path: 'allStaffs',
+        title: 'All Staffs',
+
+      },
+    ]
+  },
+
+  {
+    path: '',
     title: 'Classes',
     icon: '',
     children: [
