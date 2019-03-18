@@ -47,7 +47,8 @@ import {StaffService} from '../services/staff.service';
       },
       TokenService,
       ClassService,
-      StaffService
+      StaffService,
+
     ],
   bootstrap: [AppComponent]
 })
