@@ -19,11 +19,11 @@ export let MENU_ITEM_HEADMASTER = [
 
   {
     path: '',
-    title: 'Classes',
+    title: 'Classrooms',
     icon: 'home',
     children: [
       {
-        path: '',
+        path: 'viewClassrooms',
         title: 'Show classrooms'
       },
       {
@@ -37,10 +37,10 @@ export let MENU_ITEM_HEADMASTER = [
   {
     path: '',
     title: 'Classes',
-    icon: 'plus-square',
+    icon: '',
     children: [
       {
-        path: '',
+        path: 'viewClasses',
         title: 'Show classes'
       },
       {

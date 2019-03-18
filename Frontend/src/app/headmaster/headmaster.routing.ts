@@ -22,6 +22,8 @@ export const childRoutes: Routes = [
             { path: 'message', loadChildren: './message-headmaster/message-headmaster.module#MessageHeadmasterModule' },
             { path: 'enterNotes', loadChildren: './enter-notes/enter-notes.module#EnterNotesModule' },
             { path: 'viewPlanning', loadChildren: './view-planning/view-planning.module#ViewPlanningModule' },
+            { path: 'viewClasses', loadChildren: './view-classes/view-classes.module#ViewClassesModule' },
+            { path: 'viewClassRooms', loadChildren: './view-classrooms/view-classrooms.module#ViewClassroomsModule' },
             { path: 'requestModifyPlanning',
               loadChildren: './request-modify-planning/request-modify-planning.module#RequestModifyPlanningModule' },
             { path: 'uploadcorse', loadChildren: './uploadcorse-headmaster/uploadcorse-headmaster.module#UploadcorseHeadmasterModule' },
