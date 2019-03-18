@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import javax.ejb.EJB;
+import javax.json.Json;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -74,9 +75,10 @@ public class LoginResource {
                     .build();
         }
         
+        String userJson = "{\"id\": " + user.getId() + ", \"email\": \"" + user.getEmail() + "\", \"firstname\": \"" + user.getFirstname() + "\", \"lastname\": \"" + user.getLastname() + "\", \"status\": \"" + user.getStatus().toString() + "\"}";
         return Response
                 .status(Response.Status.OK)
-                .entity("{\"token\": \""+generateToken(user)+"\"}")
+                .entity("{\"token\": \"" + generateToken(user) + "\", \"user\": " + userJson + "}")
                 .build();
     }
     
