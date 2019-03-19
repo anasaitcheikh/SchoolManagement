@@ -10,7 +10,6 @@ package etu.upec.m2.web;
  * @author hadji
  */
 import etu.upec.m2.IHeadmasterService;
-import etu.upec.m2.model.User;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -23,11 +22,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import etu.upec.m2.model.Headmaster;
-import etu.upec.m2.web.jwtannotation.JWTTokenRequired;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JWTTokenRequired;
 import javax.ws.rs.PathParam;
 
 @Path("headmaster")
 @Produces(MediaType.APPLICATION_JSON)
+@JWTTokenRequired
+@AllowedRoles(roles = {UserStatus.HEADMASTER})
 public class HeadmasterResource {
     @EJB
     IHeadmasterService headmasterService;

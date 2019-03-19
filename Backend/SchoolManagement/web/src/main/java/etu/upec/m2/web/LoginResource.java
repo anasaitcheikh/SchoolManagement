@@ -82,7 +82,7 @@ public class LoginResource {
         Key key = JwtKeySingleton.getKey();
         String jws = Jwts
                 .builder()
-                .setSubject("{id: " + user.getId() + ", email: \"" + user.getEmail() + "\", status: \"" + user.getStatus().toString() + "\"}")
+                .setSubject("id:" + user.getId() + ",status:" +  user.getStatus().toString())
                 .setExpiration(new Date(calendar.getTimeInMillis()))
                 .signWith(key)
                 .compact();
