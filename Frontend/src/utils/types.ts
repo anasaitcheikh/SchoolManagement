@@ -30,6 +30,7 @@ export interface Teacher {
 export interface Staff {
   id?: number;
   firstname: string;
+  lastname: string;
   role: string;
   salary: number;
 }
