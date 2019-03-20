@@ -112,4 +112,16 @@ public class StudentService implements IStudentService {
             return null;
         }
     }
+
+    @Override
+    public List<Student> getAllStudentsByClassId(Long id) {
+        try{
+           TypedQuery<Student> query =  em.createNamedQuery("findAllStudentsByClassId", Student.class);
+           query.setParameter("id_class", id);
+           
+           return query.getResultList();
+        }catch(NoResultException e){
+            return null;
+        } 
+    }
 }

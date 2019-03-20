@@ -71,12 +71,21 @@ public class StudentResource {
     }
     
     @GET
-    @Path("all")
     public Response getAllStudents() {
         List<Student> staff = studentService.getAllStudent();
         return Response
                 .status(Response.Status.OK)
                 .entity(staff)
+                .build();
+    }
+    
+    @GET
+    @Path("all/{id}")
+    public Response getAllStudentsByClassId(@PathParam("id")Long id) {
+        List<Student> students = studentService.getAllStudentsByClassId(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(students)
                 .build();
     }
     
