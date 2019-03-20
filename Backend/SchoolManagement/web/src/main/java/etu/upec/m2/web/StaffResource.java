@@ -58,7 +58,6 @@ public class StaffResource {
     }
     
     @GET
-    @Path("all")
     public Response getAllStaff() {
         List<Staff> staff = staffService.getAllStaff();
         return Response
