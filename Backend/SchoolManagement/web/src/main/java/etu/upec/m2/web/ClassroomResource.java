@@ -8,6 +8,9 @@ package etu.upec.m2.web;
 import etu.upec.m2.IClassroomService;
 import etu.upec.m2.model.Classroom;
 import java.util.List;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -27,12 +30,14 @@ import javax.ws.rs.core.Response;
 
 @Path("classroom")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class ClassroomResource {
     @EJB
     IClassroomService classroomService;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response createClassroom(Classroom classroom) {
         Long result_id = classroomService.createClassroom(classroom);
         return Response
@@ -64,6 +69,7 @@ public class ClassroomResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response updateClassroom(@PathParam("id")Long id,Classroom classroom) {
         Long result_id=classroomService.updateClassroom(id, classroom);
         return Response
@@ -74,6 +80,7 @@ public class ClassroomResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteClassroom(@PathParam("id")Long id) {
         Long result_id=classroomService.deleteClassroom(id);
         return Response

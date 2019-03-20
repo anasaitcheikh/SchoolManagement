@@ -26,6 +26,10 @@ public class Teacher extends User{
     public TeacherSpecialty getSpecialty() {
         return specialty;
     }
+    
+    public Teacher() {
+        this.status = UserStatus.TEACHER;
+    }
 
     public void setSpecialty(TeacherSpecialty specialty) {
         this.specialty = specialty;

@@ -23,10 +23,9 @@ export class AddStaffComponent implements OnInit, OnDestroy {
     console.log('click on add staff');
     console.log('staff', staff);
     this._addStaffSubscriber = this.staffService.addStaff(staff).subscribe(
-      newClass => console.log(newClass),
+      newStaff => console.log(newStaff),
       error => console.log(error)
     );
-
   }
 
 }

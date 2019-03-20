@@ -7,6 +7,9 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.IClassService;
 import etu.upec.m2.model.Class;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,12 +29,14 @@ import javax.ws.rs.core.Response;
 
 @Path("class")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class ClassResource {
     @EJB
     IClassService classService;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response createClass(Class c) {
         Long result_id = classService.createClass(c);
         return Response
@@ -53,6 +58,7 @@ public class ClassResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response updateClass(@PathParam("id")Long id,Class c) {
         Long result_id=classService.updateClass(id, c);
         return Response
@@ -63,6 +69,7 @@ public class ClassResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteClass(@PathParam("id")Long id) {
         Long result_id=classService.deleteClass(id);
         return Response

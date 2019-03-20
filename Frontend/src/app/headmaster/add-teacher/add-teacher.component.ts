@@ -1,24 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TeacherService } from '../../../services/teacher.service';
+import { Teacher } from '../../../utils/types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-teacher',
   templateUrl: './add-teacher.component.html',
   styleUrls: ['./add-teacher.component.scss']
 })
-export class AddTeacherComponent implements OnInit {
+export class AddTeacherComponent implements OnInit, OnDestroy {
+  private _addTeacherSubscriber: Subscription
 
-  constructor() { }
+  constructor(private teacherService : TeacherService) { }
 
   ngOnInit() {
   }
 
-  addTeacher(teacher){
-     console.log('click on add teaher');
-     console.log(teacher.firstname);
-    console.log(teacher.lastname);
-    console.log(teacher.email);
-    console.log(teacher.password);
-    console.log(teacher.class);
-    console.log(teacher.course);
+  ngOnDestroy(): void {
+    if (this._addTeacherSubscriber) {
+      this._addTeacherSubscriber.unsubscribe();
+    }
   }
+/*
+  addTeacher(teacher : Teacher){
+     console.log('click on add teacher');
+     teacher.status="TEACHER";
+     this._addTeacherSubscriber = this.teacherService.addTeacher(teacher).subscribe(
+       newTeacher => console.log(newTeacher),
+       error => console.log(error)
+    );
+  }
+  */
 }

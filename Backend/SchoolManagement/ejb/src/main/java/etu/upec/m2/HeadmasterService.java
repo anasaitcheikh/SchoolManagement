@@ -6,7 +6,6 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Headmaster;
-import etu.upec.m2.model.UserStatus;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -56,7 +55,6 @@ public class HeadmasterService implements IHeadmasterService{
         headmaster.setEmail(newHeadmaster.getEmail());
         headmaster.setFirstname(newHeadmaster.getFirstname());
         headmaster.setLastname(newHeadmaster.getLastname());
-        headmaster.setStatus(UserStatus.STUDENT);
         em.merge(newHeadmaster);
         return id;
     }

@@ -7,6 +7,9 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ISubjectService;
 import etu.upec.m2.model.Subject;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,6 +28,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("subject")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class SubjectResource {
           
     @EJB
@@ -32,6 +36,7 @@ public class SubjectResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response createSubject(Subject subject) {
         Long result_id = subjectService.createSubject(subject);
         return Response
@@ -53,6 +58,7 @@ public class SubjectResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response updateSubject(@PathParam("id")Long id,Subject subject) {
         Long result_id=subjectService.updateSubject(id, subject);
         return Response
@@ -63,6 +69,7 @@ public class SubjectResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteSubject(@PathParam("id")Long id) {
         Long result_id=subjectService.deleteSubject(id);
         return Response

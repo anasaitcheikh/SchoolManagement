@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ICourseMaterialService;
 import etu.upec.m2.model.CourseMaterial;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.Response;
 
 @Path("courseMaterial")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class CourseMaterialResource {
     @EJB
     ICourseMaterialService courseMaterialService;

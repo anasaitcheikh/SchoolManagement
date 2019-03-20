@@ -26,6 +26,10 @@ public class Student extends User{
     
     @OneToMany(mappedBy="student")
     private List<Mark> marks;
+    
+    public Student() {
+        this.status = UserStatus.STUDENT;
+    }
 
     public Class getStudentClass() {
         return studentClass;
