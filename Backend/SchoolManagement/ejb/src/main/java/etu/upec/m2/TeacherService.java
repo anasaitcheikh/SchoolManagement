@@ -63,7 +63,9 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public List<Teacher> getAllTeacher() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Teacher> teachers = em.createNamedQuery("findAllTeacher", Teacher.class)
+            .getResultList();
+        return teachers;
     }
 
     @Override

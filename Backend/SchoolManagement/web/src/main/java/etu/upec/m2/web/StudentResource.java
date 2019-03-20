@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.IStudentService;
 import etu.upec.m2.model.Student;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -58,6 +59,16 @@ public class StudentResource {
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
+                .build();
+    }
+    
+    @GET
+    @Path("all")
+    public Response getAllStaff() {
+        List<Student> staff = studentService.getAllStudent();
+        return Response
+                .status(Response.Status.OK)
+                .entity(staff)
                 .build();
     }
     

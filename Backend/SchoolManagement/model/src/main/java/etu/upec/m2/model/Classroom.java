@@ -14,7 +14,8 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "findClassroomById", query = "SELECT u FROM Classroom u WHERE u.id =:id")
+    @NamedQuery(name = "findClassroomById", query = "SELECT u FROM Classroom u WHERE u.id =:id"),
+    @NamedQuery(name = "findAllClassroom", query = "SELECT s FROM Classroom s")
 })
 public class Classroom implements Serializable {
     @Id

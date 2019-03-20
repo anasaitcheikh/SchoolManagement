@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ITeacherService;
 import etu.upec.m2.model.Teacher;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -45,6 +46,16 @@ public class TeacherResource {
     @Path("{id}")
     public Response getTeacher(@PathParam("id")Long id) {
         Teacher teacher = teacherService.getTeacherById(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(teacher)
+                .build();
+    }
+    
+    @GET
+    @Path("all")
+    public Response getAllStaff() {
+        List<Teacher> teacher = teacherService.getAllTeacher();
         return Response
                 .status(Response.Status.OK)
                 .entity(teacher)

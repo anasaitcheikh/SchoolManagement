@@ -65,7 +65,9 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> getAllStudent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Student> students = em.createNamedQuery("findAllStudent", Student.class)
+            .getResultList();
+        return students;
     }
 
     @Override

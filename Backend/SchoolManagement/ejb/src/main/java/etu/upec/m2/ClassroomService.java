@@ -59,7 +59,9 @@ public class ClassroomService implements IClassroomService{
 
     @Override
     public List<Classroom> getAllClassroom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Classroom> classrooms = em.createNamedQuery("findAllClassroom", Classroom.class)
+            .getResultList();
+        return classrooms;
     }
 
     @Override
