@@ -6,6 +6,7 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Message;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,7 +37,6 @@ public class MessageService implements IMessageService {
     public Long createMessage(Message message) {
         em.persist(message);
         return message.getId();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -62,8 +62,14 @@ public class MessageService implements IMessageService {
     }
 
     @Override
-    public List<Message> getAllMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Message> getMessagesBySenderId(Long senderId) {
+        try{
+            TypedQuery<Message> query =  em.createNamedQuery("findMessageBySenderId", Message.class);
+            query.setParameter("senderId", senderId);
+            return query.getResultList();
+        }catch(NoResultException e){
+            return new ArrayList<>();
+        }
     }
 
     @Override

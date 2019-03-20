@@ -15,8 +15,10 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "findMessageById", query = "SELECT u FROM Message u WHERE u.id =:id")
+    @NamedQuery(name = "findMessageById", query = "SELECT u FROM Message u WHERE u.id =:id"),
+    @NamedQuery(name = "findMessageBySenderId", query = "SELECT u FROM Message u WHERE u.sender.id =:senderId"),
 })
+
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,15 +29,13 @@ public class Message implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateAndTime;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_sender", referencedColumnName = "id")
     private User sender;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_recipient", referencedColumnName = "id")
     private User recipient;
-
-
 
     public String getObject() {
         return object;
