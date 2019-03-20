@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Classroom } from '../../../utils/types';
 import { Subscription } from 'rxjs';
 import { ClassroomService } from '../../../services/classroom.service';
-
+import {LoginService} from '../../../services/login.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-view-classrooms',
   templateUrl: './view-classrooms.component.html',
@@ -12,9 +13,12 @@ export class ViewClassroomsComponent implements OnInit {
   private ClassroomSubscriber: Subscription
   resJson : any
   Croom : Classroom
-  constructor(private ClassroomService: ClassroomService) { }
+  constructor(private ClassroomService: ClassroomService,private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
       console.log('show classroom');
       this.ClassroomSubscriber = this.ClassroomService.getClassrooms().subscribe(
         res => {

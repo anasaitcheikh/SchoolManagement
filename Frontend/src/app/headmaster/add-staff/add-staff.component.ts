@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import {StaffService} from '../../../services/staff.service';
+import {LoginService} from '../../../services/login.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-add-staff',
   templateUrl: './add-staff.component.html',
@@ -8,9 +10,12 @@ import {StaffService} from '../../../services/staff.service';
 })
 export class AddStaffComponent implements OnInit, OnDestroy {
   _addStaffSubscriber: Subscription;
-  constructor(private staffService: StaffService) { }
+  constructor(private staffService: StaffService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {LoginService} from '../../../services/login.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-request-modify-planning',
   templateUrl: './request-modify-planning.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestModifyPlanningComponent implements OnInit {
 
-  constructor() { }
+  constructor(private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
   }
 
 }
