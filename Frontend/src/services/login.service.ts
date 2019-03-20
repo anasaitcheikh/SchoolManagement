@@ -19,7 +19,15 @@ export class LoginService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('uers');
+    localStorage.clear();
+  }
+
+  is_loggedin() : boolean{
+    if (localStorage.getItem("user") === null) {
+      return false;
+    }
+    return true;
+
   }
 
 }

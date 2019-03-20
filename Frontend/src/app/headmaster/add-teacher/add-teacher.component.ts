@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TeacherService } from '../../../services/teacher.service';
 import { Teacher } from '../../../utils/types';
 import { Subscription } from 'rxjs';
-
+import {LoginService} from '../../../services/login.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-add-teacher',
   templateUrl: './add-teacher.component.html',
@@ -11,9 +12,12 @@ import { Subscription } from 'rxjs';
 export class AddTeacherComponent implements OnInit, OnDestroy {
   private _addTeacherSubscriber: Subscription
 
-  constructor(private teacherService : TeacherService) { }
+  constructor(private teacherService : TeacherService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
   }
 
   ngOnDestroy(): void {

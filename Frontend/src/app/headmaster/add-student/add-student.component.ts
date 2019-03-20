@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HeadmasterService} from '../../../services/headmaster.service';
+import {LoginService} from '../../../services/login.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-add-student',
@@ -8,9 +10,12 @@ import {HeadmasterService} from '../../../services/headmaster.service';
 })
 export class AddStudentComponent implements OnInit {
 
-  constructor(private headmasterService: HeadmasterService) { }
+  constructor(private headmasterService: HeadmasterService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
   }
 
   addStudent(value) {
