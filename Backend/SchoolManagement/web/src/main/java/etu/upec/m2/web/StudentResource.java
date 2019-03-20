@@ -10,6 +10,7 @@ import etu.upec.m2.model.Student;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import etu.upec.m2.web.annotations.Owner;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -58,6 +59,8 @@ public class StudentResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
+    @Owner
     public Response updateStudent(@PathParam("id")Long id,Student student) {
         Long result_id=studentService.updateStudent(id, student);
         return Response

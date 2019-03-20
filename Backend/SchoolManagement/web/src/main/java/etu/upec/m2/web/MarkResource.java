@@ -13,6 +13,7 @@ import etu.upec.m2.model.MarkId;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import etu.upec.m2.web.annotations.Owner;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -65,6 +66,7 @@ public class MarkResource {
     @GET
     @Path("{idSudent}")
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
+    @Owner
     public Response getAllMarkByIdStudent(@PathParam("idSudent")Long idStudent) {
         List<Object[]> marks = markService.getAllMarkByIdStudent(idStudent);
         return Response 

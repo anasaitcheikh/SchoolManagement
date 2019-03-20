@@ -7,6 +7,8 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ICourseService;
 import etu.upec.m2.model.Course;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -34,6 +36,7 @@ public class CourseResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response createCourse(Course course) {
         Long result_id = courseService.createCourse(course);
         return Response
@@ -55,6 +58,7 @@ public class CourseResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response updateCourse(@PathParam("id")Long id,Course course) {
         Long result_id=courseService.updateCourse(id, course);
         return Response
@@ -65,6 +69,7 @@ public class CourseResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteCourse(@PathParam("id")Long id) {
         Long resul_id=courseService.deleteCourse(id);
         return Response
