@@ -5,7 +5,8 @@
 
 /************************************* HEADMASTER CREATION *************************************/
 
-INSERT INTO `Headmaster`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (1, '1970-07-09', 'headmaster@mail.com', 'headmaster', 'headmaster', 'password', 'HEADMASTER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (1, '1970-07-09', 'headmaster@mail.com', 'headmaster', 'headmaster', 'password', 'HEADMASTER');
+INSERT INTO `Headmaster` (`id`) VALUES ('1');
 
 /*************************************** CLASSES CREATION ***************************************/
 
