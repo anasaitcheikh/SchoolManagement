@@ -72,7 +72,7 @@ public class StudentResource {
     
     @GET
     @Path("all")
-    public Response getAllStaff() {
+    public Response getAllStudents() {
         List<Student> staff = studentService.getAllStudent();
         return Response
                 .status(Response.Status.OK)

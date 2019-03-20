@@ -60,7 +60,7 @@ public class TeacherResource {
     
     @GET
     @Path("all")
-    public Response getAllStaff() {
+    public Response getAllTeacher() {
         List<Teacher> teacher = teacherService.getAllTeacher();
         return Response
                 .status(Response.Status.OK)

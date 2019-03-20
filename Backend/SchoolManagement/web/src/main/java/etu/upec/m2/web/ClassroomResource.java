@@ -58,7 +58,7 @@ public class ClassroomResource {
     
     @GET
     @Path("all")
-    public Response getAllStaff() {
+    public Response getAllClassroom() {
         List<Classroom> classrooms = classroomService.getAllClassroom();
         return Response
                 .status(Response.Status.OK)
