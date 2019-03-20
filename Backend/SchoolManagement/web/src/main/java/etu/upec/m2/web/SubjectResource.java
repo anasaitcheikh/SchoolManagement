@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ISubjectService;
 import etu.upec.m2.model.Subject;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,6 +26,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("subject")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class SubjectResource {
           
     @EJB

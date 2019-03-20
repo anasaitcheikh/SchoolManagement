@@ -6,7 +6,6 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Student;
-import etu.upec.m2.model.UserStatus;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -56,7 +55,6 @@ public class StudentService implements IStudentService {
         student.setEmail(newStudent.getEmail());
         student.setFirstname(newStudent.getFirstname());
         student.setLastname(newStudent.getLastname());
-        student.setStatus(newStudent.getStatus());
         student.setStudentClass(newStudent.getStudentClass());
         
         em.merge(student);

@@ -6,8 +6,7 @@
 package etu.upec.m2.web.filters;
 
 import etu.upec.m2.model.UserStatus;
-import etu.upec.m2.web.JwtKeySingleton;
-import etu.upec.m2.web.annotations.JWTTokenRequired;
+import etu.upec.m2.web.utils.JwtKeySingleton;
 import java.io.IOException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -18,8 +17,8 @@ import javax.ws.rs.ext.Provider;
 import io.jsonwebtoken.Jwts;
 import java.security.Key;
 import javax.annotation.Priority;
-import javax.json.stream.JsonParser;
 import javax.ws.rs.core.Response;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 
 /**
  *
@@ -27,7 +26,7 @@ import javax.ws.rs.core.Response;
  */
 
 @Provider
-@JWTTokenRequired
+@JwtTokenRequired
 @Priority(Priorities.AUTHENTICATION)
 public class JwtFilter implements ContainerRequestFilter{
     private static final String ROLE_PROPERTY = "ROLE"; 

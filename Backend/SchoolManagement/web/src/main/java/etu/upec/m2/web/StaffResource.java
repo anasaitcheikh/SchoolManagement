@@ -7,6 +7,9 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.IStaffService;
 import etu.upec.m2.model.Staff;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +29,8 @@ import javax.ws.rs.core.Response;
 
 @Path("staff")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
+@AllowedRoles(roles = {UserStatus.HEADMASTER})
 public class StaffResource {
     
     @EJB

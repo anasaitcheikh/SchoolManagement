@@ -19,5 +19,5 @@ import java.lang.annotation.Target;
 @javax.ws.rs.NameBinding
 @Retention(RUNTIME)
 @Target({METHOD, TYPE})
-public @interface JWTTokenRequired {
+public @interface JwtTokenRequired {
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package etu.upec.m2.web;
+package etu.upec.m2.web.utils;
 
 import etu.upec.m2.model.User;
 import io.jsonwebtoken.Jwts;

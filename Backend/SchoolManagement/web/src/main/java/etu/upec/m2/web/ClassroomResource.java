@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.IClassroomService;
 import etu.upec.m2.model.Classroom;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.Response;
 
 @Path("classroom")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class ClassroomResource {
     @EJB
     IClassroomService classroomService;

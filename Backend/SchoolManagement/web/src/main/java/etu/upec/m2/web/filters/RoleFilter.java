@@ -8,6 +8,7 @@ package etu.upec.m2.web.filters;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.annotation.Priority;
@@ -40,7 +41,12 @@ public class RoleFilter implements ContainerRequestFilter{
         AllowedRoles allowedRoles = resourceClass.getAnnotation(AllowedRoles.class);
         
         if (allowedRoles == null) {
-          requestContext.abortWith(Response.status(Response.Status.INTERNAL_SERVER_ERROR).build());
+            Method resourceMethod = resourceInfo.getResourceMethod();
+            allowedRoles = resourceMethod.getAnnotation(AllowedRoles.class);
+            
+            if(allowedRoles == null) {
+                requestContext.abortWith(Response.status(Response.Status.INTERNAL_SERVER_ERROR).build());
+            }
         }
         
         UserStatus[] roles = allowedRoles.roles();

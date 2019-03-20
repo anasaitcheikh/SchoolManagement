@@ -7,6 +7,9 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ITeacherService;
 import etu.upec.m2.model.Teacher;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +29,7 @@ import javax.ws.rs.core.Response;
 
 @Path("teacher")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class TeacherResource {
     
     @EJB
@@ -33,6 +37,7 @@ public class TeacherResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response createTeacher(Teacher teacher) {
         Long result_id = teacherService.createTeacher(teacher);
         return Response
@@ -64,6 +69,7 @@ public class TeacherResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteTeacher(@PathParam("id")Long id) {
         Long result_id=teacherService.deleteTeacher(id);
         return Response

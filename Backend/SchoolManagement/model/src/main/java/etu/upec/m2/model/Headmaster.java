@@ -19,5 +19,8 @@ import javax.persistence.*;
 })
 
 public class Headmaster extends User{
-    
+
+    public Headmaster() {
+        this.status = UserStatus.HEADMASTER;
+    }
 }

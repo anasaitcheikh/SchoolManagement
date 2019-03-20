@@ -5,6 +5,7 @@
  */
 package etu.upec.m2.web;
 
+import etu.upec.m2.web.utils.JwtKeySingleton;
 import etu.upec.m2.IHeadmasterService;
 import etu.upec.m2.IStudentService;
 import etu.upec.m2.ITeacherService;

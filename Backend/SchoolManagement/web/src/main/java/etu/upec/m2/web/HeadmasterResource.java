@@ -24,12 +24,12 @@ import javax.ws.rs.core.Response.Status;
 import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
-import etu.upec.m2.web.annotations.JWTTokenRequired;
 import javax.ws.rs.PathParam;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 
 @Path("headmaster")
 @Produces(MediaType.APPLICATION_JSON)
-@JWTTokenRequired
+@JwtTokenRequired
 @AllowedRoles(roles = {UserStatus.HEADMASTER})
 public class HeadmasterResource {
     @EJB
@@ -47,7 +47,7 @@ public class HeadmasterResource {
 
     @GET
     @Path("{id}")
-    @JWTTokenRequired
+    @JwtTokenRequired
     public Response getHeadmaster(@PathParam("id") Long id) {
         Headmaster headmaster = headmasterService.getHeadmasterById(id);
         return Response

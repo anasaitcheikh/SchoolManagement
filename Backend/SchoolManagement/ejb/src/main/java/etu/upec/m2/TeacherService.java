@@ -5,10 +5,7 @@
  */
 package etu.upec.m2;
 
-import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.Teacher;
-import etu.upec.m2.model.TeacherSpecialty;
-import etu.upec.m2.model.UserStatus;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -56,7 +53,6 @@ public class TeacherService implements ITeacherService {
         teacher.setFirstname(newTeacher.getFirstname());
         teacher.setLastname(newTeacher.getLastname());
         teacher.setSpecialty(newTeacher.getSpecialty());
-        teacher.setStatus(newTeacher.getStatus());
         em.merge(teacher);
         return id;
     }
