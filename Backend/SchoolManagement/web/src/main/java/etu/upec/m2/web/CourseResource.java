@@ -36,7 +36,7 @@ public class CourseResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @AllowedRoles(roles = {UserStatus.HEADMASTER})
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
     public Response createCourse(Course course) {
         Long result_id = courseService.createCourse(course);
         return Response
