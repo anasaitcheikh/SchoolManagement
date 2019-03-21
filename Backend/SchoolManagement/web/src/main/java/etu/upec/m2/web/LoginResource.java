@@ -35,13 +35,7 @@ public class LoginResource {
 
     @EJB
     IUserService userService;
-
-    @EJB
-    ITeacherService teacherService;
-
-    @EJB
-    IStudentService studentService;
-
+    
     @POST
     public Response login(Headmaster headmaster) {
         String email = headmaster.getEmail();
