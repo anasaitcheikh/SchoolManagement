@@ -43,6 +43,11 @@ export class HeadmasterService {
     return req;
   }
 
+  getAllClasses() {
+    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
+    return req;
+  }
+
   addClass(classe) {
     console.log('in add classe method');
     console.log('classe', classe);

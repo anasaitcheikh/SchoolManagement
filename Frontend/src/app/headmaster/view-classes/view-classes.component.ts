@@ -39,5 +39,5 @@ export class ViewClassesComponent implements OnInit,OnDestroy {
       },
       error => console.log(error)
    )
-  }
+  } 
 }
