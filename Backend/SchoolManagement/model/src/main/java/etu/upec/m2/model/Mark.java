@@ -14,11 +14,13 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"id_student", "id_subject"})})
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
     @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id WHERE u.student.id =:studentId"),
     @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id LEFT JOIN u.student e ON u.markId.studentId = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
 })
+
 public class Mark implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
