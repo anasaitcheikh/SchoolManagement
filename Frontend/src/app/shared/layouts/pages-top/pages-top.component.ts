@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import {LoginService} from '../../../../services/login.service';
 import { Router } from '@angular/router'
@@ -7,8 +7,8 @@ import { Router } from '@angular/router'
   templateUrl: './pages-top.component.html',
   styleUrls: ['./pages-top.component.scss'],
 })
-export class PagesTopComponent {
-  avatarImgSrc: string = 'assets/images/avatar.png';
+export class PagesTopComponent implements OnInit {
+  avatarImgSrc;
   user;
   firstname;
   lastname;
@@ -18,11 +18,21 @@ export class PagesTopComponent {
   tip = { ring: true, email: true };
 
   constructor(private _globalService: GlobalService, private LoginService: LoginService, private router: Router) 
-  { 
+  { /*
     this.user = JSON.parse(localStorage.getItem('user'));
     this.firstname = this.user.firstname;
     this.lastname = this.user.lastname;
-    this.status = this.user.status;
+    this.status = this.user.status;*/
+  }
+
+  ngOnInit() {
+    if(this.router.url.search("student")>0)
+    this.avatarImgSrc= 'assets/images/student.JPG'
+   else if(this.router.url.search("teacher")>0)
+    this.avatarImgSrc= 'assets/images/teacher.JPG'
+   else
+    this.avatarImgSrc= 'assets/images/headmaster.JPG'
+    
   }
 
   logout(){
