@@ -10,6 +10,7 @@ import etu.upec.m2.model.Course;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,8 +20,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -55,34 +58,55 @@ public class CourseResource {
                 .build();
     }
     
-//    @GET
-//    @Path("{id}")
-    public Response getCoursesByClassId(@PathParam("id")Long id) {
-        Course course = courseService.getCourseById(id);
+    public Response getAllCoursesByClassId(Long idClass) {
+        List<Course> courses = courseService.getAllCoursesByClassId(idClass);
         return Response
                 .status(Response.Status.OK)
-                .entity(course)
+                .entity(courses)
                 .build();
     }
     
-//    @GET
-//    @Path("{id}")
-    public Response getCoursesByTeacherId(@PathParam("id")Long id) {
-        Course course = courseService.getCourseById(id);
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
+    public Response getAllCoursesByTeacherId(Long idTeacher) {
+        List<Course> courses = courseService.getAllCoursesByTeacherId(idTeacher);
         return Response
                 .status(Response.Status.OK)
-                .entity(course)
+                .entity(courses)
                 .build();
     }
     
-//    @GET
-//    @Path("{id}")
-    public Response getCoursesByStatus(@PathParam("id")Long id) {
-        Course course = courseService.getCourseById(id);
+    @AllowedRoles(roles = {UserStatus.HEADMASTER})
+    public Response getAllCoursesByStatus(boolean status) {
+        List<Course> courses = courseService.getAllCoursesByStatus(status);
         return Response
                 .status(Response.Status.OK)
-                .entity(course)
+                .entity(courses)
                 .build();
+    }
+
+    public Response getAllCourses() {
+        List<Course> courses = courseService.getAllCourses();
+        return Response
+                .status(Response.Status.OK)
+                .entity(courses)
+                .build();
+    }
+    
+    @GET
+    public Response getCourses(@Context UriInfo uriInfo){
+        if(uriInfo.getQueryParameters().containsKey("classId")) {
+            Long classId = Long.parseLong(uriInfo.getQueryParameters().getFirst("classId"));
+            return getAllCoursesByClassId(classId);
+        }
+        else if(uriInfo.getQueryParameters().containsKey("teacherId")){
+            Long teacherId = Long.parseLong(uriInfo.getQueryParameters().getFirst("teacherId"));
+            return getAllCoursesByTeacherId(teacherId);
+        }if(uriInfo.getQueryParameters().containsKey("status")){
+            boolean status = Boolean.valueOf(uriInfo.getQueryParameters().getFirst("status"));
+            return getAllCoursesByStatus(status);
+        }else{
+            return getAllCourses();
+        }
     }
     
     @PUT

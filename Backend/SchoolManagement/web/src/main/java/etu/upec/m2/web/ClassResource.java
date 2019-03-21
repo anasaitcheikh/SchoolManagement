@@ -69,8 +69,8 @@ public class ClassResource {
     
     
     @AllowedRoles(roles = {UserStatus.HEADMASTER,UserStatus.TEACHER})
-    public Response getAllClassByTeacherId() {
-        List<Class> classes = classService.getAllClasses();
+    public Response getAllClassByTeacherId(Long idTeacher) {
+        List<Class> classes = classService.getAllClassByTeacherId(idTeacher);
         return Response
                 .status(Response.Status.OK)
                 .entity(classes)
@@ -80,13 +80,11 @@ public class ClassResource {
     @GET
     public Response getClasses(@Context UriInfo uriInfo){
         if(uriInfo.getQueryParameters().containsKey("teacherId")) {
-            getAllClassByTeacherId();
+            Long teacherId = Long.parseLong(uriInfo.getQueryParameters().getFirst("teacherId"));
+            return getAllClassByTeacherId(teacherId);
         }else{
-            getAllClases();
+            return getAllClases();
         }
-        return Response
-                .status(Response.Status.NOT_FOUND)
-                .build();
     }
     
     @PUT
