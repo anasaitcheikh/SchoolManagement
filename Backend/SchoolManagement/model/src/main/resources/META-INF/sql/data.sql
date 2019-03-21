@@ -10,26 +10,12 @@ INSERT INTO `Headmaster` (`id`) VALUES ('1');
 
 /*************************************** CLASSES CREATION ***************************************/
 
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (1, 15, 1, 1)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (2, 20, 1, 2)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (3, 35, 1, 3)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (4, 25, 1, 4)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (5, 20, 2, 5)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (6, 20, 2, 6)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (7, 40, 2, 7)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (8, 20, 2, 8)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (9, 20, 3, 9)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (10, 20, 3, 10)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (11, 10, 3, 11)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (12, 20, 3, 12)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (13, 30, 4, 13)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (14, 20, 4, 14)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (15, 25, 4, 15)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (16, 30, 4, 16)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (17, 20, 5, 17)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (18, 15, 5, 18)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (19, 20, 5, 19)
-INSERT INTO `Classroom`(`id`, `capacity`, `floorNumber`, `roomNumber`) VALUES (20, 20, 5, 20)
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (1, 1, 'ELEMENTARY', 'C1', 2019);
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (2, 1, 'ELEMENTARY', 'K1', 2019);
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (3, 1, 'MIDDLE', 'L1', 2019);
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (4, 1, 'ELEMENTARY', 'S1', 2019);
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (5, 1, 'MIDDLE', 'M1', 2019);
+INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (6, 1, 'HIGH', 'T1', 2019);
 
 /*************************************** STUDENTS CREATION ***************************************/
 
@@ -76,6 +62,18 @@ INSERT INTO `Subject`(`id`, `name`) VALUES (5, 'GEOGRAPHY');
 INSERT INTO `Subject`(`id`, `name`) VALUES (6, 'HISTORY');
 INSERT INTO `Subject`(`id`, `name`) VALUES (7, 'FRENCH');
 INSERT INTO `Subject`(`id`, `name`) VALUES (8, 'ENGLISH');
+
+/************************************* TEACHERS CREATION *************************************/
+
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (6, '1970-07-09', 'teacher1@mail.com', 'Teacher1', 'Teacher1', 'password', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (7, '1970-07-09', 'teacher2@mail.com', 'Teacher2', 'Teacher2', 'password', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (8, '1970-07-09', 'teacher3@mail.com', 'Teacher3', 'Teacher3', 'password', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (9, '1970-07-09', 'teacher4@mail.com', 'Teacher4', 'Teacher4', 'password', 'TEACHER');
+
+INSERT INTO `Teacher` (`id`, `specialty`) VALUES (6, 'MATHEMATICS');
+INSERT INTO `Teacher` (`id`, `specialty`) VALUES (7, 'MATHEMATICS');
+INSERT INTO `Teacher` (`id`, `specialty`) VALUES (8, 'SCIENCE');
+INSERT INTO `Teacher` (`id`, `specialty`) VALUES (9, 'GEOGRAPHY');
 
 /************************************* MARKS CREATION *************************************/
 
