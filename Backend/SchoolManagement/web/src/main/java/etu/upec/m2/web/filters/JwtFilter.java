@@ -50,8 +50,11 @@ public class JwtFilter implements ContainerRequestFilter{
             
             String[] userInfos = user.split(",");
             
-            requestContext.setProperty(ID_PROPERTY, Integer.parseInt(userInfos[0].split(":")[1]));
-            requestContext.setProperty(ROLE_PROPERTY, UserStatus.valueOf(userInfos[1].split(":")[1]));
+            requestContext.getHeaders().add(ID_PROPERTY, userInfos[0].split(":")[1]);
+            requestContext.getHeaders().add(ROLE_PROPERTY, userInfos[1].split(":")[1]);
+            
+            requestContext.setProperty(ID_PROPERTY, userInfos[0].split(":")[1]);
+            requestContext.setProperty(ROLE_PROPERTY, userInfos[1].split(":")[1]);
             
             
         } catch (Exception e) {
