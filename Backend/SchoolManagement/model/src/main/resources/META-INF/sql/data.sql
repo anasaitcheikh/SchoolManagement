@@ -38,10 +38,10 @@ INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `passwo
 INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (4, '2019-07-07', 'student3@mail.com', 'Stu2', 'DENT2', 'password', 'STUDENT');
 INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (5, '2019-07-07', 'student4@mail.com', 'Stu3', 'DENT3', 'password', 'STUDENT');
 
-INSERT INTO `Student` (`id`, `studentClass_id`) VALUES (2, 1);
-INSERT INTO `Student` (`id`, `studentClass_id`) VALUES (3, 1);
-INSERT INTO `Student` (`id`, `studentClass_id`) VALUES (4, 6);
-INSERT INTO `Student` (`id`, `studentClass_id`) VALUES (5, 6);
+INSERT INTO `Student` (`id`, `id_class`) VALUES (2, 1);
+INSERT INTO `Student` (`id`, `id_class`) VALUES (3, 1);
+INSERT INTO `Student` (`id`, `id_class`) VALUES (4, 6);
+INSERT INTO `Student` (`id`, `id_class`) VALUES (5, 6);
 
 /************************************* CLASSES CREATION *************************************/
 
@@ -79,10 +79,10 @@ INSERT INTO `Subject`(`id`, `name`) VALUES (8, 'ENGLISH');
 
 /************************************* MARKS CREATION *************************************/
 
-INSERT INTO `Mark` (`id_student`, `id_subject`, `mark`) VALUES (2, 1, 15);
-INSERT INTO `Mark` (`id_student`, `id_subject`, `mark`) VALUES (3, 1, 18);
-INSERT INTO `Mark` (`id_student`, `id_subject`, `mark`) VALUES (4, 1, 18);
-INSERT INTO `Mark` (`id_student`, `id_subject`, `mark`) VALUES (5, 1, 20);
+INSERT INTO `Mark` (`id`, `id_student`, `id_subject`, `mark`) VALUES (1, 2, 1, 15);
+INSERT INTO `Mark` (`id`, `id_student`, `id_subject`, `mark`) VALUES (2, 3, 1, 18);
+INSERT INTO `Mark` (`id`, `id_student`, `id_subject`, `mark`) VALUES (3, 4, 1, 18);
+INSERT INTO `Mark` (`id`, `id_student`, `id_subject`, `mark`) VALUES (4, 5, 1, 20);
 
 /**************************************** STAFF CREATION ****************************************/
 

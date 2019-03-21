@@ -16,15 +16,18 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id WHERE u.id.studentId =:studentId"),
-    @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id LEFT JOIN u.student e ON u.id.studentId = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
+    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id WHERE u.student.id =:studentId"),
+    @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id LEFT JOIN u.student e ON u.markId.studentId = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
 })
 public class Mark implements Serializable {
-    @EmbeddedId 
-    private MarkId id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    Long id;
+    
+    @EmbeddedId
+    private MarkId markId;
     
     private double mark;
-    
     
     @ManyToOne
     @MapsId("studentId")
@@ -36,11 +39,11 @@ public class Mark implements Serializable {
     @JoinColumn(name = "id_subject")
     private Subject subject;
 
-    public MarkId getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(MarkId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,6 +69,14 @@ public class Mark implements Serializable {
 
     public void setMark(double mark) {
         this.mark = mark;
-    }    
+    }
+    
+    public MarkId getMarkId() {
+        return markId;
+    }
+
+    public void setMarkId(MarkId markId) {
+        this.markId = markId;
+    }
     
 }

@@ -17,9 +17,12 @@ import etu.upec.m2.web.annotations.Owner;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -42,7 +45,7 @@ public class MarkResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @AllowedRoles(roles = {UserStatus.TEACHER})
     public Response createMark(Mark mark) {
-        MarkId result_id = markService.createMark(mark);
+        Long result_id = markService.createMark(mark);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
@@ -56,12 +59,6 @@ public class MarkResource {
             Long classId = Long.parseLong(uriInfo.getQueryParameters().getFirst("classId"));
             
             return getAllMarksBySubjectIdAndClassId(subjectId, classId);
-        }
-        else if(uriInfo.getQueryParameters().containsKey("studentId") && uriInfo.getQueryParameters().containsKey("subjectId")){
-            Long subjectId = Long.parseLong(uriInfo.getQueryParameters().getFirst("subjectId"));
-            Long studentId = Long.parseLong(uriInfo.getQueryParameters().getFirst("studentId"));
-            
-            return getMark(studentId, subjectId);
         }
         else if(uriInfo.getQueryParameters().containsKey("studentId")){
             Long studentId = Long.parseLong(uriInfo.getQueryParameters().getFirst("studentId"));
@@ -82,17 +79,6 @@ public class MarkResource {
                 .entity(marks)
                 .build();
     }
-    
-    private Response getMark(Long idStudent, Long idSubject) {
-        MarkId id = new MarkId();
-        id.setStudentId(idStudent);
-        id.setSubjectId(idSubject);
-        Mark mark = markService.getMarkById(id);
-        return Response
-                .status(Response.Status.OK)
-                .entity(mark)
-                .build();
-    }
  
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
     @Owner
@@ -106,12 +92,12 @@ public class MarkResource {
     
     
     
-    /*@PUT
+    @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @AllowedRoles(roles = {UserStatus.TEACHER})
-    public Response updateMark(@PathParam("id")MarkId id, Mark mark) {
-        MarkId result_id=markService.updateMark(id, mark);
+    public Response updateMark(@PathParam("id")Long id, Mark mark) {
+        Long result_id = markService.updateMark(id, mark);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
@@ -120,12 +106,11 @@ public class MarkResource {
     
     @DELETE
     @Path("{id}")
-    public Response deleteMark(@PathParam("id")MarkId id) {
-        MarkId result_id=markService.deleteMark(id);
+    public Response deleteMark(@PathParam("id")Long id) {
+        Long result_id=markService.deleteMark(id);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
                 .build();
     }
-*/
 }
