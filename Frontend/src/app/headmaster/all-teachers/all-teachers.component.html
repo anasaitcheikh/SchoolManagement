@@ -1,44 +1,24 @@
 <table class="table table-bordered">
   <thead>
-  <tr>
-    <th>Last Name</th>
-    <th>First Name</th>
-    <th>Class</th>
-    <th>Email</th>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>BirthDate</th>
+      <th>Specialty</th>
+      <th>Email</th>
 
-  </tr>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Bouya</td>
-    <td>Fadwa</td>
-    <td></td>
-    <td></td>
 
+    <tr *ngFor="let t of teacher">
+      <td>{{ t.firsname }}</td>
+      <td>{{ t.lastname }}</td>
+      <td>{{ t.birthdate }}</td>
+      <td>{{ t.specialty }}</td>
+      <td>{{ t.email }}</td>
+    </tr>
 
-  </tr>
-  <tr>
-    <td>Cheikh</td>
-    <td>Anas Ait</td>
-    <td></td>
-    <td></td>
-
-  </tr>
-  <tr>
-    <td>Doumbia</td>
-    <td>Doussou</td>
-    <td></td>
-    <td></td>
-
-
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
 
   </tbody>
 </table>
