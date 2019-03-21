@@ -16,7 +16,8 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id WHERE u.id.studentId =:studentId")
+    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u, s FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id WHERE u.id.studentId =:studentId"),
+    @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.id.subjectId = s.id LEFT JOIN u.student e ON u.id.studentId = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
 })
 public class Mark implements Serializable {
     @EmbeddedId 
@@ -42,7 +43,7 @@ public class Mark implements Serializable {
     public void setId(MarkId id) {
         this.id = id;
     }
-/*
+
     public Student getStudent() {
         return student;
     }
@@ -58,7 +59,7 @@ public class Mark implements Serializable {
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
-*/
+
     public double getMark() {
         return mark;
     }

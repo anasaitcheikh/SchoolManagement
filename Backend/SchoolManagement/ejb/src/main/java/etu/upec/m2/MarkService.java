@@ -20,7 +20,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-
 /**
  *
  * @author ademo
@@ -30,10 +29,10 @@ import javax.persistence.TypedQuery;
 public class MarkService implements IMarkService {
 
     private static Logger log = Logger.getLogger(MarkService.class.getName());
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public MarkId createMark(Mark mark) {
@@ -49,11 +48,11 @@ public class MarkService implements IMarkService {
 
     @Override
     public MarkId updateMark(MarkId id, Mark newMark) {
-        Mark mark=getMarkById(id);
-        if(mark == null) {
+        Mark mark = getMarkById(id);
+        if (mark == null) {
             return null;
         }
-        
+
         mark.setMark(newMark.getMark());
         em.merge(mark.getId());
         return id;
@@ -66,25 +65,34 @@ public class MarkService implements IMarkService {
 
     @Override
     public Mark getMarkById(MarkId id) {
-        try{
-            TypedQuery<Mark> query =  em.createNamedQuery("findMarkById", Mark.class);
+        try {
+            TypedQuery<Mark> query = em.createNamedQuery("findMarkById", Mark.class);
             query.setParameter("id", id);
             return query.getSingleResult();
-        }catch(NoResultException e){
+        } catch (NoResultException e) {
             return null;
         }
     }
 
     @Override
     public List<Object[]> getAllMarkByIdStudent(Long idStudent) {
-        try{
+        try {
             return em.createNamedQuery("findAllMarkByIdStudent", Object[].class)
-                                      .setParameter("studentId", idStudent)
-                                      .getResultList();
-        }catch(NoResultException e){
+                    .setParameter("studentId", idStudent)
+                    .getResultList();
+        } catch (NoResultException e) {
             return null;
         }
-        
+
     }
-    
+
+    @Override
+    public List<Object[]> getAllMarkBySubjectIdAndClassId(Long subjectId, Long classId) {
+        System.err.println(""+subjectId+" ===> "+classId);
+        return em.createNamedQuery("findAllMarkBySujectIdAndClassId", Object[].class)
+                .setParameter("classId", classId)
+                .setParameter("subjectId", subjectId)
+                .getResultList();
+    }
+
 }

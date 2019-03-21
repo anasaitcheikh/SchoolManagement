@@ -24,4 +24,5 @@ public interface IMarkService {
     List<Mark> getAllMark();
     Mark getMarkById(MarkId id);
     List<Object[]> getAllMarkByIdStudent(Long idStudent);
+    List<Object[]> getAllMarkBySubjectIdAndClassId(Long subjectId, Long classId);
 }

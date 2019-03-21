@@ -17,15 +17,14 @@ import etu.upec.m2.web.annotations.Owner;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -51,8 +50,40 @@ public class MarkResource {
     }
     
     @GET
-    @Path("{idSudent}/{idSubject}")
-    public Response getMark(@PathParam("idSudent")Long idStudent,@PathParam("idSubject")Long idSubject ) {
+    public Response getMarks(@Context UriInfo uriInfo){
+        if(uriInfo.getQueryParameters().containsKey("subjectId") && uriInfo.getQueryParameters().containsKey("classId")) {
+            Long subjectId = Long.parseLong(uriInfo.getQueryParameters().getFirst("subjectId"));
+            Long classId = Long.parseLong(uriInfo.getQueryParameters().getFirst("classId"));
+            
+            return getAllMarksBySubjectIdAndClassId(subjectId, classId);
+        }
+        else if(uriInfo.getQueryParameters().containsKey("studentId") && uriInfo.getQueryParameters().containsKey("subjectId")){
+            Long subjectId = Long.parseLong(uriInfo.getQueryParameters().getFirst("subjectId"));
+            Long studentId = Long.parseLong(uriInfo.getQueryParameters().getFirst("studentId"));
+            
+            return getMark(studentId, subjectId);
+        }
+        else if(uriInfo.getQueryParameters().containsKey("studentId")){
+            Long studentId = Long.parseLong(uriInfo.getQueryParameters().getFirst("studentId"));
+            
+            return getAllMarkByStudentId(studentId);
+        }
+        
+        return Response
+                .status(Response.Status.NOT_FOUND)
+                .build();
+    }
+    
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
+    private Response getAllMarksBySubjectIdAndClassId(Long subjectId, Long classId) {
+        List<Object[]> marks = markService.getAllMarkBySubjectIdAndClassId(subjectId, classId);
+        return Response 
+                .status(Response.Status.OK)
+                .entity(marks)
+                .build();
+    }
+    
+    private Response getMark(Long idStudent, Long idSubject) {
         MarkId id = new MarkId();
         id.setStudentId(idStudent);
         id.setSubjectId(idSubject);
@@ -62,23 +93,24 @@ public class MarkResource {
                 .entity(mark)
                 .build();
     }
-    
-    @GET
-    @Path("{idSudent}")
+ 
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
     @Owner
-    public Response getAllMarkByIdStudent(@PathParam("idSudent")Long idStudent) {
+    private Response getAllMarkByStudentId(Long idStudent) {
         List<Object[]> marks = markService.getAllMarkByIdStudent(idStudent);
         return Response 
                 .status(Response.Status.OK)
                 .entity(marks)
                 .build();
     }
-    /*
-    @PUT
+    
+    
+    
+    /*@PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateMark(@PathParam("id")MarkId id,Mark mark) {
+    @AllowedRoles(roles = {UserStatus.TEACHER})
+    public Response updateMark(@PathParam("id")MarkId id, Mark mark) {
         MarkId result_id=markService.updateMark(id, mark);
         return Response
                 .status(Response.Status.OK)
