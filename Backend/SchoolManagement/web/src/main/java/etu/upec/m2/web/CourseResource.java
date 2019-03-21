@@ -55,6 +55,36 @@ public class CourseResource {
                 .build();
     }
     
+//    @GET
+//    @Path("{id}")
+    public Response getCoursesByClassId(@PathParam("id")Long id) {
+        Course course = courseService.getCourseById(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(course)
+                .build();
+    }
+    
+//    @GET
+//    @Path("{id}")
+    public Response getCoursesByTeacherId(@PathParam("id")Long id) {
+        Course course = courseService.getCourseById(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(course)
+                .build();
+    }
+    
+//    @GET
+//    @Path("{id}")
+    public Response getCoursesByStatus(@PathParam("id")Long id) {
+        Course course = courseService.getCourseById(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(course)
+                .build();
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)

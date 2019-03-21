@@ -20,8 +20,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -56,14 +58,37 @@ public class ClassResource {
                 .build();
     }
     
-        @GET
-    public Response getAllStaff() {
+    
+    public Response getAllClases() {
         List<Class> classes = classService.getAllClasses();
         return Response
                 .status(Response.Status.OK)
                 .entity(classes)
                 .build();
     }
+    
+    
+    @AllowedRoles(roles = {UserStatus.HEADMASTER,UserStatus.TEACHER})
+    public Response getAllClassByTeacherId() {
+        List<Class> classes = classService.getAllClasses();
+        return Response
+                .status(Response.Status.OK)
+                .entity(classes)
+                .build();
+    }
+    
+    @GET
+    public Response getClasses(@Context UriInfo uriInfo){
+        if(uriInfo.getQueryParameters().containsKey("teacherId")) {
+            getAllClassByTeacherId();
+        }else{
+            getAllClases();
+        }
+        return Response
+                .status(Response.Status.NOT_FOUND)
+                .build();
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)

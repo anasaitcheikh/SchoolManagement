@@ -77,4 +77,14 @@ public class ClassService implements IClassService{
         }
     }
     
+    @Override
+    public List<Class> getAllClassByTeacherId(Long idTeacher) {
+        try{
+            TypedQuery<Class> query =  em.createNamedQuery("findAllClassesByTeacherId", Class.class);
+            return query.setParameter("id_teacher", idTeacher)
+                        .getResultList();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
 }
