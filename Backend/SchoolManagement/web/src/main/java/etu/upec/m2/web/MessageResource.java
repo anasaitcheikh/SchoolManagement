@@ -14,12 +14,12 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -46,10 +46,11 @@ public class MessageResource {
     }
     
     @GET
-    public Response getMessagesBySenderId(@Context ContainerRequestContext requestContext) {
-        Long id = (Long) requestContext.getProperty("ID");
+    public Response getMessagesBySenderIdOrRecipientId(@Context HttpHeaders httpHeaders) {
+        System.err.println("ID ===> " + httpHeaders.getRequestHeaders().getFirst("ID"));
+        Long id = Long.parseLong(httpHeaders.getRequestHeaders().getFirst("ID"));
         
-        List<Message> message = messageService.getMessagesBySenderId(id);
+        List<Message> message = messageService.getMessagesBySenderIdOrRecipientId(id);
         return Response
                 .status(Response.Status.OK)
                 .entity(message)
@@ -63,17 +64,6 @@ public class MessageResource {
         return Response
                 .status(Response.Status.OK)
                 .entity(message)
-                .build();
-    }
-    
-    @PUT
-    @Path("{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateMessage(@PathParam("id")Long id,Message message) {
-        Long result_id=messageService.updateMessage(id, message);
-        return Response
-                .status(Response.Status.OK)
-                .entity(result_id)
                 .build();
     }
     
