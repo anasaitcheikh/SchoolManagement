@@ -19,6 +19,6 @@ public interface IClassService {
     Long createClass(Class c);
     Long deleteClass(Long id);
     Long updateClass(Long id, Class newClass);
-    List<Class> getAllClass();
+    List<Class> getAllClasses();
     Class getClassById(Long id);
 }

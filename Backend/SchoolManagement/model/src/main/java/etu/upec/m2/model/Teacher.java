@@ -16,6 +16,7 @@ import javax.persistence.*;
     @NamedQuery(name = "findTeacherById", query = "SELECT u FROM Teacher u WHERE u.id =:id"),
     @NamedQuery(name = "findTeacherByIdAndPassword", query = "SELECT u FROM Teacher u WHERE u.id =:id AND u.password = :password"),
     @NamedQuery(name = "findTeacherByEmailAndPassword", query = "SELECT u FROM Teacher u WHERE u.email =:email AND u.password = :password"),
+    @NamedQuery(name = "findAllTeacher", query = "SELECT t FROM Teacher t")
 })
 public class Teacher extends User{
     
@@ -24,6 +25,10 @@ public class Teacher extends User{
 
     public TeacherSpecialty getSpecialty() {
         return specialty;
+    }
+    
+    public Teacher() {
+        this.status = UserStatus.TEACHER;
     }
 
     public void setSpecialty(TeacherSpecialty specialty) {

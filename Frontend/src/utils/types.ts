@@ -5,7 +5,7 @@ export interface  Student {
     email: string;
     password: string;
     birthDate: string;
-    classe: Class;
+    studentClass: number;
 }
 
 export interface Class {

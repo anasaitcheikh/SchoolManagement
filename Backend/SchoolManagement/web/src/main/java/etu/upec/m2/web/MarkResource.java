@@ -10,6 +10,10 @@ package etu.upec.m2.web;
 import etu.upec.m2.IMarkService;
 import etu.upec.m2.model.Mark;
 import etu.upec.m2.model.MarkId;
+import etu.upec.m2.model.UserStatus;
+import etu.upec.m2.web.annotations.AllowedRoles;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
+import etu.upec.m2.web.annotations.Owner;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -29,6 +33,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("mark")
 @Produces(MediaType.APPLICATION_JSON)
+@JwtTokenRequired
 public class MarkResource {
     
     @EJB
@@ -36,6 +41,7 @@ public class MarkResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @AllowedRoles(roles = {UserStatus.TEACHER})
     public Response createMark(Mark mark) {
         MarkId result_id = markService.createMark(mark);
         return Response
@@ -59,6 +65,8 @@ public class MarkResource {
     
     @GET
     @Path("{idSudent}")
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
+    @Owner
     public Response getAllMarkByIdStudent(@PathParam("idSudent")Long idStudent) {
         List<Object[]> marks = markService.getAllMarkByIdStudent(idStudent);
         return Response 

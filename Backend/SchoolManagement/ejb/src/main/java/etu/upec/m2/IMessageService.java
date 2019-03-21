@@ -20,6 +20,6 @@ public interface IMessageService {
     Long createMessage(Message message);
     Long deleteMessage(Long id);
     Long updateMessage(Long id, Message newMessage);
-    List<Message> getAllMessage();
+    List<Message> getMessagesBySenderId(Long senderId);
     Message getMessageById(Long id);
 }

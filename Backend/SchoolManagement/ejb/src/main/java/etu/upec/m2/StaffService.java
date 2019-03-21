@@ -61,7 +61,9 @@ public class StaffService implements IStaffService{
 
     @Override
     public List<Staff> getAllStaff() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Staff> staffs = em.createNamedQuery("findAllStaff", Staff.class)
+            .getResultList();
+        return staffs;
     }
 
     @Override

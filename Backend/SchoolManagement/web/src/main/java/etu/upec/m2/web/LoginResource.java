@@ -5,20 +5,18 @@
  */
 package etu.upec.m2.web;
 
+import etu.upec.m2.web.utils.JwtKeySingleton;
 import etu.upec.m2.IHeadmasterService;
 import etu.upec.m2.IStudentService;
 import etu.upec.m2.ITeacherService;
+import etu.upec.m2.IUserService;
 import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.User;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import java.security.Key;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import javax.ejb.EJB;
-import javax.json.Json;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -36,7 +34,7 @@ import javax.ws.rs.core.Response;
 public class LoginResource {
 
     @EJB
-    IHeadmasterService headmasterService;
+    IUserService userService;
 
     @EJB
     ITeacherService teacherService;
@@ -49,17 +47,7 @@ public class LoginResource {
         String email = headmaster.getEmail();
         String password = headmaster.getPassword();
         
-        User user = null;
-        
-        user = headmasterService.getHeadmasterByEmailAndPassword(email, password);
-        
-        if (user == null) {
-            user = teacherService.getTeacherByEmailAndPassword(email, password);
-        }
-
-        if (user == null) {
-            user = studentService.getStudentByEmailAndPassword(email, password);
-        }
+        User user = userService.getUserByEmailAndPassword(email, password);
         
         if (user == null) {
             return Response
@@ -82,7 +70,7 @@ public class LoginResource {
         Key key = JwtKeySingleton.getKey();
         String jws = Jwts
                 .builder()
-                .setSubject("{id: " + user.getId() + ", email: \"" + user.getEmail() + "\", status: \"" + user.getStatus().toString() + "\"}")
+                .setSubject("id:" + user.getId() + ",status:" +  user.getStatus().toString())
                 .setExpiration(new Date(calendar.getTimeInMillis()))
                 .signWith(key)
                 .compact();

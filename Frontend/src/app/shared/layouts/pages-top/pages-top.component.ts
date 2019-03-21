@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
-
+import {LoginService} from '../../../../services/login.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'pages-top',
   templateUrl: './pages-top.component.html',
@@ -8,14 +9,18 @@ import { GlobalService } from '../../services/global.service';
 })
 export class PagesTopComponent {
   avatarImgSrc: string = 'assets/images/avatar.png';
-  userName: string = 'Folisise Chosielie';
-  userPost: string = 'Musician, Player';
+  userName: string = 'John Wick';
+  userPost: string = '';
 
 
   sidebarToggle: boolean = true;
   tip = { ring: true, email: true };
 
-  constructor(private _globalService: GlobalService) { }
+  constructor(private _globalService: GlobalService, private LoginService: LoginService, private router: Router) { }
+
+  logout(){
+    this.LoginService.logout();
+  }
 
   public _sidebarToggle() {
     /* this._globalService.sidebarToggle$.subscribe(sidebarToggle => {

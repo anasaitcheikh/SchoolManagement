@@ -31,11 +31,9 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(etu.upec.m2.web.ClassResource.class);
         resources.add(etu.upec.m2.web.ClassroomResource.class);
-        resources.add(etu.upec.m2.web.CorsFilter.class);
         resources.add(etu.upec.m2.web.CourseMaterialResource.class);
         resources.add(etu.upec.m2.web.CourseResource.class);
         resources.add(etu.upec.m2.web.HeadmasterResource.class);
-        resources.add(etu.upec.m2.web.JwtFilter.class);
         resources.add(etu.upec.m2.web.LoginResource.class);
         resources.add(etu.upec.m2.web.MarkResource.class);
         resources.add(etu.upec.m2.web.MessageResource.class);
@@ -43,6 +41,10 @@ public class ApplicationConfig extends Application {
         resources.add(etu.upec.m2.web.StudentResource.class);
         resources.add(etu.upec.m2.web.SubjectResource.class);
         resources.add(etu.upec.m2.web.TeacherResource.class);
+        resources.add(etu.upec.m2.web.filters.CorsFilter.class);
+        resources.add(etu.upec.m2.web.filters.JwtFilter.class);
+        resources.add(etu.upec.m2.web.filters.OwnerFilter.class);
+        resources.add(etu.upec.m2.web.filters.RoleFilter.class);
     }
     
 }

@@ -15,6 +15,12 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(uniqueConstraints={
+   @UniqueConstraint(columnNames={"id_class", "date","time"}),
+   @UniqueConstraint(columnNames={"id_teacher", "date","time"}),
+   @UniqueConstraint(columnNames={"id_classroom", "date","time"}),
+   @UniqueConstraint(columnNames={"id_teacher", "id_class","date","time","id_classroom"})
+})
 @NamedQueries({
     @NamedQuery(name = "findCourseById", query = "SELECT u FROM Course u WHERE u.id =:id")
 })
@@ -30,20 +36,31 @@ public class Course implements Serializable {
     private Date date;
     
     @ManyToOne
-    @JoinColumn(name = "id_class", referencedColumnName = "id")
+    @JoinColumn(name = "id_class")
     private Class classe;
     
     @ManyToOne
-    @JoinColumn(name = "id_classroom", referencedColumnName = "id")
+    @JoinColumn(name = "id_classroom")
     private Classroom classroom;
     
     @ManyToOne
-    @JoinColumn(name = "id_subject", referencedColumnName = "id")
+    @JoinColumn(name = "id_subject")
     private Subject subject;
     
     @ManyToOne
-    @JoinColumn(name = "id_teacher", referencedColumnName = "id")
+    @JoinColumn(name = "id_teacher")
     private Teacher teacher;
+    
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
 
     public Long getId() {
         return id;

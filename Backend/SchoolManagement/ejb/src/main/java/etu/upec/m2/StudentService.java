@@ -6,7 +6,6 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Student;
-import etu.upec.m2.model.UserStatus;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -56,7 +55,6 @@ public class StudentService implements IStudentService {
         student.setEmail(newStudent.getEmail());
         student.setFirstname(newStudent.getFirstname());
         student.setLastname(newStudent.getLastname());
-        student.setStatus(newStudent.getStatus());
         student.setStudentClass(newStudent.getStudentClass());
         
         em.merge(student);
@@ -65,7 +63,9 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> getAllStudent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Student> students = em.createNamedQuery("findAllStudent", Student.class)
+            .getResultList();
+        return students;
     }
 
     @Override
@@ -111,5 +111,17 @@ public class StudentService implements IStudentService {
         }catch(NoResultException e){
             return null;
         }
+    }
+
+    @Override
+    public List<Student> getAllStudentsByClassId(Long id) {
+        try{
+           TypedQuery<Student> query =  em.createNamedQuery("findAllStudentsByClassId", Student.class);
+           query.setParameter("id_class", id);
+           
+           return query.getResultList();
+        }catch(NoResultException e){
+            return null;
+        } 
     }
 }

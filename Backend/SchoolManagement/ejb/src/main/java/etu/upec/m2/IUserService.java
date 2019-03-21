@@ -24,4 +24,5 @@ public interface IUserService {
     List<User> getAllUser();
     User getUserById(Long id);
     Long resetPassword(Long id, String oldPassword, String newPassword);
+    User getUserByEmailAndPassword(String email, String password);
 }

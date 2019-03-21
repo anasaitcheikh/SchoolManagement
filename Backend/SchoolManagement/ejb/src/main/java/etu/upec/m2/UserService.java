@@ -75,6 +75,19 @@ public class UserService implements IUserService{
             return null;
         }
     }
+    
+    @Override
+    public User getUserByEmailAndPassword(String email, String password) {
+        try{
+            TypedQuery<User> query =  em.createNamedQuery("findUserByEmailAndPassword", User.class);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {

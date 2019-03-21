@@ -15,10 +15,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames={"email"}))
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
     @NamedQuery(name = "findUserById", query = "SELECT u FROM User u WHERE u.id =:id"),
     @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),
+    @NamedQuery(name = "findUserByEmailAndPassword", query = "SELECT u FROM User u WHERE u.email =:email AND u.password = :password"),
 })
 public abstract class User implements Serializable {
 

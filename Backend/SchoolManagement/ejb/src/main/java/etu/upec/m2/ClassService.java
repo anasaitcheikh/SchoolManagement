@@ -6,6 +6,7 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Class;
+import etu.upec.m2.model.Student;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -59,8 +60,10 @@ public class ClassService implements IClassService{
     }
 
     @Override
-    public List<Class> getAllClass() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Class> getAllClasses() {
+            List<Class> classes = em.createNamedQuery("findAllClasses", Class.class)
+            .getResultList();
+        return classes;
     }
 
     @Override
