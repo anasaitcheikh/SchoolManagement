@@ -21,7 +21,7 @@ import javax.persistence.*;
     @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),
     @NamedQuery(name = "findUserByEmailAndPassword", query = "SELECT u FROM User u WHERE u.email =:email AND u.password = :password"),
 })
-public abstract class User implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

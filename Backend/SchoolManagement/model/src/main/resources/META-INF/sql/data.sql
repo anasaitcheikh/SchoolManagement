@@ -96,3 +96,11 @@ INSERT INTO `Staff`(`id`, `firstname`, `lastname`, `role`, `salary`) VALUES (9,'
 INSERT INTO `Staff`(`id`, `firstname`, `lastname`, `role`, `salary`) VALUES (10,'Kir', 'OUA','COOK',1000)
 INSERT INTO `Staff`(`id`, `firstname`, `lastname`, `role`, `salary`) VALUES (11,'Boru', 'TO','CLEANER',1000)
 INSERT INTO `Staff`(`id`, `firstname`, `lastname`, `role`, `salary`) VALUES (12,'Mo', 'TO','SECRETARY',1200)
+
+/**************************************** MESSAGES CREATION ****************************************/
+
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (1, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 1', 'Lorem Ipsum 1', 1, 2);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (2, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 2', 'Lorem Ipsum 2', 3, 2);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (3, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 3', 'Lorem Ipsum 3', 1, 3);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (4, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 4', 'Lorem Ipsum 4', 1, 2);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (5, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 5', 'Lorem Ipsum 5', 6, 2);

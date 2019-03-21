@@ -106,6 +106,7 @@ public class MarkResource {
     
     @DELETE
     @Path("{id}")
+    @AllowedRoles(roles = {UserStatus.TEACHER})
     public Response deleteMark(@PathParam("id")Long id) {
         Long result_id=markService.deleteMark(id);
         return Response

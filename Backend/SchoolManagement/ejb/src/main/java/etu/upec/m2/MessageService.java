@@ -5,8 +5,12 @@
  */
 package etu.upec.m2;
 
+import etu.upec.m2.model.Headmaster;
 import etu.upec.m2.model.Message;
+import etu.upec.m2.model.User;
+import etu.upec.m2.model.UserStatus;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,26 +50,10 @@ public class MessageService implements IMessageService {
     }
 
     @Override
-    public Long updateMessage(Long id, Message newMessage) {
-        Message message=getMessageById(id);
-        if(message == null) {
-            return new Long(0);
-        }
-        
-        message.setDateAndTime(newMessage.getDateAndTime());
-        message.setMsg(newMessage.getMsg());
-        message.setObject(newMessage.getObject());
-        message.setRecipient(newMessage.getRecipient());
-        message.setSender(newMessage.getSender());
-        em.merge(message);
-        return message.getId();
-    }
-
-    @Override
-    public List<Message> getMessagesBySenderId(Long senderId) {
+    public List<Message> getMessagesBySenderIdOrRecipientId(Long userId) {
         try{
-            TypedQuery<Message> query =  em.createNamedQuery("findMessageBySenderId", Message.class);
-            query.setParameter("senderId", senderId);
+            TypedQuery<Message> query =  em.createNamedQuery("findMessageBySenderIdOrRecipientId", Message.class);
+            query.setParameter("userId", userId);
             return query.getResultList();
         }catch(NoResultException e){
             return new ArrayList<>();

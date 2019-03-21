@@ -21,24 +21,22 @@
         <table class="table table-hover">
           <thead>
           <tr>
-            <th>#</th>
             <th>Sender</th>
             <th>Object</th>
             <th></th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of default_data;let index = index">
-            <td>{{index}}</td>
-            <td>{{item.sender}}</td>
-            <td>{{item.object}}</td>
-            <td><button class="btn btn-xs btn-info">SHOW</button></td>
+          <tr *ngFor="let msg of messages">
+            <td>{{msg.sender.}}</td>
+            <td>{{msg.object}}</td>
+            <td><button type="button" (click)="show(1)" class="btn btn-xs btn-info">SHOW</button></td>
           </tr>
           </tbody>
         </table>
         <br><br>
         <label class="control-label">Message</label>
-        <textarea class="form-control" placeholder="" disabled></textarea>
+        <textarea class="form-control" placeholder="" disabled> {{contenu}}</textarea>
         <br><br>
         <!-- <button type="submit" class="btn btn-primary">Send</button>-->
       </form>
