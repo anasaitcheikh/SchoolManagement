@@ -9,27 +9,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Bouya</td>
-    <td>Fadwa</td>
-    <td></td>
-    <td></td>
-
-
-  </tr>
-  <tr>
-    <td>Cheikh</td>
-    <td>Anas Ait</td>
-    <td></td>
-    <td></td>
-
-  </tr>
-  <tr>
-    <td>Doumbia</td>
-    <td>Doussou</td>
-    <td></td>
-    <td></td>
-
-
-  </tbody>
+      <tr *ngFor="let s of student">
+        <td>{{ s.name }}</td>
+        <td>{{ s.schoolyear }}</td>
+        <td>{{ s.level }}</td>
+        <td>{{ s.grade }}</td>
+      </tr>
+    </tbody>
 </table>

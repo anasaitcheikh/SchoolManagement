@@ -10,6 +10,7 @@ import etu.upec.m2.model.Class;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -55,6 +56,14 @@ public class ClassResource {
                 .build();
     }
     
+        @GET
+    public Response getAllStaff() {
+        List<Class> classes = classService.getAllClasses();
+        return Response
+                .status(Response.Status.OK)
+                .entity(classes)
+                .build();
+    }
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)

@@ -49,7 +49,8 @@ import { ClassroomService } from '../services/classroom.service';
       },
       TokenService,
       ClassService,
-      StaffService
+      StaffService,
+
     ],
   bootstrap: [AppComponent]
 })
