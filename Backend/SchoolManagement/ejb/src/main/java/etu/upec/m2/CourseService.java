@@ -50,8 +50,14 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public List<Course> getAllCourse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Course> getAllCourses() {
+        try{
+            List<Course> courses = em.createNamedQuery("findAllCourses", Course.class)
+                     .getResultList();
+            return  courses;
+        }catch(NoResultException e){
+            return null;
+        }
     }
 
     @Override
@@ -63,6 +69,42 @@ public class CourseService implements ICourseService {
         }catch(NoResultException e){
             return null;
         }    
+    }
+
+    @Override
+    public List<Course> getAllCoursesByClassId(Long idClass) {
+        try{
+            List<Course> courses = em.createNamedQuery("findAllCoursesByClassId", Course.class)
+                     .setParameter("id_class", idClass)
+                     .getResultList();
+            return  courses;
+        }catch(NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<Course> getAllCoursesByTeacherId(Long idTeacher) {
+        try{
+            List<Course> courses = em.createNamedQuery("findAllCoursesByTeacherId", Course.class)
+                     .setParameter("id_teacher", idTeacher)
+                     .getResultList();
+            return  courses;
+        }catch(NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<Course> getAllCoursesByStatus(boolean status) {
+        try{
+            List<Course> courses = em.createNamedQuery("findAllCoursesByStatus", Course.class)
+                     .setParameter("status", status)
+                     .getResultList();
+            return  courses;
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
 }

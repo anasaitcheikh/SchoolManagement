@@ -20,6 +20,10 @@ public interface ICourseService {
     Long createCourse(Course course);
     Long deleteCourse(Long id);
     Long updateCourse(Long id, Course newCourse);
-    List<Course> getAllCourse();
+    List<Course> getAllCourses();
     Course getCourseById(Long id);
+    List<Course> getAllCoursesByClassId(Long idClass);
+    
+    List<Course> getAllCoursesByTeacherId(Long idTeacher);
+    List<Course> getAllCoursesByStatus(boolean status);
 }

@@ -21,4 +21,5 @@ public interface IClassService {
     Long updateClass(Long id, Class newClass);
     List<Class> getAllClasses();
     Class getClassById(Long id);
+    List<Class> getAllClassByTeacherId(Long idTeacher);
 }

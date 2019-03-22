@@ -22,7 +22,16 @@ import javax.persistence.*;
    @UniqueConstraint(columnNames={"id_teacher", "id_class","date","time","id_classroom"})
 })
 @NamedQueries({
-    @NamedQuery(name = "findCourseById", query = "SELECT u FROM Course u WHERE u.id =:id")
+    @NamedQuery(name = "findCourseById", query = "SELECT u FROM Course u WHERE u.id =:id"),
+    @NamedQuery(name = "findAllCourses", query = "SELECT u FROM Course u"),
+    
+    @NamedQuery(name = "findAllCoursesByClassId", query = "SELECT co FROM Course co " +
+                                                          "   LEFT JOIN Class cl ON co.classe.id=cl.id " +
+                                                          "   WHERE cl.id = :id_class" ),
+    @NamedQuery(name = "findAllCoursesByTeacherId", query = "SELECT co FROM Course co " +
+                                                            "   LEFT JOIN Teacher t ON t.id=co.teacher.id " +
+                                                            "   WHERE t.id = :id_teacher "),
+    @NamedQuery(name = "findAllCoursesByStatus", query = "SELECT c FROM Course c WHERE c.status = :status "),
 })
 public class Course implements Serializable {
     @Id
