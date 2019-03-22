@@ -4,13 +4,16 @@ import { routing } from './personal-info.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import {PersonalInfoComponent} from './personal-info.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     NgxEchartsModule,
-    routing
+    routing,
+    FormsModule
   ],
   declarations: [
     PersonalInfoComponent

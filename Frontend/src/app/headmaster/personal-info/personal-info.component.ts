@@ -7,13 +7,21 @@ import { Router } from '@angular/router'
   styleUrls: ['./personal-info.component.scss']
 })
 export class PersonalInfoComponent implements OnInit {
-
+  user;
+  firstName;
+  lastName;
+  email;
   constructor(private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     if(! this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.email=this.user.email;
+    this.firstName = this.user.firstname;
+    this.lastName = this.user.lastname;
+    console.log(this.user)
   }
 
 }

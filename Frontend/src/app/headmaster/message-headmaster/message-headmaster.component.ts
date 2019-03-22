@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import { Router } from '@angular/router'
 import {HeadmasterService} from '../../../services/headmaster.service';
@@ -10,7 +10,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './message-headmaster.component.html',
   styleUrls: ['./message-headmaster.component.scss']
 })
-export class MessageHeadmasterComponent implements OnInit {
+export class MessageHeadmasterComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    if(this.Subscriber!= null)
+      this.Subscriber.unsubscribe();
+    if(this.Subscriber2!= null)
+      this.Subscriber2.unsubscribe();
+  }
   //-----------send-----------
   object;
   recipient;
@@ -20,6 +26,7 @@ export class MessageHeadmasterComponent implements OnInit {
 //--------------receive---------
   messages;
   contenu;
+  Subscriber2 : Subscription;
 //-----------------------------
 
   constructor(private MailService:MailService, private LoginService: LoginService, private router: Router, private HeadmasterService: HeadmasterService) { }
@@ -29,29 +36,33 @@ export class MessageHeadmasterComponent implements OnInit {
       this.router.navigate(['login'])
     }
     this.sender = JSON.parse(localStorage.getItem('user'));
-    this.messages= JSON.parse(JSON.stringify(this.MailService.getMessages()));
-    //let tmp = JSON.parse(JSON.stringify(this.HeadmasterService.getMessage(1))); 
-    console.log(this.messages);
+   
+      this.Subscriber = this.MailService.getMessages().subscribe(
+      sen => {console.log(sen);
+      this.messages= JSON.parse(JSON.stringify(sen));
+      },
+      error => console.log(error)
+    );
+ 
     this.contenu="";
   }
   
   send(){
-    this.Subscriber = this.MailService.sendMessage(this.sender.id, this.msg, this.object, this.recipient).subscribe(
+    this.Subscriber2 = this.MailService.sendMessage(this.sender.id, this.msg, this.object, this.recipient).subscribe(
       sen => console.log(sen),
       error => console.log(error)
     );
-    /*
-    console.log(this.object);
-    console.log(this.recipient);
-    console.log(this.msg);
-  */
+
   }
 
-  show(id_m){
-    let tmp = JSON.parse(JSON.stringify(this.MailService.getMessage(id_m))); 
-    this.contenu= tmp.msg;
+  show(msg){
+   /* let tmp = JSON.parse(JSON.stringify(this.MailService.getMessage(id_m))); 
+    this.Subscriber3 = this.MailService.getMessage(id_m).subscribe(
+      sen => {console.log(sen);
+      this.contenu= JSON.parse(JSON.stringify(sen)).msg;
+      },
+      error => console.log(error)
+    );*/
+    this.contenu=msg;
   }
-
-
-
 }

@@ -21,7 +21,7 @@ import javax.persistence.*;
 
 public class Message implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     protected Long id;
 
     
