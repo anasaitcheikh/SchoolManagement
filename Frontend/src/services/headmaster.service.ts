@@ -33,18 +33,18 @@ export class HeadmasterService {
   }
 
   getAllStudents() {
-    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
-    return req;
+    return this.http.get(API_SERVER.BASE_URI+'/student');
   }
 
   getAllTeachers() {
-    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
-    return req;
+    return this.http.get(API_SERVER.BASE_URI+'/teacher');
+  }
+  deleteTeacher(_id: number) {
+    return this.http.delete(API_SERVER.BASE_URI+'/teacher/'+_id)
   }
 
   getAllClasses() {
-    const req = this.http.get(API_SERVER.BASE_URI + "xxx", );
-    return req;
+    return this.http.get(API_SERVER.BASE_URI+'/class'); 
   }
 
   addClass(classe) {

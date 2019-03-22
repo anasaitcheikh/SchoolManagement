@@ -18,7 +18,7 @@
             <td>{{ s.role }}</td>
             <td>{{ s.salary }}</td>
             <td>
-                <button [routerLink]="['/editStaff',s.id]" class="btn btn-success">Edit</button>
+                <button [routerLink]="['/editStaff',s]" class="btn btn-success">Edit</button>
                 <button (click)="deleteStaff(s.id)" class="btn btn-danger">Delete</button>
             </td>
   

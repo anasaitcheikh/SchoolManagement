@@ -24,7 +24,7 @@ export interface Teacher {
   email: string;
   password: string;
   birthDate: string;
-  speciality: string;
+  specialty: string;
 }
 
 export interface Staff {
