@@ -27,7 +27,7 @@ export class ViewClassroomsComponent implements OnInit {
     this.ClassroomSubscriber = this.ClassroomService.getClassrooms().subscribe(
       res => {
         this.classrooms = JSON.parse(JSON.stringify(res))
-        console.error("show classrooms",this.classrooms);
+        console.error('show classrooms', this.classrooms);
        },
       error => console.log(error)
     )

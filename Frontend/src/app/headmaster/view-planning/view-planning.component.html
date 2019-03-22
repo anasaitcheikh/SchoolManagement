@@ -1,3 +1,17 @@
+<div class="row">
+    <!--div class="col-md-2">
+        <label class="control-label">Class</label>
+    </div!-->
+  <div class="col-md-7">
+     <select id="select1" class="form-control" ngModel name="studentClass">
+       <option value="-1" disabled >Select class</option>
+       <option value="{{class.id}}" *ngFor="let class of classes">name: {{ class.name }}  |  level: {{ class.level }}  |  grade: {{ class.grade }}</option>
+     </select>
+  </div>
+   <div class="col-md-2">
+     <button type="submit" class="btn btn-success">Ok</button>
+   </div>
+</div>
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -114,3 +128,4 @@
   </tr>
   </tbody>
 </table>
+<p id="demo"></p>

@@ -10,6 +10,7 @@ import etu.upec.m2.model.Subject;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -54,6 +55,16 @@ public class SubjectResource {
                 .entity(subject)
                 .build();
     }
+    
+    @GET
+    public Response getAllSubject() {
+        List<Subject> subject = subjectService.getAllSubject();
+        return Response
+                .status(Response.Status.OK)
+                .entity(subject)
+                .build();
+    }
+    
     
     @PUT
     @Path("{id}")

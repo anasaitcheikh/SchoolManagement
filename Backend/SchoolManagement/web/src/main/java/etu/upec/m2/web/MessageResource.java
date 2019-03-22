@@ -8,6 +8,7 @@ package etu.upec.m2.web;
 import etu.upec.m2.IMessageService;
 import etu.upec.m2.model.Message;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -50,10 +51,29 @@ public class MessageResource {
         System.err.println("ID ===> " + httpHeaders.getRequestHeaders().getFirst("ID"));
         Long id = Long.parseLong(httpHeaders.getRequestHeaders().getFirst("ID"));
         
-        List<Message> message = messageService.getMessagesBySenderId(id);
+        List<Message> messages = messageService.getMessagesByRecipientId(id);
+        
+        if (messages == null) {
+            return Response
+                    .status(Response.Status.UNAUTHORIZED)
+                    .entity(messages)
+                    .build();
+        }
+        
+        String messageJson = "[";
+        for(Message message:messages){
+            
+            messageJson = messageJson + "{\"id\": " + message.getId()+ ",\"msg\": \""
+                + message.getMsg()+ "\",\"object\":\""
+                + message.getObject()+ "\",\"dateAndTime\": \""
+                + message.getDateAndTime().toString()+ "\",\"sender\": {\"id\" : \""
+                + message.getSender().getId()+ "\",\"email\": \""
+                + message.getSender().getEmail()+ "\" }},";
+        }
+        messageJson = messageJson.substring(0, messageJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(message)
+                .entity(messageJson)
                 .build();
     }
     
@@ -69,13 +89,28 @@ public class MessageResource {
                 .build();
     }*/
     
-    @GET
+   @GET
     @Path("{id}")
     public Response getMessage(@PathParam("id")Long id) {
         Message message = messageService.getMessageById(id);
+        
+        if (message == null) {
+            return Response
+                    .status(Response.Status.UNAUTHORIZED)
+                    .entity(message)
+                    .build();
+        }
+        
+         String messageJson ="{\"id\": " + message.getId()+ ",\"msg\": \""
+                + message.getMsg()+ "\",\"object\":\""
+                + message.getObject()+ "\",\"dateAndTime\": \""
+                + message.getDateAndTime().toString()+ "\",\"sender\": {\"id\" : \""
+                + message.getSender().getId()+ "\",\"email\": \""
+                + message.getSender().getEmail()+ "\" }}";
+         
         return Response
                 .status(Response.Status.OK)
-                .entity(message)
+                .entity(messageJson)
                 .build();
     }
     

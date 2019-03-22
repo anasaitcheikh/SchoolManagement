@@ -18,8 +18,11 @@ import { TokenInterceptor } from '../interceptors/token.interceptor';
 import { TokenService } from '../services/token.service';
 import { ClassService } from '../services/class.service';
 import {StaffService} from '../services/staff.service';
-import { ClassroomService } from '../services/classroom.service';
-import { MailService } from '../services/mail.service';
+import {ClassroomService} from '../services/classroom.service';
+import {MailService} from '../services/mail.service';
+import {SubjectService} from '../services/subject.service';
+import {TimeTableService} from '../services/time-table.service';
+import { MarkService } from '../services/mark.service';
 
 @NgModule({
   imports: [
@@ -43,6 +46,7 @@ import { MailService } from '../services/mail.service';
       HeadmasterService,
       ClassroomService,
       MailService,
+      MarkService,
       LoginService,
       {
         provide: HTTP_INTERCEPTORS,
@@ -52,7 +56,8 @@ import { MailService } from '../services/mail.service';
       TokenService,
       ClassService,
       StaffService,
-
+      SubjectService,
+      TimeTableService
     ],
   bootstrap: [AppComponent]
 })

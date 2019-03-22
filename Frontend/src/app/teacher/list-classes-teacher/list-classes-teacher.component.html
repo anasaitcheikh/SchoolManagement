@@ -1,0 +1,31 @@
+<div class="col-md-12">
+    <card cardTitle="All My Classes">
+      <form class="form-group">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>School year</th>
+              <th>Level</th>
+              <th>Grade</th>
+              <th></th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of class">
+              <td>{{ c.name }}</td>
+              <td>{{ c.schoolYear }}</td>
+              <td>{{ c.level }}</td>
+              <td>{{ c.grade }}</td>
+              <td>
+                <button (click)="student_list(c.id)" class="btn btn-success">Show Student List</button>
+              </td>
+  
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </card>
+  </div>
+  

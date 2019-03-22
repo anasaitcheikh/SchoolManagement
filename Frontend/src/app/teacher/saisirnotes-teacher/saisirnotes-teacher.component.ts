@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-saisirnotes-teacher',
   templateUrl: './saisirnotes-teacher.component.html',
@@ -12,9 +13,12 @@ export class SaisirnotesTeacherComponent implements OnInit {
   score  : string;
   subject : string;
 
-  constructor() { }
+  constructor(private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
   }
 
   changescore(){

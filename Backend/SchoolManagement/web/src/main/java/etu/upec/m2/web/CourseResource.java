@@ -75,6 +75,15 @@ public class CourseResource {
                 .build();
     }
     
+    @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
+    public Response getAllCoursesByStudentId(Long idStudent) {
+        List<Course> courses = courseService.getAllCoursesByStudentId(idStudent);
+        return Response
+                .status(Response.Status.OK)
+                .entity(courses)
+                .build();
+    }
+    
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response getAllCoursesByStatus(boolean status) {
         List<Course> courses = courseService.getAllCoursesByStatus(status);
@@ -101,6 +110,9 @@ public class CourseResource {
         else if(uriInfo.getQueryParameters().containsKey("teacherId")){
             Long teacherId = Long.parseLong(uriInfo.getQueryParameters().getFirst("teacherId"));
             return getAllCoursesByTeacherId(teacherId);
+        }else if(uriInfo.getQueryParameters().containsKey("studentId")){
+            Long studentId = Long.parseLong(uriInfo.getQueryParameters().getFirst("studentId"));
+            return getAllCoursesByStudentId(studentId);
         }if(uriInfo.getQueryParameters().containsKey("status")){
             boolean status = Boolean.valueOf(uriInfo.getQueryParameters().getFirst("status"));
             return getAllCoursesByStatus(status);
