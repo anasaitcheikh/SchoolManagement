@@ -18,6 +18,11 @@ export class ClassService {
     return this.httpClient.get<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
   }
 
+  getClassByTeacher(id_t: number) {
+    const req = this.httpClient.get<Class>(API_SERVER.BASE_URI + "/"+RESOURCE_NAME+"?teacherId=" + id_t);
+    return req;
+  }
+
   addClass(_class: Class) {
     return this.httpClient.post<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _class)
   }
