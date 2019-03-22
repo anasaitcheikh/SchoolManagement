@@ -21,6 +21,6 @@ public interface IMessageService {
     Long deleteMessage(Long id);
     Long UpdateMessage(Long id, Message newMessage);
     List<Message> getMessagesBySenderIdOrRecipientId(Long senderId);
-    List<Message> getMessagesBySenderId(Long senderId);
+    List<Message> getMessagesByRecipientId(Long senderId);
     Message getMessageById(Long id);
 }
