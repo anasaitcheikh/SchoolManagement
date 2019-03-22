@@ -9,7 +9,7 @@ export class StudentService {
   constructor(private  httpClient: HttpClient) { }
 
   addStudent(_student: Student) {
-    console.log('in service add student', _student);
+    console.log('in service add student');
     console.log(API_SERVER.BASE_URI, '/', RESOURCE_NAME)
     return this.httpClient.post<Student>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _student);
 

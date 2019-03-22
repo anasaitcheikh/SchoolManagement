@@ -6,6 +6,7 @@
 package etu.upec.m2.web;
 
 import etu.upec.m2.ITeacherService;
+import etu.upec.m2.model.Student;
 import etu.upec.m2.model.Teacher;
 import java.util.List;
 import etu.upec.m2.model.UserStatus;
@@ -67,6 +68,17 @@ public class TeacherResource {
                 .entity(teacher)
                 .build();
     }
+    
+    @GET
+    @Path("all/{id}")
+    public Response getAllTeachersByClassId(@PathParam("id")Long id) {
+        List<Teacher> teachers = teacherService.getAllTeachersByClassId(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(teachers)
+                .build();
+    }
+    
     
     @PUT
     @Path("{id}")

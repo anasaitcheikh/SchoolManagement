@@ -23,6 +23,7 @@ export class PagesTopComponent implements OnInit {
     this.firstname = this.user.firstname;
     this.lastname = this.user.lastname;
     this.status = this.user.status;
+    
   }
 
   ngOnInit() {

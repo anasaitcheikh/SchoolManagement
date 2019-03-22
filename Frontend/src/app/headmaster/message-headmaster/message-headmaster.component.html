@@ -2,8 +2,8 @@
   <div class="col-md-6">
     <card cardTitle="Send message">
       <form (submit)="send()" class="form-group">
-        <label class="control-label">Receiver's Email</label>
-        <input name="email" [(ngModel)]="email" type="email" class="form-control" placeholder="example@example.com">
+        <label class="control-label">Receiver</label>
+        <input name="recipient" [(ngModel)]="recipient" type="text" class="form-control" placeholder="example@example.com">
         <br><br>
         <label class="control-label">Object</label>
         <input name="object" [(ngModel)]="object" type="text" class="form-control" placeholder="Object">
@@ -27,9 +27,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let msg of messages">
-            <td>{{msg.sender.}}</td>
-            <td>{{msg.object}}</td>
+       <!--   <tr *ngFor="let msg of messages">
+            <td>{{msg.sender.id}}</td>
+            <td>{{msg.object}}</td> -->
+
+            <tr >
+              <td></td>
+              <td></td>
+
             <td><button type="button" (click)="show(1)" class="btn btn-xs btn-info">SHOW</button></td>
           </tr>
           </tbody>
