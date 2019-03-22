@@ -101,6 +101,9 @@ INSERT INTO `Staff`(`id`, `firstname`, `lastname`, `role`, `salary`) VALUES (12,
 
 INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (1, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 1', 'Lorem Ipsum 1', 1, 2);
 INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (2, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 2', 'Lorem Ipsum 2', 3, 2);
-INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (3, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 3', 'Lorem Ipsum 3', 1, 3);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (3, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 3', 'Lorem Ipsum 3', 1, 7);
 INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (4, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 4', 'Lorem Ipsum 4', 1, 2);
-INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (5, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 5', 'Lorem Ipsum 5', 6, 2);
+INSERT INTO `Message` (`id`, `dateAndTime`, `msg`, `object`, `id_recipient`, `id_sender`) VALUES (5, '2019-03-21 00:00:00', 'Lorem Ipsum Sit 5', 'Lorem Ipsum 5', 7, 2);
+
+/**************************************** COURSE CREATION ****************************************/
+INSERT INTO `course` (`id`, `date`, `status`, `time`, `id_class`, `id_classroom`, `id_subject`, `id_teacher`) VALUES ('1', '2019-03-08', b'00000', '14:00:00', '1', '2', '1', '7'), ('2', '2019-03-05', b'0000', '13:00:00', '4', '9', '1', '7');
