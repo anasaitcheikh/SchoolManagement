@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.IUserService;
 import etu.upec.m2.model.User;
+import etu.upec.m2.web.annotations.JwtTokenRequired;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Response;
  * @author hadji
  */
 @Path("user")
+@JwtTokenRequired
 public class UserResource {
 
     @EJB
