@@ -69,9 +69,24 @@ public class CourseResource {
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
     public Response getAllCoursesByTeacherId(Long idTeacher) {
         List<Course> courses = courseService.getAllCoursesByTeacherId(idTeacher);
+        
+        String responseJson = "[";
+        for(Course course:courses){
+            
+             responseJson =  responseJson + "{\"id\": " 
+                + course.getId()+ ",\"time\": \""
+                + course.getTime()+ "\",\"status\": \""
+                + course.isStatus()+ "\",\"date\": \""
+                + course.getDate().toString()+ "\",\"class\": {\"name\" : \""
+                + course.getClasse().getName()+ "\" }"+",\"classroom\": {\"floorNumber\" : "
+                + course.getClassroom().getFloorNumber() + " }"+",\"subject\": {\"name\" : \""
+                + course.getSubject().getName()+"\" }"+"},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(courses)
+                .entity(responseJson)
                 .build();
     }
     
