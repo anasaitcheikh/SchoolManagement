@@ -2,24 +2,20 @@
   <div class="col-md-8">
     <div class="row card card-block">
       <div class="col-md-6 form-group">
-        <label class="control-label">First name</label>
-        <input type="text" class="form-control" value="anas"  disabled>
+        <label class="control-label">First name :</label>
+        <input type="text" class="form-control"  name="firstName" [(ngModel)]="firstName" disabled>
+      </div>
+      <div class="col-md-5 form-group">
+        <label class="control-label">Last name :</label>
+        <input type="text" class="form-control"  name="lastName" [(ngModel)]="lastName" disabled>
+      </div>
+      <div class="col-md-4 form-group">
+        <label class="control-label">Birthdate :</label>
+        <input type="text" class="form-control"  name="date" [(ngModel)]="bDate" disabled>
       </div>
       <div class="col-md-6 form-group">
-        <label class="control-label">Last name</label>
-        <input type="text" class="form-control" value="anas"  disabled>
-      </div>
-      <div class="col-md-4 form-group">
-        <label class="control-label">Date of Birth</label>
-        <input type="text" class="form-control" value="01/02/1993"  disabled>
-      </div>
-      <div class="col-md-4 form-group">
-        <label class="control-label">Student ID</label>
-        <input type="text" class="form-control" value="254435"  disabled>
-      </div>
-      <div class="col-md-12 form-group">
-        <label class="control-label">E-mail</label>
-        <input type="text" class="form-control" value="anas@anas.com"  disabled>
+        <label class="control-label">E-mail :</label>
+        <input type="email" class="form-control"  name="email" [(ngModel)]="email" disabled>
       </div>
       
     </div>

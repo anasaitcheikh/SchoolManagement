@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import {ListStudentTeacherComponent} from './list-student-teacher.component';
+import {ListClassesTeacherComponent} from './list-classes-teacher.component';
 
 
 const childRoutes: Routes = [
   {
     path: '',
-    component: ListStudentTeacherComponent
+    component: ListClassesTeacherComponent
   }
 ];
 
