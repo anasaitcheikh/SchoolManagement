@@ -20,6 +20,6 @@ public interface IMarkService {
     Long createMark(Mark mark);
     Long deleteMark(Long id);
     Long updateMark(Long id, Mark newMark);
-    List<Object[]> getAllMarkByIdStudent(Long idStudent);
+    List<Mark> getAllMarkByIdStudent(Long idStudent);
     List<Object[]> getAllMarkBySubjectIdAndClassId(Long subjectId, Long classId);
 }
