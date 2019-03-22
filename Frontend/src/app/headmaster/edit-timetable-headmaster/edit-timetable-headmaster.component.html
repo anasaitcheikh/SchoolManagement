@@ -1,56 +1,51 @@
 <div class="col-md-12">
-    <card cardTitle="Edit Timetable">
-      <form class="form-group" #f = "ngForm">
-        <label class="control-label">Day</label>
-        <select name="select" id="select1" class="form-control" ngModel name="day">
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="option4">Thursday</option>
-          <option value="Thursday">Friday</option>
-          <option value="Saturday">Saturday</option>
-          <option value="Sunday">Sunday</option>
-        </select>
-        <br>
-  
-        <label class="control-label">From To</label>
-        <select name="select" id="select1" class="form-control" ngModel name="fromTo">
-          <option value="8h-9h">8h-9h</option>
-          <option value="9h-10h">9h-10h</option>
-          <option value="10h-11h">10h-11h</option>
-          <option value="11h-12h">11h-12h</option>
-          <option value="12h-13h">12h-13h</option>
-          <option value="13h-14h">13h-14h</option>
-          <option value="14h-15h">14h-15h</option>
-          <option value="15h-16h">15h-16h</option>
-          <option value="16h-17h">16h-17h</option>
-          <option value="17h-18h">17h-18h</option>
-        </select>
-        <br>
-  
-        <label class="control-label">Subject</label>
-        <select name="select" id="select1" class="form-control" ngModel name="subject">
-          <option value="option1">option1</option>
-          <option value="option2">option2</option>
-          <option value="option3">option3</option>
-          <option value="option4">option4</option>
-        </select>
-        <br>
-  
-        <label class="control-label">Classroom</label>
-        <select name="select" id="select1" class="form-control" ngModel name="classRoom">
-          <option value="option1">option1</option>
-          <option value="option2">option2</option>
-          <option value="option3">option3</option>
-          <option value="option4">option4</option>
-        </select>
-        <br><br>
-        <div class="col-md-2">
+  <card cardTitle="Create course">
+    <form class="form-group" #f = "ngForm">
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <label class="control-label">Date</label>
+      <input type="text" class="form-control" ngModel name="date">
+      <label class="control-label">Time</label>
+      <input type="text" class="form-control" ngModel name="time">
+
+      <label class="control-label">Teacher</label>
+      <select name="select" id="selectTeacher" class="form-control" ngModel name="teacher">
+        <option value="{{teacher.id}}" *ngFor="let teacher of teachers">{{teacher.firstname}}  {{teacher.lastname}}</option>
+      </select>
+      <br>
+
+      <label class="control-label">Classroom</label>
+      <select name="select" id="selectClassroom" class="form-control" ngModel name="teacher">
+        <option value="{{classroom.id}}" *ngFor="let classroom of classrooms">Capacity : {{classroom.capacity}} | floor number{{classroom.floorNumber}} | room number{{classroom.roomNumber}}</option>
+      </select>
+      <br>
+
+
+      <label class="control-label">Class</label>
+      <select name="select" id="selectClass" class="form-control" ngModel name="teacher">
+        <option value="{{class.id}}" *ngFor="let class of classes">name: {{ class.name }}  |  level: {{ class.level }}  |  grade: {{ class.grade }}</option>
+      </select>
+      <br>
+
+      <label class="control-label">Subject</label>
+      <select name="select" id="selectSubject" class="form-control" ngModel name="teacher">
+        <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.name}}</option>
+      </select>
+      <br>
+
+
+      <br><br>
+      <div class="col-md-2">
         <button  class="btn btn-lg btn-success" (click)="createTimeTable(f.value)">Create</button>
       </div>
       <div class="col-md-5">
         <button class="btn btn-lg btn-primary" (click)="modifyTimeTable(f.value)">Modify</button>
       </div>
-      </form>
-    </card>
-  </div>
+    </form>
+  </card>
+</div>
