@@ -7,26 +7,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  sendMessage(em : string, rec : string, obj : string, msg : string){
-    const req = this.http.post(API_SERVER.BASE_URI + "XXX", {
-      message: {
-        id_sender: em,
-        id_recipient: rec,
-        object : obj,
-        msg : msg
-      }
-    })
-    return req;
+  reset_password(old, new_p,id_u){
+    return this.http.post(API_SERVER.BASE_URI + "/user",
+      {
+        id : id_u,
+        password : new_p,
+        oldPassword : old
+      });
   }
 
-  saisirnotes(firstname  : string, lastname : string, score  : string, subject : string) {
-    return this.http.post(API_SERVER.BASE_URI + "xxx",
-      {
-        firstname  : firstname,
-        lastname : lastname,
-        mark  : score,
-        subject : subject
-      })
-  }
 
 }
