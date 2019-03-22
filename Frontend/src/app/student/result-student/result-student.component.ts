@@ -1,4 +1,8 @@
+import { Observable, Subscription } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
+import { MarkService } from '../../../services/mark.service';
 
 @Component({
   selector: 'app-result-student',
@@ -7,14 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultStudentComponent implements OnInit {
   default_data: Array<any>;
-  constructor() { }
+  user;
+  mark_list;
+  Subscriber : Subscription;
+  constructor( private MarkService: MarkService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if(! this.LoginService.is_loggedin()){
+      this.router.navigate(['login'])
+    }
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.get_marks();
+/*
     this.default_data = [
       { Subject: 'Math', Grade: '10' },
       { Subject: 'SVT', Grade: '11'},
       { Subject: 'Physic', Grade: '13' },
   ];
+  */
+  }
+
+  get_marks(){
+    this.Subscriber = this.MarkService.getMark(this.user.id).subscribe(
+      sen => { console.log(sen);
+      this.mark_list= JSON.parse(JSON.stringify(sen));
+      },
+      error => console.log(error)
+    );
   }
 
 }

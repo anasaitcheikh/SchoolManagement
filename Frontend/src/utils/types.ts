@@ -51,6 +51,16 @@ export interface  Classroom {
   roomNumber: number;
 }
 
+export interface Course {
+  date: string,
+  time?: string,
+  status: boolean,
+  classe: { id: number},
+  classroom: {id: number},
+  subject: {id: number},
+  teacher: {id: number}
+}
+
 export interface  Subject {
   id?: number;
   name: String;

@@ -12,8 +12,12 @@ export class TeacherService {
   constructor(private httpClient: HttpClient) { }
 
   addTeacher(teacher: Teacher) {
-    return this.httpClient.post<Teacher>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, teacher)
-  }  
+    return this.httpClient.post<Teacher>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, teacher);
+  }
+
+  getTeachers() {
+    return this.httpClient.get<Teacher[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`);
+  }
 
   editTimeTable(table) {
     console.log('in add time table');
@@ -25,6 +29,6 @@ export class TeacherService {
       })
     return req;
   }
-  
+
 
 }

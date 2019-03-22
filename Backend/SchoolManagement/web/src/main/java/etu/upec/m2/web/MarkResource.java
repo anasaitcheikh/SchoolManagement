@@ -83,10 +83,19 @@ public class MarkResource {
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
     @Owner
     private Response getAllMarkByStudentId(Long idStudent) {
-        List<Object[]> marks = markService.getAllMarkByIdStudent(idStudent);
-        return Response 
+        List<Mark> marks = markService.getAllMarkByIdStudent(idStudent);
+        
+        String responseJson = "[";
+        for(Mark mark:marks){
+            
+             responseJson =  responseJson + "{\"id\": " + mark.getId()+ ",\"mark\": \""
+                + mark.getMark()+ "\",\"subject\": {\"name\" : \""
+                + mark.getSubject().getName()+ "\" }},";
+        }
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
+        return Response
                 .status(Response.Status.OK)
-                .entity(marks)
+                .entity(responseJson)
                 .build();
     }
     

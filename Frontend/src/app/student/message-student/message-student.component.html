@@ -1,47 +1,48 @@
 <div class="row">
-  <div class="col-md-6">
-    <card cardTitle="Send message">
-      <form class="form-group" (submit)="send()">
-        <label class="control-label">Receiver's Email</label>
-        <input name="email" [(ngModel)]="email" type="email" class="form-control" placeholder="example@example.com">
-        <br><br>
-        <label class="control-label">Object</label>
-        <input name="object" [(ngModel)]="object" type="text" class="form-control" placeholder="Object">
-        <br><br>
-        <label class="control-label">Message</label>
-        <textarea name="msg" [(ngModel)]="msg" class="form-control" placeholder="Enter here the message"></textarea>
-        <br><br>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </form>
-    </card>
-  </div>
-  <div class="col-md-6">
-    <card cardTitle="Your messages">
-      <form class="form-group">
-        <table class="table table-hover">
-          <thead>
+    <div class="col-md-6">
+      <card cardTitle="Send message">
+        <form (submit)="send()" class="form-group">
+          <label class="control-label">To</label>
+          <input name="recipient" [(ngModel)]="recipient" type="text" class="form-control" placeholder="example@example.com">
+          <br><br>
+          <label class="control-label">Object</label>
+          <input name="object" [(ngModel)]="object" type="text" class="form-control" placeholder="Object">
+          <br><br>
+          <label class="control-label">Message</label>
+          <textarea name="msg" [(ngModel)]="msg" class="form-control" placeholder="Enter here the message"></textarea>
+          <br><br>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </card>
+    </div>
+    <div class="col-md-6">
+      <card cardTitle="Inbox">
+        <form class="form-group">
+          <table class="table table-hover">
+            <thead>
             <tr>
-              <th>#</th>
+              <th>Date</th>
               <th>Sender</th>
               <th>Object</th>
-              <th></th>
+              <th>Body</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of default_data;let index = index">
-              <td>{{index}}</td>
-              <td>{{item.sender}}</td>
-              <td>{{item.object}}</td>
-              <td><button class="btn btn-xs btn-info">SHOW</button></td>
+            </thead>
+            <tbody>
+            <tr *ngFor="let msg of messages">
+                <td>{{msg.dateAndTime}}</td>
+              <td>{{msg.sender.email}}</td>
+              <td>{{msg.object}}</td> 
+              <td><button type="button" (click)="show(msg.msg)" class="btn btn-xs btn-info">SHOW</button></td>
             </tr>
-          </tbody>
-        </table>
-        <br><br>
-        <label class="control-label">Message</label>
-        <textarea class="form-control" placeholder="" disabled></textarea>
-        <br><br>
-       <!-- <button type="submit" class="btn btn-primary">Send</button>-->
-      </form>
-    </card>
+            </tbody>
+          </table>
+          <br><br>
+          <label class="control-label">Message</label>
+          <textarea class="form-control" placeholder="" disabled> {{contenu}}</textarea>
+          <br><br>
+          <!-- <button type="submit" class="btn btn-primary">Send</button>-->
+        </form>
+      </card>
+    </div>
   </div>
-</div>
+  

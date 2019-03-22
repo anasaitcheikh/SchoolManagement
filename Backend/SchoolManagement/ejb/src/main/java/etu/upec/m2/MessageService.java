@@ -61,10 +61,10 @@ public class MessageService implements IMessageService {
     }
     
     @Override
-    public List<Message> getMessagesBySenderId(Long senderId) {
+    public List<Message> getMessagesByRecipientId(Long recipientId) {
         try{
-            TypedQuery<Message> query =  em.createNamedQuery("findMessageBySenderId", Message.class);
-            query.setParameter("senderId", senderId);
+            TypedQuery<Message> query =  em.createNamedQuery("findMessageByRecipientId", Message.class);
+            query.setParameter("recipientId", recipientId);
             return query.getResultList();
         }catch(NoResultException e){
             return new ArrayList<>();
