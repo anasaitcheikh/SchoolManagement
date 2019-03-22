@@ -47,7 +47,6 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public Long deleteTeacher(Long id) {
-        //teacher id a null dans sms et dans courses
         
         List<Message> messages=messageService.getMessagesBySenderIdOrRecipientId(id);
         for (Message message : messages){
@@ -73,16 +72,18 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public Long updateTeacher(Long id, Teacher newTeacher) {
+        System.out.println("id bis->"+id);
         Teacher teacher = getTeacherById(id);
         if(teacher == null) {
             return new Long(0);
         }
-        
+        System.out.println("debut maj");
         teacher.setBirthDate(newTeacher.getBirthDate());
         teacher.setEmail(newTeacher.getEmail());
         teacher.setFirstname(newTeacher.getFirstname());
         teacher.setLastname(newTeacher.getLastname());
         teacher.setSpecialty(newTeacher.getSpecialty());
+        System.out.println("fin maj");
         em.merge(teacher);
         return id;
     }

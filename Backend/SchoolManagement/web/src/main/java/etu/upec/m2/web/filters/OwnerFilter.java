@@ -22,17 +22,18 @@ import javax.ws.rs.ext.Provider;
  * @author hadji
  */
 @Provider
-@Priority(Priorities.ENTITY_CODER)
+@Priority(Priorities.HEADER_DECORATOR)
 @Owner
 public class OwnerFilter implements ContainerResponseFilter {
 
    @Override
    public void filter(final ContainerRequestContext requestContext,
                       final ContainerResponseContext cres) throws IOException {
-       int currentUserId = (int) requestContext.getProperty("ID");
+       System.out.println("etu.upec.m2.web.filters.OwnerFilter.filter()"+requestContext.getProperty("ID"));
+       int currentUserId = Integer.parseInt((String) requestContext.getProperty("ID"));
        UserStatus currentUserStatus = UserStatus.valueOf((String) requestContext.getProperty("ROLE"));
        MultivaluedMap<String, String> queryParams = requestContext.getUriInfo().getPathParameters();
-       int pathUserId = Integer.parseInt(queryParams.getFirst("id"));
+       int pathUserId = Integer.parseInt((String)queryParams.getFirst("id"));
        
        
        if(currentUserId != pathUserId && currentUserStatus != UserStatus.HEADMASTER){

@@ -85,7 +85,9 @@ public class TeacherResource {
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
     @Owner
     public Response updateTeacher(@PathParam("id")Long id,Teacher teacher) {
+        System.out.println("id->"+id);
         Long result_id=teacherService.updateTeacher(id, teacher);
+        System.out.println("return response "+result_id);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)
