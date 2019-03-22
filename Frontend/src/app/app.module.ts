@@ -19,6 +19,7 @@ import { TokenService } from '../services/token.service';
 import { ClassService } from '../services/class.service';
 import {StaffService} from '../services/staff.service';
 import { ClassroomService } from '../services/classroom.service';
+import { MailService } from '../services/mail.service';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { ClassroomService } from '../services/classroom.service';
       TeacherService,
       HeadmasterService,
       ClassroomService,
+      MailService,
       LoginService,
       {
         provide: HTTP_INTERCEPTORS,
