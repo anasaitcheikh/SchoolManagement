@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <card cardTitle="Send message">
       <form (submit)="send()" class="form-group">
-        <label class="control-label">Receiver</label>
+        <label class="control-label">To</label>
         <input name="recipient" [(ngModel)]="recipient" type="text" class="form-control" placeholder="example@example.com">
         <br><br>
         <label class="control-label">Object</label>
@@ -16,26 +16,23 @@
     </card>
   </div>
   <div class="col-md-6">
-    <card cardTitle="Your messages">
+    <card cardTitle="Inbox">
       <form class="form-group">
         <table class="table table-hover">
           <thead>
           <tr>
+            <th>Date</th>
             <th>Sender</th>
             <th>Object</th>
-            <th></th>
+            <th>Body</th>
           </tr>
           </thead>
           <tbody>
-       <!--   <tr *ngFor="let msg of messages">
-            <td>{{msg.sender.id}}</td>
-            <td>{{msg.object}}</td> -->
-
-            <tr >
-              <td></td>
-              <td></td>
-
-            <td><button type="button" (click)="show(1)" class="btn btn-xs btn-info">SHOW</button></td>
+          <tr *ngFor="let msg of messages">
+              <td>{{msg.dateAndTime}}</td>
+            <td>{{msg.recipient.email}}</td>
+            <td>{{msg.object}}</td> 
+            <td><button type="button" (click)="show(msg.msg)" class="btn btn-xs btn-info">SHOW</button></td>
           </tr>
           </tbody>
         </table>

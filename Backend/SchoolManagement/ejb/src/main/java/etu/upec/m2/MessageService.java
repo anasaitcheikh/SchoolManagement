@@ -81,5 +81,22 @@ public class MessageService implements IMessageService {
             return null;
         }
     }
+
+    @Override
+    public Long UpdateMessage(Long id, Message newMessage) {
+        Message message=getMessageById(id);
+        if(message == null) {
+            return new Long(0);
+        }
+          
+        message.setDateAndTime(newMessage.getDateAndTime());
+        message.setMsg(newMessage.getMsg());
+        message.setObject(newMessage.getObject());
+        message.setRecipient(newMessage.getRecipient());
+        message.setSender(newMessage.getSender());
+        
+        em.merge(message);
+        return id;
+    }
     
 }

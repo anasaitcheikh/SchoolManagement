@@ -12,25 +12,25 @@ import { Router } from '@angular/router'
 export class ViewClassroomsComponent implements OnInit {
   private ClassroomSubscriber: Subscription
   resJson : any
-  Croom : Classroom
+  classrooms : Classroom[];
   constructor(private ClassroomService: ClassroomService,private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     if(! this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
-      console.log('show classroom');
-      this.ClassroomSubscriber = this.ClassroomService.getClassrooms().subscribe(
-        res => {
-          this.resJson = JSON.parse(JSON.stringify(res))
-          this.Croom.roomNumber = this.resJson.roomNumber;
-          this.Croom.floorNumber = this.resJson.floorNumber;
-          this.Croom.capacity = this.resJson.capacity;
+     this.allclassrooms();
+  }
 
-          console.log(this.resJson)
-        },
-        error => console.log(error)
-      )
+  allclassrooms(){
+    console.log('show classroom');
+    this.ClassroomSubscriber = this.ClassroomService.getClassrooms().subscribe(
+      res => {
+        this.classrooms = JSON.parse(JSON.stringify(res))
+        console.error("show classrooms",this.classrooms);
+       },
+      error => console.log(error)
+    )
   }
 
 

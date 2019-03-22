@@ -19,6 +19,7 @@ public interface IMessageService {
     //dans les paramètres tu peux ajouter la class qui fais l'appel pour gérer les droit d'accès 
     Long createMessage(Message message);
     Long deleteMessage(Long id);
+    Long UpdateMessage(Long id, Message newMessage);
     List<Message> getMessagesBySenderIdOrRecipientId(Long senderId);
     List<Message> getMessagesBySenderId(Long senderId);
     Message getMessageById(Long id);

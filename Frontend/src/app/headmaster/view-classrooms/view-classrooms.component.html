@@ -1,40 +1,26 @@
-<table class="table table-bordered">
-  <thead>
-  <tr>
-    <th>Room Number</th>
-    <th>Floor Number</th>
-    <th>Capacity</th>
+<div class="col-md-12">
+  <card cardTitle="All Classrooms">
+    <form class="form-group">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Room Number</th>
+            <th>Floor Number</th>
+            <th>Capacity</th>
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td></td>
+          </tr>
+        </thead>
+        <tbody>
 
-
-
-  </tr>
-  <tr>
-    <td>Cheikh</td>
-    <td>Anas Ait</td>
-    <td></td>
-
-
-  </tr>
-  <tr>
-    <td>Doumbia</td>
-    <td>Doussou</td>
-    <td></td>
-
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-
-  </tr>
-
-  </tbody>
-</table>
+          <tr *ngFor="let cr of classrooms">
+            <td>{{ cr.roomNumber }}</td>
+            <td>{{ cr.floorNumber }}</td>
+            <td>{{ cr.capacity }}</td>
+            <td>
+              <button (click)="reserve(cr.id)" class="btn btn-success">Reserve</button>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </card>
+</div>
