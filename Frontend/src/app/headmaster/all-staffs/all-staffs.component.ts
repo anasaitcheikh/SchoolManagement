@@ -11,8 +11,8 @@ import { Router } from '@angular/router'
 })
 export class AllStaffsComponent implements OnInit {
   private _allStaffsSubscriber: Subscription;
-  Json
-  staff : Staff 
+  Json;
+  staff : Staff[];
 
   constructor(private staffService: StaffService, private LoginService: LoginService, private router: Router) { }
 
@@ -34,10 +34,7 @@ export class AllStaffsComponent implements OnInit {
     this._allStaffsSubscriber = this.staffService.getStaffs().subscribe(
       res => {
         this.Json =JSON.parse(JSON.stringify(res));
-        this.staff.firstname =this.Json.firstname;
-        this.staff.lastname = this.Json.lastname;
-        this.staff.role = this.Json.role;
-        this.staff.salary = this.Json.salary;
+        this.staff=this.Json;
       },
       error => console.log(error)
    )
