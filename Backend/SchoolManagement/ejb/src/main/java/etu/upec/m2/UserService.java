@@ -51,6 +51,7 @@ public class UserService implements IUserService{
         if(user == null) {
             return new Long(0);
         }
+        
         user.setBirthDate(newUser.getBirthDate());
         user.setEmail(newUser.getEmail());
         user.setFirstname(newUser.getFirstname());
@@ -102,7 +103,7 @@ public class UserService implements IUserService{
         }
         
         if(user == null) {
-            return new Long(0);
+            return -1L;
         }
         
         user.setPassword(newPassword);

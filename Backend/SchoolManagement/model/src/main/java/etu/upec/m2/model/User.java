@@ -24,13 +24,16 @@ import javax.persistence.*;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     protected Long id;
         
     @Enumerated(EnumType.STRING)
     protected UserStatus status;
     
-    protected String email, password, lastname, firstname;
+    protected String email, password,  lastname, firstname;
+    
+    @Transient
+    protected String oldPassword;
     
     @Temporal(TemporalType.DATE)
     protected Date birthDate; 
@@ -92,5 +95,13 @@ public class User implements Serializable {
 
     public void setStatus(UserStatus status) {
         this.status = status;
+    }
+    
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 }
