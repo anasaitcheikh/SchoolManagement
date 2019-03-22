@@ -4,17 +4,16 @@
       <thead>
         <tr>
           <th>Subject</th>
-          <th>Grade</th>
+          <th>Mark</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of default_data;let index = index">
-          <td>{{item.Subject}}</td>
-          <td>{{item.Grade}}</td>
+        <tr *ngFor="let m of mark_list">
+          <td>{{m.subject.name}}</td>
+          <td>{{m.mark}}</td>
         </tr>
       </tbody>
     </table>
 <br> <br>
-<label>Total : 16</label>
 
 </card>

@@ -25,5 +25,6 @@ public interface ICourseService {
     List<Course> getAllCoursesByClassId(Long idClass);
     
     List<Course> getAllCoursesByTeacherId(Long idTeacher);
+    List<Course> getAllCoursesByStudentId(Long idStudent);
     List<Course> getAllCoursesByStatus(boolean status);
 }

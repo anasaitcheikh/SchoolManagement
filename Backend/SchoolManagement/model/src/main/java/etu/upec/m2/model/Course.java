@@ -32,6 +32,9 @@ import javax.persistence.*;
                                                             "   LEFT JOIN Teacher t ON t.id=co.teacher.id " +
                                                             "   WHERE t.id = :id_teacher "),
     @NamedQuery(name = "findAllCoursesByStatus", query = "SELECT c FROM Course c WHERE c.status = :status "),
+    @NamedQuery(name = "findAllCoursesByStudentId", query = "SELECT co FROM Course co " +
+                                                            "   LEFT JOIN Student s ON s.studentClass.id=co.classe.id " +
+                                                            "   WHERE s.id = :id_student "),
 })
 public class Course implements Serializable {
     @Id
