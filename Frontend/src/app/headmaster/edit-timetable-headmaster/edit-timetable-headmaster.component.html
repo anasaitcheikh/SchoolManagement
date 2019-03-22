@@ -2,17 +2,18 @@
   <card cardTitle="Create course">
     <form class="form-group" #f = "ngForm">
 
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <!--mat-form-field class="large">
+        <input class="form-control" matInput [matDatepicker]="picker" placeholder="Date" name="date{{date.key}}" required="" [(ngModel)]="date.value.date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field!-->
 
       <label class="control-label">Date</label>
       <input type="text" class="form-control" ngModel name="date">
-      <label class="control-label">Time</label>
-      <input type="text" class="form-control" ngModel name="time">
-
+      <!--label class="control-label">Time</label>
+      <input type="text" class="form-control" ngModel name="time"!-->
+      <!--input type="number" class="form-control" ngModel name="time">
+      <input type="number" class="form-control" ngModel name="time"!-->
       <label class="control-label">Teacher</label>
       <select name="select" id="selectTeacher" class="form-control" ngModel name="teacher">
         <option value="{{teacher.id}}" *ngFor="let teacher of teachers">{{teacher.firstname}}  {{teacher.lastname}}</option>
@@ -20,24 +21,30 @@
       <br>
 
       <label class="control-label">Classroom</label>
-      <select name="select" id="selectClassroom" class="form-control" ngModel name="teacher">
+      <select name="select" id="selectClassroom" class="form-control" ngModel name="classroom">
         <option value="{{classroom.id}}" *ngFor="let classroom of classrooms">Capacity : {{classroom.capacity}} | floor number{{classroom.floorNumber}} | room number{{classroom.roomNumber}}</option>
       </select>
       <br>
 
 
       <label class="control-label">Class</label>
-      <select name="select" id="selectClass" class="form-control" ngModel name="teacher">
+      <select name="select" id="selectClass" class="form-control" ngModel name="classe">
         <option value="{{class.id}}" *ngFor="let class of classes">name: {{ class.name }}  |  level: {{ class.level }}  |  grade: {{ class.grade }}</option>
       </select>
       <br>
 
       <label class="control-label">Subject</label>
-      <select name="select" id="selectSubject" class="form-control" ngModel name="teacher">
+      <select name="select" id="selectSubject" class="form-control" ngModel name="subject">
         <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.name}}</option>
       </select>
       <br>
 
+      <label class="control-label">Status</label>
+      <select name="select" id="selectStatus" class="form-control" ngModel name="status">
+        <option value="false">False</option>
+        <option value="true">True</option>
+      </select>
+      <br>
 
       <br><br>
       <div class="col-md-2">

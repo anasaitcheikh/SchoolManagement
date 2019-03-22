@@ -20,11 +20,16 @@ import { ClassService } from '../services/class.service';
 import {StaffService} from '../services/staff.service';
 import { ClassroomService } from '../services/classroom.service';
 import { MailService } from '../services/mail.service';
-
+import {SubjectService} from '../services/subject.service';
+import {TimeTableService} from '../services/time-table.service';
+//import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+  //  MaterialModule,
+   // MdDatepickerModule,
+   // MdNativeDateModule,
     FormsModule,
     LoginModule,
     StudentModule,
@@ -52,7 +57,8 @@ import { MailService } from '../services/mail.service';
       TokenService,
       ClassService,
       StaffService,
-
+      SubjectService,
+      TimeTableService
     ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ClassroomService} from '../../../services/classroom.service';
 import {SubjectService} from '../../../services/subject.service';
+import {TimeTableService} from '../../../services/time-table.service';
 import {Subscription} from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import {Teacher, Class, Classroom, Subject} from '../../../utils/types';
@@ -26,6 +27,7 @@ export class EditTimetableHeadmasterComponent implements OnInit {
               private classService: ClassService,
               private subjectService: SubjectService,
               private teacherService: TeacherService,
+              private timeTableService: TimeTableService,
               private router: Router) { }
 
   ngOnInit() {
@@ -39,7 +41,30 @@ export class EditTimetableHeadmasterComponent implements OnInit {
   }
 
   createTimeTable(course){
-    console.log('click on create time table');
+    console.log('click on create time table', course);
+    let teacher, classe, classroom, subject;
+    teacher = {
+      id : course.teacher
+    };
+    classe = {
+      id : course.classe
+    };
+    classroom = {
+      id : course.classroom
+    };
+    subject = {
+      id : course.subject
+    }
+    course.teacher = teacher;
+    course.classe = classe;
+    course.subject = subject;
+    course.classroom = classroom;
+
+    console.log('course structured ', course);
+    this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
+      newCourse => console.log('add course successfull', newCourse),
+      error => console.log(error)
+    );
 
   }
 
