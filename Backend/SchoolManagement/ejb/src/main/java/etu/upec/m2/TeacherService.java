@@ -108,4 +108,16 @@ public class TeacherService implements ITeacherService {
             return null;
         }    
     }
+
+    @Override
+    public List<Teacher> getAllTeachersByClassId(Long id) {
+               try{
+           TypedQuery<Teacher> query =  em.createNamedQuery("findAllTeachersByClassId", Teacher.class);
+           query.setParameter("id_class", id);
+           
+           return query.getResultList();
+        }catch(NoResultException e){
+            return null;
+        } 
+    }
 }
