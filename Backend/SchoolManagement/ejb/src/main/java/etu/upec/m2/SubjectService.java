@@ -60,7 +60,9 @@ public class SubjectService implements ISubjectService {
 
     @Override
     public List<Subject> getAllSubject() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Subject> teachers = em.createNamedQuery("findAllSubject", Subject.class)
+            .getResultList();
+        return teachers;
     }
 
     @Override
