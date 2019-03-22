@@ -31,10 +31,10 @@ export class AddStudentComponent implements OnInit, OnDestroy {
 
 
   addStudent(student) {
-    console.log('click on add staff');
-    console.log('staff', student);
+    console.log('click on add student');
+    console.log('student', student);
     this._addStudentSubscriber = this.studentService.addStudent(student).subscribe(
-      newStudent => console.log(newStudent),
+      newStudent => console.log('add student successfull', newStudent),
       error => console.log(error)
     );
   }
