@@ -10,9 +10,9 @@ import { MarkService } from '../../../services/mark.service';
   styleUrls: ['./result-student.component.scss']
 })
 export class ResultStudentComponent implements OnInit {
-  default_data: Array<any>;
   user;
   mark_list;
+
   Subscriber : Subscription;
   constructor( private MarkService: MarkService, private LoginService: LoginService, private router: Router) { }
 
@@ -32,7 +32,7 @@ export class ResultStudentComponent implements OnInit {
   }
 
   get_marks(){
-    this.Subscriber = this.MarkService.getMark(this.user.id).subscribe(
+    this.Subscriber = this.MarkService.getMarkByStudent(this.user.id).subscribe(
       sen => { console.log(sen);
       this.mark_list= JSON.parse(JSON.stringify(sen));
       },
