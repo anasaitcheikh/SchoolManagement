@@ -10,4 +10,9 @@ export class TimeTableService {
   addCourse(course: Course) {
     return this.httpClient.post<Course>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, course);
   }
+
+   getCoursesByClassId(_idClass: number) {
+      return this.httpClient.get<Course[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?classId=' + _idClass);
+  }
 }
+//course?classId=1
