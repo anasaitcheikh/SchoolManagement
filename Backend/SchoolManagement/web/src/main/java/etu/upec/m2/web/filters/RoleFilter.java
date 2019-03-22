@@ -35,7 +35,7 @@ public class RoleFilter implements ContainerRequestFilter{
             
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        UserStatus currentRole = (UserStatus) requestContext.getProperty(ROLE_PROPERTY); 
+        UserStatus currentRole = UserStatus.valueOf((String)requestContext.getProperty(ROLE_PROPERTY)); 
         
         Class<?> resourceClass = resourceInfo.getResourceClass();
         AllowedRoles allowedRoles = resourceClass.getAnnotation(AllowedRoles.class);
