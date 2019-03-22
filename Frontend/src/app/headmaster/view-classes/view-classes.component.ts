@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class ViewClassesComponent implements OnInit,OnDestroy {
   private _allClassesSubscriber: Subscription;
   Json;
-  class : Class
+  class : Class[];
   
   ngOnDestroy(): void {
     if (this._allClassesSubscriber){
@@ -26,16 +26,14 @@ export class ViewClassesComponent implements OnInit,OnDestroy {
     if(! this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
+    this.allclasses();
   }
 
   allclasses(){
     this._allClassesSubscriber = this.headmasterService.getAllClasses().subscribe(
       res => {
-        this.Json =JSON.parse(JSON.stringify(res));
-        this.class.name =this.Json.firstname;
-        this.class.schoolYear = this.Json.schoolYear;
-        this.class.grade = this.Json.grade;
-        this.class.level = this.Json.level;
+        this.class =JSON.parse(JSON.stringify(res));
+        console.error("show classes",this.class);
       },
       error => console.log(error)
    )

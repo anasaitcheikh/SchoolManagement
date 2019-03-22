@@ -23,7 +23,7 @@ import javax.persistence.*;
 
 public class Mark implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     Long id;
     
     @EmbeddedId
