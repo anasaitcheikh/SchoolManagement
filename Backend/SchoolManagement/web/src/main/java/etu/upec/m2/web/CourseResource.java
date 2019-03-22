@@ -78,8 +78,8 @@ public class CourseResource {
                 + course.getTime()+ "\",\"status\": \""
                 + course.isStatus()+ "\",\"date\": \""
                 + course.getDate().toString()+ "\",\"class\": {\"name\" : \""
-                + course.getClasse().getName()+ "\" }"+",\"classroom\": {\"floorNumber\" : "
-                + course.getClassroom().getFloorNumber() + " }"+",\"subject\": {\"name\" : \""
+                + course.getClasse().getName()+ "\" }"+",\"classroom\": {\"roomNumber\" : "
+                + course.getClassroom().getRoomNumber() + " }"+",\"subject\": {\"name\" : \""
                 + course.getSubject().getName()+"\" }"+"},";
         }
         
