@@ -13,12 +13,15 @@ import { TokenService } from '../../services/token.service';
 
 export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
-    this._loginSubscriber.unsubscribe();
+    if(this._loginSubscriber != null)
+      this._loginSubscriber.unsubscribe();
   }
+
   loginError : boolean;
   email : string;
   password : string;
 
+  user;
   private _loginSubscriber: Subscription
 
   constructor(private loginService: LoginService, 
@@ -27,7 +30,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
-    
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if( this.loginService.is_loggedin()){
+      if(this.user.status=="HEADMASTER")
+        this.router.navigate(['headmaster'])
+      else if(this.user.status=="TEACHER")
+        this.router.navigate(['teacher'])
+      else if(this.user.status=="STUDENT")
+        this.router.navigate(['student'])
+    }
   }
 
   login() {
