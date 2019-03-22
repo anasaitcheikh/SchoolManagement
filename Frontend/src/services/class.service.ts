@@ -10,7 +10,7 @@ export class ClassService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getClasses(_id: number) {
+  getClasses() {
     return this.httpClient.get<Class[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
   }
 
