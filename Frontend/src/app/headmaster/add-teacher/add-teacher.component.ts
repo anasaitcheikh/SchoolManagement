@@ -15,7 +15,7 @@ export class AddTeacherComponent implements OnInit, OnDestroy {
   constructor(private teacherService : TeacherService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    if(! this.LoginService.is_loggedin()){
+    if (!this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
   }
@@ -25,14 +25,13 @@ export class AddTeacherComponent implements OnInit, OnDestroy {
       this._addTeacherSubscriber.unsubscribe();
     }
   }
-/*
+
   addTeacher(teacher : Teacher){
-     console.log('click on add teacher');
-     teacher.status="TEACHER";
-     this._addTeacherSubscriber = this.teacherService.addTeacher(teacher).subscribe(
+    console.log('click on add teacher');
+    console.log(teacher);
+    this._addTeacherSubscriber = this.teacherService.addTeacher(teacher).subscribe(
        newTeacher => console.log(newTeacher),
        error => console.log(error)
     );
   }
-  */
 }

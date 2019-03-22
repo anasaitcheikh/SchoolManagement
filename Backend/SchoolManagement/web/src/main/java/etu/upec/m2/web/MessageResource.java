@@ -46,6 +46,18 @@ public class MessageResource {
     }
     
     @GET
+    public Response getMessagesBySenderId(@Context HttpHeaders httpHeaders) {
+        System.err.println("ID ===> " + httpHeaders.getRequestHeaders().getFirst("ID"));
+        Long id = Long.parseLong(httpHeaders.getRequestHeaders().getFirst("ID"));
+        
+        List<Message> message = messageService.getMessagesBySenderId(id);
+        return Response
+                .status(Response.Status.OK)
+                .entity(message)
+                .build();
+    }
+    
+    /*@GET
     public Response getMessagesBySenderIdOrRecipientId(@Context HttpHeaders httpHeaders) {
         System.err.println("ID ===> " + httpHeaders.getRequestHeaders().getFirst("ID"));
         Long id = Long.parseLong(httpHeaders.getRequestHeaders().getFirst("ID"));
@@ -55,7 +67,7 @@ public class MessageResource {
                 .status(Response.Status.OK)
                 .entity(message)
                 .build();
-    }
+    }*/
     
     @GET
     @Path("{id}")

@@ -2,35 +2,37 @@
 <div class="row">
   <card class="col-md-6" cardTitle="Profile infos">
     <div class="form-inline">
-      <label class="control-label">Post</label>
-      <input type="text" class="form-control" value="Directeur" disabled>
     </div>
     <div class="form-inline">
       <label class="control-label">Last Name</label>
-      <input type="text" class="form-control" value="Doumbia" disabled>
+      <input type="text" class="form-control"  name="lastName" [(ngModel)]="lastName" disabled>
     </div>
     <div class="form-inline">
       <label class="control-label">First Name</label>
-      <input type="text" class="form-control" value="Doussou" disabled>
+      <input type="text" class="form-control"  name="firstName" [(ngModel)]="firstName" disabled>
     </div>
     <div class="form-inline">
       <label class="control-label">Email</label>
-      <input type="email" class="form-control" value="doussou.doumbia@etu.u-pec.fr" disabled>
+      <input type="email" class="form-control"  name="email" [(ngModel)]="email" disabled>
     </div>
+    <div class="form-inline">
+        <label class="control-label">Birthdate</label>
+        <input type="text" class="form-control"  name="date" [(ngModel)]="bDate" disabled>
+      </div>
   </card>
 
   <card class="col-md-6" cardTitle="Change Password">
     <div class="form-group">
       <label class="control-label">Old password</label>
-      <input type="password" class="form-control" value="" >
+      <input type="password" class="form-control" name="old" [(ngModel)]="old_p">
 
       <label class="control-label">New password</label>
-      <input type="password" class="form-control" value="" >
+      <input type="password" class="form-control" name="new" [(ngModel)]="new_p">
 
       <label class="control-label">Confirm password</label>
-      <input type="password" class="form-control" value="" >
+      <input type="password" class="form-control"  name="confirm" [(ngModel)]="confirm">
 
-      <button type="submit" class="btn btn-primary">Save change</button>
+      <button type="button" (click)="change_password()" class="btn btn-primary">Save change</button>
     </div>
   </card>
 </div>

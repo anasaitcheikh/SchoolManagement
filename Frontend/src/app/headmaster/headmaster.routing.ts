@@ -19,6 +19,7 @@ export const childRoutes: Routes = [
             { path: 'allStudents', loadChildren: './all-students/all-students.module#AllStudentsModule' },
             { path: 'allTeachers', loadChildren: './all-teachers/all-teachers.module#AllTeachersModule' },
             { path: 'allStaffs', loadChildren: './all-staffs/all-staffs.module#AllStaffsModule' },
+            { path: 'editStaff', loadChildren: './edit-staff/edit-staff.module#EditStaffModule' },
             { path: 'bookRoom', loadChildren: './book-room/book-room.module#BookRoomModule' },
             { path: 'userInfo', loadChildren: './personal-info/personal-info.module#PersonalInfoModule' },
             { path: 'message', loadChildren: './message-headmaster/message-headmaster.module#MessageHeadmasterModule' },

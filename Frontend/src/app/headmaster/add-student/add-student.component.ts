@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HeadmasterService} from '../../../services/headmaster.service';
 import {Subscription} from 'rxjs/Subscription';
 import { StudentService} from '../../../services/student.service';
 import {LoginService} from '../../../services/login.service';
 import { Router } from '@angular/router';
+import {ClassService} from '../../../services/class.service';
+import { Class } from '../../../utils/types';
 
 @Component({
   selector: 'app-add-student',
@@ -12,20 +13,27 @@ import { Router } from '@angular/router';
 })
 export class AddStudentComponent implements OnInit, OnDestroy {
 
+  classes: Class[] = [];
+
   _addStudentSubscriber: Subscription;
   constructor(private studentService: StudentService,
-              private headmasterService: HeadmasterService, private LoginService: LoginService, private router: Router) { }
+              private classService: ClassService, 
+              private LoginService: LoginService, 
+              private router: Router) { }
 
 
   ngOnInit() {
     if (! this.LoginService.is_loggedin()) {
       this.router.navigate(['login']);
     }
+    this.getClasses();
   }
 
   ngOnDestroy(): void {
     if (this._addStudentSubscriber) {
+      if (this._addStudentSubscriber != null) {
       this._addStudentSubscriber.unsubscribe();
+      }
     }
   }
 
@@ -33,9 +41,29 @@ export class AddStudentComponent implements OnInit, OnDestroy {
   addStudent(student) {
     console.log('click on add student');
     console.log('student', student);
+
+    let studentClass;
+
+    if (student.studentClass == -1) {
+      delete student.studentClass;
+    }
+    else {
+      studentClass = {
+        id : student.studentClass
+      }
+      student.studentClass = studentClass;
+    }
+
     this._addStudentSubscriber = this.studentService.addStudent(student).subscribe(
       newStudent => console.log('add student successfull', newStudent),
       error => console.log(error)
     );
+  }
+
+  getClasses(){
+    this._addStudentSubscriber = this.classService.getClasses().subscribe(
+      classes => {this.classes = classes; console.log("classes", this.classes)},
+      error => console.log("error", error)
+    )
   }
 }
