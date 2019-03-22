@@ -106,5 +106,17 @@ public class CourseService implements ICourseService {
             return null;
         }
     }
+
+    @Override
+    public List<Course> getAllCoursesByStudentId(Long idStudent) {
+        try{
+            List<Course> courses = em.createNamedQuery("findAllCoursesByStudentId", Course.class)
+                     .setParameter("id_student", idStudent)
+                     .getResultList();
+            return  courses;
+        }catch(NoResultException e){
+            return null;
+        }
+    }
     
 }

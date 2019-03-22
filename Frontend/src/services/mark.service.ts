@@ -7,7 +7,7 @@ export class MarkService {
     
   constructor(private http: HttpClient) { }
 
-getMark(id_s){
+getMarkByStudent(id_s){
     const req = this.http.get(API_SERVER.BASE_URI + "/mark?studentId="+id_s);
     return req;
   }
