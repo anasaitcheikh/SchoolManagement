@@ -18,11 +18,12 @@ export class PagesTopComponent implements OnInit {
   tip = { ring: true, email: true };
 
   constructor(private _globalService: GlobalService, private LoginService: LoginService, private router: Router) 
-  { 
+  { /*
     this.user = JSON.parse(localStorage.getItem('user'));
     this.firstname = this.user.firstname;
     this.lastname = this.user.lastname;
     this.status = this.user.status;
+    */
   }
 
   ngOnInit() {
