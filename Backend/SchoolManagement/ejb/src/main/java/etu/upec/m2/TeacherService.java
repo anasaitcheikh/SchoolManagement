@@ -5,9 +5,13 @@
  */
 package etu.upec.m2;
 
+import etu.upec.m2.model.Course;
+import etu.upec.m2.model.Message;
 import etu.upec.m2.model.Teacher;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -29,6 +33,12 @@ public class TeacherService implements ITeacherService {
     @PersistenceContext
     EntityManager em;
     
+    @EJB
+    IMessageService messageService;
+    
+    @EJB
+    ICourseService courseService;
+    
     @Override
     public Long createTeacher(Teacher teacher) {
         em.persist(teacher);
@@ -37,7 +47,27 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public Long deleteTeacher(Long id) {
+        //teacher id a null dans sms et dans courses
+        
+        List<Message> messages=messageService.getMessagesBySenderIdOrRecipientId(id);
+        for (Message message : messages){
+            if(Objects.equals(message.getRecipient().getId(), id)){
+                message.setRecipient(null);
+                messageService.UpdateMessage(message.getId(), message);
+            }
+            if(Objects.equals(message.getSender().getId(), id)){
+                message.setSender(null);
+                messageService.UpdateMessage(message.getId(), message);
+            }
+        }
+        
+        List<Course> courses=courseService.getAllCoursesByTeacherId(id);
+        for (Course course : courses){
+            courseService.deleteCourse(course.getId());
+        }
+        
         em.remove(em.find(Teacher.class, id));
+        System.out.println("end");
         return id;
     }
 
