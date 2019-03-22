@@ -12,7 +12,7 @@ import { HeadmasterService } from '../../../services/headmaster.service';
 export class AllStudentsComponent implements OnInit, OnDestroy {
   private _allStudentsSubscriber: Subscription;
   Json;
-  student : Student
+  student : Student[];
   
   ngOnDestroy(): void {
     if (this._allStudentsSubscriber){
@@ -26,16 +26,18 @@ export class AllStudentsComponent implements OnInit, OnDestroy {
     if(! this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
+    this.allstudents();
   }
 
-  allstudent(){
+  allstudents(){
     this._allStudentsSubscriber = this.headmasterService.getAllStudents().subscribe(
       res => {
-        this.Json =JSON.parse(JSON.stringify(res));
-        this.student.firstname =this.Json.firstname;
-        this.student.lastname = this.Json.lastname;
+        console.error("allstudents",res);
+        this.student =JSON.parse(JSON.stringify(res));
+        
+        /*this.student.lastname = this.Json.lastname;
         this.student.birthDate = this.Json.birthDate;
-        this.student.email = this.Json.email;
+        this.student.email = this.Json.email;*/
       },
       error => console.log(error)
    )

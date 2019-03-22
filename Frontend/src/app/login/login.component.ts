@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { Subscription } from 'rxjs/Subscription';
 import { TokenService } from '../../services/token.service';
