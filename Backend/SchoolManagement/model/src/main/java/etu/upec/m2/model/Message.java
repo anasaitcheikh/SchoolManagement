@@ -17,6 +17,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name = "findMessageById", query = "SELECT u FROM Message u WHERE u.id =:id"),
     @NamedQuery(name = "findMessageBySenderIdOrRecipientId", query = "SELECT u FROM Message u WHERE u.sender.id =:userId or u.recipient.id =:userId"),
+    @NamedQuery(name = "findMessageBySenderId", query = "SELECT u FROM Message u WHERE u.sender.id =:userId"),
 })
 
 public class Message implements Serializable {
