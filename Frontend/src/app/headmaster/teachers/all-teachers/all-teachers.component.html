@@ -23,7 +23,7 @@
             <td>{{ t.email }}</td>
             <td>
               <button class="btn btn-primary">Show classes</button>
-              <button class="btn btn-success">Edit</button>
+              <button [routerLink]="['../editTeacher', t.id]" class="btn btn-success">Edit</button>
               <button (click)="deleteTeacher(t.id)" class="btn btn-danger">Delete</button>
             </td>
 
