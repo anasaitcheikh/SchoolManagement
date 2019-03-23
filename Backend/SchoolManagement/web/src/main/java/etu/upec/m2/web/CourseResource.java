@@ -60,27 +60,92 @@ public class CourseResource {
     
     public Response getAllCoursesByClassId(Long idClass) {
         List<Course> courses = courseService.getAllCoursesByClassId(idClass);
+
+                
+        if (courses.isEmpty()) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(courses)
+                    .build();
+        }
+                
+        String responseJson = "[";
+        for(Course course:courses){
+            
+             responseJson =  responseJson + "{\"id\": " 
+                + course.getId()+ ",\"time\": \""
+                + course.getTime()+ "\",\"date\": \""
+                + course.getDate().toString()+ "\",\"teacher\": {\"lastname\" : \""
+                + course.getTeacher().getLastname()+ "\" }"+",\"classroom\": {\"roomNumber\" : "
+                + course.getClassroom().getRoomNumber() + " }"+",\"subject\": {\"name\" : \""
+                + course.getSubject().getName()+"\" }"+"},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(courses)
+                .entity(responseJson)
                 .build();
     }
     
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.TEACHER})
     public Response getAllCoursesByTeacherId(Long idTeacher) {
         List<Course> courses = courseService.getAllCoursesByTeacherId(idTeacher);
+        
+        if (courses.isEmpty()) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(courses)
+                    .build();
+        }
+                
+        String responseJson = "[";
+        for(Course course:courses){
+            
+             responseJson =  responseJson + "{\"id\": " 
+                + course.getId()+ ",\"time\": \""
+                + course.getTime()+ "\",\"status\": \""
+                + course.isStatus()+ "\",\"date\": \""
+                + course.getDate().toString()+ "\",\"class\": {\"name\" : \""
+                + course.getClasse().getName()+ "\" }"+",\"classroom\": {\"roomNumber\" : "
+                + course.getClassroom().getRoomNumber() + " }"+",\"subject\": {\"name\" : \""
+                + course.getSubject().getName()+"\" }"+"},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(courses)
+                .entity(responseJson)
                 .build();
     }
     
     @AllowedRoles(roles = {UserStatus.HEADMASTER, UserStatus.STUDENT})
     public Response getAllCoursesByStudentId(Long idStudent) {
         List<Course> courses = courseService.getAllCoursesByStudentId(idStudent);
+        
+        if (courses.isEmpty()) {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .entity(courses)
+                    .build();
+        }
+                
+        String responseJson = "[";
+        for(Course course:courses){
+            
+             responseJson =  responseJson + "{\"id\": " 
+                + course.getId()+ ",\"time\": \""
+                + course.getTime()+ "\",\"date\": \""
+                + course.getDate().toString()+ "\",\"teacher\": {\"lastname\" : \""
+                + course.getTeacher().getLastname()+ "\" }"+",\"classroom\": {\"roomNumber\" : "
+                + course.getClassroom().getRoomNumber() + " }"+",\"subject\": {\"name\" : \""
+                + course.getSubject().getName()+"\" }"+"},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(courses)
+                .entity(responseJson)
                 .build();
     }
     
