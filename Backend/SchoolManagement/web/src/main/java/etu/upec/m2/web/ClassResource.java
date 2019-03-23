@@ -37,6 +37,8 @@ public class ClassResource {
     @EJB
     IClassService classService;
     
+
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
@@ -59,7 +61,7 @@ public class ClassResource {
     }
     
     
-    public Response getAllClases() {
+    public Response getAllClasses() {
         List<Class> classes = classService.getAllClasses();
         return Response
                 .status(Response.Status.OK)
@@ -69,8 +71,8 @@ public class ClassResource {
     
     
     @AllowedRoles(roles = {UserStatus.HEADMASTER,UserStatus.TEACHER})
-    public Response getAllClassByTeacherId(Long idTeacher) {
-        List<Class> classes = classService.getAllClassByTeacherId(idTeacher);
+    public Response getAllClassesByTeacherId(Long idTeacher) {
+        List<Class> classes = classService.getAllClassesByTeacherId(idTeacher);
         return Response
                 .status(Response.Status.OK)
                 .entity(classes)
@@ -81,9 +83,9 @@ public class ClassResource {
     public Response getClasses(@Context UriInfo uriInfo){
         if(uriInfo.getQueryParameters().containsKey("teacherId")) {
             Long teacherId = Long.parseLong(uriInfo.getQueryParameters().getFirst("teacherId"));
-            return getAllClassByTeacherId(teacherId);
+            return getAllClassesByTeacherId(teacherId);
         }else{
-            return getAllClases();
+            return getAllClasses();
         }
     }
     
@@ -103,6 +105,7 @@ public class ClassResource {
     @Path("{id}")
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteClass(@PathParam("id")Long id) {
+   
         Long result_id=classService.deleteClass(id);
         return Response
                 .status(Response.Status.OK)

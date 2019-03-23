@@ -120,6 +120,14 @@ public class Course implements Serializable {
     public void setSubject(Subject subject) {
         this.subject = subject;
     }
+    
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void getStatus(boolean status) {
+        this.status=status;
+    }
 
     public Teacher getTeacher() {
         return teacher;

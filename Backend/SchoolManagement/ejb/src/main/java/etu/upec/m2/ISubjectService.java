@@ -6,6 +6,7 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Subject;
+import etu.upec.m2.model.SubjectName;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -22,4 +23,5 @@ public interface ISubjectService {
     Long updateSubject(Long id, Subject newSubject);
     List<Subject> getAllSubject();
     Subject getSubjectById(Long id);
+    Subject getSubjectByName(SubjectName name);
 }

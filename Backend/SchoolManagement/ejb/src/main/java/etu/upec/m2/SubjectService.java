@@ -76,6 +76,17 @@ public class SubjectService implements ISubjectService {
         }
     }
 
+    @Override
+    public Subject getSubjectByName(SubjectName name) {
+        try{
+            TypedQuery<Subject> query =  em.createNamedQuery("findSubjectByName", Subject.class);
+            query.setParameter("name", name);
+            return query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
+
     
     
 }
