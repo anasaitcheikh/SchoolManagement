@@ -19,6 +19,10 @@ export class StudentService {
     return this.httpClient.get<Student>(API_SERVER.BASE_URI+"/"+ RESOURCE_NAME+"/"+id_s);
   }
 
+   getAllStudentByClassId(id_class : number) {
+    return this.httpClient.get<Student>(API_SERVER.BASE_URI+"/"+ RESOURCE_NAME+"/all/"+id_class);
+  }
+
 /*showProfile(token){
       const req = this.http.get(API_SERVER.BASE_URI +token);
       return req;

@@ -1,28 +1,28 @@
 <div class="col-md-12">
   <card cardTitle="Enter Subjects Score">
     <form (submit)="changescore()" class="form-group">
-      <label class="control-label">Firstname of the student</label>
-      <input type="text" [(ngModel)]="firstname" name="firstname" class="form-control" placeholder="Firstname">
+
+      <label class="control-label">Class</label>
+      <select id="select1" (change)="get_students($event.target.value)" class="form-control" ngModel name="studentClass">
+          <option value="-1" >-------------</option> 
+        <option value="{{class.id}}" *ngFor="let class of classes">name: {{ class.name }}  |  level: {{ class.level }}  |  grade: {{ class.grade }}</option>
+       </select>
+
       <br>
 
-      <label class="control-label">Lastname of the student</label>
-      <input type="text" [(ngModel)]="lastname" name="lastname" class="form-control" placeholder="Lastname">
-      <br>
+      <label class="control-label">Student</label>
+      <select id="select2" (change)="fill_student($event.target.value)" class="form-control" ngModel name="student">
+          <option value="-1" >-------------</option> 
+        <option value="{{stu.id}}" *ngFor="let stu of students">{{ stu.firstname }} {{ stu.lastname }}</option>
+       </select>
 
-      <label class="control-label">Subject</label>
-      <select [(ngModel)]="subject" name="select" id="select1" class="form-control">
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-        <option value="option4">option4</option>
-      </select>
       <br>
 
       <label class="control-label">Score</label>
       <input type="number" [(ngModel)]="score" name="score" min="0" max="20" class="form-control" placeholder="0">
       <br>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" (click)="add_mark()" class="btn btn-primary">Submit</button>
     </form>
   </card>
 </div>
