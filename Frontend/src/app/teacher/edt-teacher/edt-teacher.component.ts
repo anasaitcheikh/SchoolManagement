@@ -20,6 +20,35 @@ export class EdtTeacherComponent implements OnInit {
     }
     this.user = JSON.parse(localStorage.getItem('user'));
     this.getCourses();
+    //this.fix_date()
+  }
+
+  comparator (time, date, expected_day, expect_time) : boolean{
+    return this.isthis_week(date) && time ==expect_time && this.parse_date(date)==expected_day;
+  }
+
+isthis_week(date) {
+  let curr = new Date;
+  let week = [];
+  for (let i = 1; i <= 7; i++) {
+    let first = curr.getDate() - curr.getDay() + i 
+    let day = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+    week.push(day)
+}
+  return week.includes(date);
+}
+
+  parse_date(date){
+    let d = new Date(date);
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[d.getDay()];
+  }
+
+  fix_date(){
+    for(let t of this.edt){
+      t.date= this.parse_date(t.date);
+      console.log(t.date);
+    }
   }
 
   getCourses(){

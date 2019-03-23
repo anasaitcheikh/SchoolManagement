@@ -14,7 +14,7 @@ export class TimeTableService {
      return this.httpClient.get<Course[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?classId=' + _idClass);
    }
   getCourseByTeacher(id_t: number){
-    const req = this.httpClient.get(API_SERVER.BASE_URI + "/course?teacherId="+id_t);
+    const req = this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?teacherId=' + id_t);
     return req;
 
   }
