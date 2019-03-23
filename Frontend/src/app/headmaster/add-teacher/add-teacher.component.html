@@ -1,7 +1,7 @@
 
-<div class="col-md-12">
-  <card cardTitle="Add Teacher">
+<div class="row">
     <form #f="ngForm" class="form-group">
+      <card cardTitle="Add Teacher">
       <label class="control-label">Last Name</label>
       <input type="text" class="form-control" ngModel name="lastname">
       <label class="control-label">First Name</label>
@@ -23,25 +23,11 @@
         <option value="FRENCH">FRENCH</option>
         <option value="ENGLISH">ENGLISH</option>
       </select>
-<!--
-      <label class="control-label">Class</label>
-      <select name="select" id="select1" class="form-control" ngModel name="class">
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-        <option value="option4">option4</option>
-      </select>
-
-      <label class="control-label">Course</label>
-      <select name="select" id="select2" class="form-control" ngModel name="course">
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-        <option value="option4">option4</option>
-      </select>
-    -->
       <br>
       <button type="submit" class="btn btn-primary" (click)="addTeacher(f.value)">Add</button>
+      </card>
     </form>
-  </card>
+</div>
+<div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+  <strong>ERROR WHILE ADDING TEACHER!</strong>
 </div>

@@ -1,3 +1,4 @@
+<div class="row">
 <form #f="ngForm">
   <div class="col-md-12">
     <card cardTitle="Add Student">
@@ -23,3 +24,11 @@
     </card>
   </div>
 </form>
+</div>
+<div class="alert alert-success" style="height: 10%" *ngIf="statutAlert">
+  <strong>STUDENT HAS BEEN ADDED !</strong>
+</div>
+<div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+  <strong>ERROR WHILE ADDING STDUENT!</strong>
+</div>
+
