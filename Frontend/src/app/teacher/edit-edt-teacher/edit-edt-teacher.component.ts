@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 import {Class, Classroom, Subject, Teacher} from '../../../utils/types';
@@ -14,7 +14,7 @@ import {TimeTableService} from '../../../services/time-table.service';
   templateUrl: './edit-edt-teacher.component.html',
   styleUrls: ['./edit-edt-teacher.component.scss']
 })
-export class EditEdtTeacherComponent implements OnInit {
+export class EditEdtTeacherComponent implements OnInit, OnDestroy {
 
  // teachers: Teacher[] = [];
   classes: Class[] = [];
@@ -40,6 +40,14 @@ export class EditEdtTeacherComponent implements OnInit {
     this.getClassrooms();
   //  this.getSubjects();
     this.getClasses();
+  }
+
+  ngOnDestroy(): void {
+    if (this._createTimeTableSubscriber) {
+      if (this._createTimeTableSubscriber != null) {
+        this._createTimeTableSubscriber.unsubscribe();
+      }
+    }
   }
 
   createTimeTable(course){

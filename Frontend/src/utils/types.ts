@@ -17,6 +17,8 @@ export interface Class {
     students?: Student[];
 }
 
+
+
 export interface Teacher {
   id?: number;
   firstname: string;
