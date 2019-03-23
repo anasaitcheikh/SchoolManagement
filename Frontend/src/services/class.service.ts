@@ -24,7 +24,7 @@ export class ClassService {
   }
 
   addClass(_class: Class) {
-    return this.httpClient.post<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _class)
+    return this.httpClient.post<Class>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _class);
   }
 
   updateClass(_class: Class, _id: number) {
