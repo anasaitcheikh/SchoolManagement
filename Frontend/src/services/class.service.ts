@@ -32,6 +32,7 @@ export class ClassService {
   }
 
   deleteClass(_id: number) {
-    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
+    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
   }
+  
 }

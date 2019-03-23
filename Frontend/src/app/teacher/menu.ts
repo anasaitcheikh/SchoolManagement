@@ -17,7 +17,7 @@ export let MENU_ITEM_TEACHER = [
     },
     {
         path: 'edit-edt',
-        title: 'Edit Timetable',
+        title: 'Create course',
         icon: 'pencil'
     },
     {

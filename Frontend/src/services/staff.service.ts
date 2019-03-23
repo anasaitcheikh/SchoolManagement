@@ -31,6 +31,6 @@ export class StaffService {
   }
 
   deleteStaff(_id: number) {
-    return this.httpClient.delete(`${API_SERVER}/${RESOURCE_NAME}`)
+    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
   }
 }

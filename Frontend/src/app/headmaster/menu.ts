@@ -12,7 +12,7 @@ export let MENU_ITEM_HEADMASTER = [
     },
     {
       path: 'uploadcorse',
-      title: 'Upload Corse Materials',
+      title: 'Upload Course Materials',
       icon: 'book'
   },
 
@@ -44,7 +44,7 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'Add Staff'
       },
       {
-        path: 'staff',
+        path: 'staffs',
         title: 'All Staffs',
 
       },
@@ -57,8 +57,8 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'users',
     children: [
       {
-        path: 'viewClasses',
-        title: 'Show classes'
+        path: 'classes',
+        title: 'All classes'
       },
       {
         path: 'addClass',
@@ -89,7 +89,7 @@ export let MENU_ITEM_HEADMASTER = [
         icon: 'user',
         children: [
          {
-          path: 'allStudents',
+          path: 'studs',
           title: 'All Students'
          },
         {
@@ -115,7 +115,7 @@ export let MENU_ITEM_HEADMASTER = [
 
       {
         path: 'timetable-edit',
-        title: 'Create/Edit Timetable',
+        title: 'Create Course',
      }
 
     ]

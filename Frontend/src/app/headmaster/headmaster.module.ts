@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { routing } from './headmaster.routing';
 
 import { LayoutModule } from '../shared/layout.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module'; 
 
 /* components */
 import { HeadmasterComponent } from './headmaster.component';

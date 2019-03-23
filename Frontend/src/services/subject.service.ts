@@ -19,10 +19,14 @@ export class SubjectService {
     return this.httpClient.get<Subject>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`);
   }
 
+  getSubjectByName(_name: string) {
+    return this.httpClient.get<Subject>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + '?name=' + _name);
+  }
+
   addSubject(_subject: Subject) {
     return this.httpClient.post<Subject>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, {
       subject: _subject
-    })
+    });
   }
 
   updateSubject(_subject: Subject, _id: number) {

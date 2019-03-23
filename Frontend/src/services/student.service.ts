@@ -8,6 +8,7 @@ export class StudentService {
 
   constructor(private  httpClient: HttpClient) { }
 
+  
   addStudent(_student: Student) {
     console.log('in service add student');
     console.log(API_SERVER.BASE_URI, '/', RESOURCE_NAME)
@@ -15,8 +16,25 @@ export class StudentService {
 
   }
 
-  getStudentById(id_s : number) {
-    return this.httpClient.get<Student>(API_SERVER.BASE_URI+"/"+ RESOURCE_NAME+"/"+id_s);
+
+  
+  getStudents() {
+    return this.httpClient.get<Student[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`)
+  }
+
+  getStudentById(_id: number) {
+    return this.httpClient.get<Student>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
+  }
+
+  updateStudent(_student: Student, _id: number) {
+    return this.httpClient.put<Student>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`, _student)
+  }
+
+  deleteStudent(_id: number) {
+    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
+  }
+   getAllStudentByClassId(id_class : number) {
+    return this.httpClient.get<Student>(API_SERVER.BASE_URI+"/"+ RESOURCE_NAME+"/all/"+id_class);
   }
 
 /*showProfile(token){
