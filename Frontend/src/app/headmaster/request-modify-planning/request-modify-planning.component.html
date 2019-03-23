@@ -1,4 +1,4 @@
-<!--card>
+<card>
   Email Teacher : anas@upec.fr <br>
   Change : Lundi 10h - 12h <br>
   <button class="btn-success">Accept</button> <button class="btn-danger">Refuse</button>
@@ -9,17 +9,4 @@
   Change : Lundi 10h - 12h <br>
   <button class="btn-success">Accept</button> <button class="btn-danger">Refuse</button>
 
-</card!-->
-
-<div class="" name="course" *ngFor="let course of courses">
-  <card >
-   Teacher :  Name : {{course.teacher.firstname}} {{course.teacher.firstname}} | Email: {{course.teacher.email}}<br>
-    Class :  Name: {{course.classe.name}} | Grade: {{course.classe.grade}} | Level: {{course.classe.level}} <br>
-    Classroom: Capacity: {{course.classroom.capacity}} | Floor: {{course.classroom.floorNumber}} | Room: {{course.classroom.roomNumber}}<br>
-    Subject: {{course.subject.name}}<br>
-    Date: <br>
-    Time: {{course.time}} <br>
-    <button class="btn-success" (click)="acceptCourse(course.id)">Accept</button> <button class="btn-danger" (click)="refuseCourse(course.id)">Refuse</button>
-  </card>
-
-</div>
+</card>
