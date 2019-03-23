@@ -218,8 +218,8 @@ public class CourseResource {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
-    public Response updateCourse(@PathParam("id")Long id,Course course) {
-        Long result_id=courseService.updateCourse(id, course);
+    public Response updateStatusCourse(@PathParam("id")Long id,boolean status) {
+        Long result_id=courseService.updateStatusCourse(id, status);
         return Response
                 .status(Response.Status.OK)
                 .entity(result_id)

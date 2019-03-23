@@ -134,5 +134,28 @@ public class UserService implements IUserService{
             return -1L;
         }
     }
+
+    @Override
+    public List<String> getAllEmailForStudent() {
+        try{
+            List<String> emails = em.createNamedQuery("findAllEmailForStudent", String.class)
+                     .setParameter("status", UserStatus.TEACHER)
+                     .getResultList();
+            return  emails;
+        }catch(NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<String> getAllEmailForHeadmasterAndTeacher() {
+        try{
+            List<String> emails = em.createNamedQuery("findAllEmailForHeadmasterAndTeacher", String.class)
+                     .getResultList();
+            return  emails;
+        }catch(NoResultException e){
+            return null;
+        }
+    }
     
 }
