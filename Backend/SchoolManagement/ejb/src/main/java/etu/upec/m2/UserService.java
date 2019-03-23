@@ -7,7 +7,10 @@ package etu.upec.m2;
 
 import etu.upec.m2.model.User;
 import etu.upec.m2.model.UserStatus;
+import etu.upec.utils.EncryptPassword;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -35,8 +38,15 @@ public class UserService implements IUserService{
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public Long createUser(User user) {
-        em.persist(user);
-        return user.getId();
+        try {
+            String encryptPassword=EncryptPassword.encryptPassword(user.getPassword(),"SHA1");
+            user.setPassword(encryptPassword);
+            em.persist(user);
+            return user.getId();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            return new Long(0);
+        } 
     }
 
     @Override
@@ -81,11 +91,16 @@ public class UserService implements IUserService{
     public User getUserByEmailAndPassword(String email, String password) {
         try{
             TypedQuery<User> query =  em.createNamedQuery("findUserByEmailAndPassword", User.class);
+            String encryptPassword=EncryptPassword.encryptPassword(password,"SHA1");
+            System.out.println("etu.upec.m2.UserService.getUserByEmailAndPassword()=>"+encryptPassword);
             query.setParameter("email", email);
-            query.setParameter("password", password);
+            query.setParameter("password", encryptPassword);
             
             return query.getSingleResult();
         }catch(NoResultException e){
+            return null;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -94,21 +109,30 @@ public class UserService implements IUserService{
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
         User user;
         try{
+            String encryptOldPassword=EncryptPassword.encryptPassword(oldPassword,"SHA1");
             TypedQuery<User> query =  em.createNamedQuery("findUserByIdAndPassword", User.class);
             query.setParameter("id", id);
-            query.setParameter("password", oldPassword);
+            query.setParameter("password", encryptOldPassword);
             user = query.getSingleResult();
         }catch(NoResultException e){
             user= null;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            user=null;
         }
-        
         if(user == null) {
             return -1L;
         }
         
-        user.setPassword(newPassword);
-        em.merge(user);
-        return user.getId();
+        try {
+            String encryptPassword=EncryptPassword.encryptPassword(newPassword,"SHA1");
+            user.setPassword(encryptPassword);
+            em.merge(user);
+            return user.getId();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            return -1L;
+        }
     }
     
 }

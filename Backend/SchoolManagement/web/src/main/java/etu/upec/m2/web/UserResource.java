@@ -39,7 +39,7 @@ public class UserResource {
                 .build();
         }
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity("Wrong password")
+                .entity("Wrong password or NoSuchAlgorithmException")
                 .build();
     }
 }

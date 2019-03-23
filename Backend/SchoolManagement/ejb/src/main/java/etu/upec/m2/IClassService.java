@@ -15,11 +15,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface IClassService { 
-    //dans les paramètres tu peux ajouter la class qui fais l'appel pour gérer les droit d'accès 
     Long createClass(Class c);
     Long deleteClass(Long id);
     Long updateClass(Long id, Class newClass);
     List<Class> getAllClasses();
     Class getClassById(Long id);
-    List<Class> getAllClassByTeacherId(Long idTeacher);
+    List<Class> getAllClassesByTeacherId(Long idTeacher);
 }

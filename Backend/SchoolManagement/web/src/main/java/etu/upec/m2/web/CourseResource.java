@@ -125,7 +125,7 @@ public class CourseResource {
         
         if (courses.isEmpty()) {
             return Response
-                    .status(Response.Status.NOT_FOUND)
+                    .status(Response.Status.OK)
                     .entity(courses)
                     .build();
         }
@@ -152,9 +152,37 @@ public class CourseResource {
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response getAllCoursesByStatus(boolean status) {
         List<Course> courses = courseService.getAllCoursesByStatus(status);
+
+        
+        if (courses.isEmpty()) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(courses)
+                    .build();
+        }
+                
+        String responseJson = "[";
+        for(Course course:courses){
+            
+             responseJson =  responseJson + "{\"id\": " 
+                + course.getId()+ ",\"time\": \""
+                + course.getTime()+ "\",\"date\": \""
+                + course.getDate().toString()+ "\",\"teacher\": {\"lastname\" : \""
+                + course.getTeacher().getLastname()+ "\",\"firstname\": \""
+                + course.getTeacher().getFirstname()+ "\",\"email\": \""
+                + course.getTeacher().getEmail()+ "\" }"+",\"classroom\": {\"roomNumber\" : "
+                + course.getClassroom().getRoomNumber() + ",\"capacity\": "
+                + course.getClassroom().getCapacity()+ " }"+",\"subject\": {\"name\" : \""
+                + course.getSubject().getName()+"\" }"+ ",\"class\": {\"name\" : \""
+                + course.getClasse().getName()+ "\",\"grade\": "
+                + course.getClasse().getGrade()+",\"level\": \""
+                + course.getClasse().getLevel()+"\" }"+"},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(courses)
+                .entity(responseJson)
                 .build();
     }
 

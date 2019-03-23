@@ -49,9 +49,7 @@ public class LoginResource {
                     .entity(user)
                     .build();
         }
-        
         String userJson = "{\"id\": " + user.getId() + ", \"email\": \"" + user.getEmail() + "\", \"firstname\": \"" + user.getFirstname() + "\", \"lastname\": \"" + user.getLastname() + "\", \"status\": \"" + user.getStatus().toString() + "\", \"birthDate\": \"" + user.getBirthDate().toString()+ "\"}";
-        
         return Response
                 .status(Response.Status.OK)
                 .entity("{\"token\": \"" + generateToken(user) + "\", \"user\": " + userJson + "}")

@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findSubjectById", query = "SELECT u FROM Subject u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllSubject", query = "SELECT u FROM Subject u ")
+    @NamedQuery(name = "findAllSubject", query = "SELECT u FROM Subject u "),
+    @NamedQuery(name = "findSubjectByName", query = "SELECT u FROM Subject u WHERE u.name =:name")
 })
 public class Subject implements Serializable {
     @Id
