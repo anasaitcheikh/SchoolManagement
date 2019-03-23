@@ -58,6 +58,9 @@ public class UserResource {
                 return getAllEmailForStudent();
             if(actor.contains("TEACHER") || actor.contains("HEADMASTER"))
                 return getAllEmailForHeadmasterAndTeacher();
+        }else if(uriInfo.getQueryParameters().containsKey("email")) {
+            String email=uriInfo.getQueryParameters().getFirst("email");
+            return getUserByEmail(email);
         }
         return Response
                 .status(Response.Status.NOT_FOUND)
@@ -79,6 +82,14 @@ public class UserResource {
         
         return Response.status(Response.Status.OK)
             .entity(emails)
+            .build();
+    }
+    
+    @AllowedRoles(roles = {UserStatus.STUDENT, UserStatus.TEACHER,UserStatus.HEADMASTER})
+    public Response getUserByEmail(String email){
+        Long id = userService.getUserByEmail(email);
+        return Response.status(Response.Status.OK)
+            .entity(id)
             .build();
     }
     
