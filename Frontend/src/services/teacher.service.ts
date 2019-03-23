@@ -19,8 +19,8 @@ export class TeacherService {
     return this.httpClient.get<Teacher[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`);
   }
 
-  getTeacherById(id_t : number) {
-    return this.httpClient.get(API_SERVER.BASE_URI+"/teacher/"+id_t);
+  getTeacherById(id_t: number) {
+    return this.httpClient.get<Teacher>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + id_t);
   }
 
   editTimeTable(table) {

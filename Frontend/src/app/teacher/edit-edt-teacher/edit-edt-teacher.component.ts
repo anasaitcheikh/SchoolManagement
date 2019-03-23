@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 import {Class, Classroom, Subject, Teacher} from '../../../utils/types';
@@ -14,13 +14,15 @@ import {TimeTableService} from '../../../services/time-table.service';
   templateUrl: './edit-edt-teacher.component.html',
   styleUrls: ['./edit-edt-teacher.component.scss']
 })
-export class EditEdtTeacherComponent implements OnInit {
+export class EditEdtTeacherComponent implements OnInit, OnDestroy {
 
- // teachers: Teacher[] = [];
+
   classes: Class[] = [];
   classrooms: Classroom[] = [];
-  subject: number;
-  teacherId: number;
+  subject;
+ // teacher;
+  times: string[] = [];
+  teacherId = JSON.parse(localStorage.getItem('user')).id;
   _createTimeTableSubscriber: Subscription;
 
   constructor(private LoginService: LoginService,
@@ -32,14 +34,22 @@ export class EditEdtTeacherComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    if(! this.LoginService.is_loggedin()){
-      this.router.navigate(['login'])
+    if (! this.LoginService.is_loggedin()) {
+      this.router.navigate(['login']);
     }
-    this.getTeacherId();
-    this.getSpeciality();
+
+    this.getTeacher();
     this.getClassrooms();
-  //  this.getSubjects();
     this.getClasses();
+    this.initializeTime();
+  }
+
+  ngOnDestroy(): void {
+    if (this._createTimeTableSubscriber) {
+      if (this._createTimeTableSubscriber!= null) {
+        this._createTimeTableSubscriber.unsubscribe();
+      }
+    }
   }
 
   createTimeTable(course){
@@ -55,8 +65,9 @@ export class EditEdtTeacherComponent implements OnInit {
       id : course.classroom
     };
     subject = {
-      id : course.subject
+      id : this.subject.id
     }
+    console.log('verify subject id: ', subject);
     course.teacher = teacher;
     course.classe = classe;
     course.subject = subject;
@@ -76,7 +87,7 @@ export class EditEdtTeacherComponent implements OnInit {
   }
 
   getClasses() {
-    this._createTimeTableSubscriber = this.classService.getClassByTeacher(this.teacherId).subscribe(
+    this._createTimeTableSubscriber = this.classService.getClasses().subscribe(
       classes => {this.classes = classes; console.log('classes', this.classes)},
       error => console.log('error', error)
     );
@@ -89,17 +100,36 @@ export class EditEdtTeacherComponent implements OnInit {
     );
   }
 
-
-  getSpeciality(){
-    console.log(JSON.parse(localStorage.getItem('user')));
-    this.subject = JSON.parse(localStorage.getItem('user')).id;
-    console.log('teacher speciality: ', this.subject);
+  getTeacher() {
+    let subjectSubscriber: Subscription;
+    this._createTimeTableSubscriber = this.teacherService.getTeacherById(this.teacherId).subscribe(
+      newteacher => {
+           subjectSubscriber = this.subjectService.getSubjectByName(newteacher.specialty).subscribe(
+          subject => {this.subject = subject; console.log('subject', this.subject)},
+          error => console.log('error', error)
+        );
+        console.log('teacher : ', newteacher)} ,
+      error => console.log('error', error)
+    );
   }
 
-   getTeacherId() {
-     this.teacherId = JSON.parse(localStorage.getItem('user')).id;
-     console.log('teacher id: ', this.teacherId);
-   }
+  initializeTime() {
+    this.times = [
+      '08:00:00',
+      '09:00:00',
+      '10:00:00',
+      '11:00:00',
+      '12:00:00',
+      '13:00:00',
+      '14:00:00',
+      '15:00:00',
+      '16:00:00',
+      '17:00:00',
+      '18:00:00',
+    ];
+  }
+
+
 //getTeacherById()
   //getSpecialityByTeacher()
   //getSpecialityIdByName()

@@ -40,13 +40,17 @@ export class RequestModifyPlanningComponent implements OnInit, OnDestroy {
     );
   }
 
-  acceptCourse(idCourse){
+  acceptCourse(course){
+    course.status = true;
+    console.log(course);
+    this._courseSubscriber = this.courseService.updateCourse(course.id, course).subscribe(
+      _ => console.log('success'),
+      error => console.log(error)
+    );
+   }
 
-
-  }
   refuseCourse(idCourse){
-
-     this._courseSubscriber = this.courseService.deleteCourseById(idCourse).subscribe(
+    this._courseSubscriber = this.courseService.deleteCourseById(idCourse).subscribe(
        _ => console.log('success'),
        error => console.log(error)
      );
