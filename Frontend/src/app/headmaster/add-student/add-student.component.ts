@@ -55,7 +55,8 @@ export class AddStudentComponent implements OnInit, OnDestroy {
     }
 
     this._addStudentSubscriber = this.studentService.addStudent(student).subscribe(
-      newStudent => console.log('add student successfull', newStudent),
+      newStudent => {console.log('add student successfull', newStudent),
+      this.router.navigate(['/headmaster/studs'])},
       error => console.log(error)
     );
   }

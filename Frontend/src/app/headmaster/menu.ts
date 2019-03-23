@@ -78,7 +78,7 @@ export let MENU_ITEM_HEADMASTER = [
         icon: 'male',
         children: [
          {
-           path: 'allTeachers',
+           path: 'teachs',
            title: 'All Teachers'
          },
          {

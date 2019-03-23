@@ -1,15 +1,4 @@
-<!--card>
-  Email Teacher : anas@upec.fr <br>
-  Change : Lundi 10h - 12h <br>
-  <button class="btn-success">Accept</button> <button class="btn-danger">Refuse</button>
-</card>
-
-<card>
-  Email Teacher : anas@upec.fr <br>
-  Change : Lundi 10h - 12h <br>
-  <button class="btn-success">Accept</button> <button class="btn-danger">Refuse</button>
-
-</card!-->
+<div *ngIf="courses.length == 0">There is no requests</div>
 
 <div class="" name="course" *ngFor="let course of courses">
   <card >

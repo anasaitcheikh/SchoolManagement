@@ -62,9 +62,10 @@ export class EditStudentComponent implements OnInit, OnDestroy {
     this.student.email=this.email;
     this.student.password=this.password;
     this.student.studentClass=this.studentClass;
+    console.log("befor",this.student);
     this._editStudentSubscriber = this.studentService.updateStudent(this.student, this.studentId).subscribe(
-      newStudent => {
-        this.router.navigate(['headmaster/students'])},
+      newStudent => {console.log("after",this.student);
+        this.router.navigate(['headmaster/studs'])},
       error => {console.log(error);}
     );
   }
