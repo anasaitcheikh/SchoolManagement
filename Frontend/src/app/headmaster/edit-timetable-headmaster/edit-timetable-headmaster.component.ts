@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ClassroomService} from '../../../services/classroom.service';
 import {SubjectService} from '../../../services/subject.service';
@@ -13,12 +13,13 @@ import {TeacherService} from '../../../services/teacher.service';
   templateUrl: './edit-timetable-headmaster.component.html',
   styleUrls: ['./edit-timetable-headmaster.component.scss']
 })
-export class EditTimetableHeadmasterComponent implements OnInit {
+export class EditTimetableHeadmasterComponent implements OnInit, OnDestroy {
 
   teachers: Teacher[] = [];
   classes: Class[] = [];
   classrooms: Classroom[] = [];
   subjects: Subject[] = [];
+  times: string[] = [];
 
   _createTimeTableSubscriber: Subscription;
 
@@ -38,6 +39,15 @@ export class EditTimetableHeadmasterComponent implements OnInit {
     this.getClassrooms();
     this.getSubjects();
     this.getTeachers();
+    this.initializeTime();
+  }
+
+  ngOnDestroy(): void {
+    if (this._createTimeTableSubscriber) {
+      if (this._createTimeTableSubscriber != null) {
+        this._createTimeTableSubscriber.unsubscribe();
+      }
+    }
   }
 
   createTimeTable(course){
@@ -99,5 +109,21 @@ export class EditTimetableHeadmasterComponent implements OnInit {
       teachers => {this.teachers = teachers; console.log('teachers', this.teachers)},
       error => console.log('error', error)
     );
+  }
+
+  initializeTime() {
+    this.times = [
+      '08:00:00',
+      '09:00:00',
+      '10:00:00',
+      '11:00:00',
+      '12:00:00',
+      '13:00:00',
+      '14:00:00',
+      '15:00:00',
+      '16:00:00',
+      '17:00:00',
+      '18:00:00',
+    ];
   }
 }

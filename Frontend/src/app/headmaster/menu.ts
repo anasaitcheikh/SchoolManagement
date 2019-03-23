@@ -12,7 +12,7 @@ export let MENU_ITEM_HEADMASTER = [
     },
     {
       path: 'uploadcorse',
-      title: 'Upload Corse Materials',
+      title: 'Upload Course Materials',
       icon: 'book'
   },
 
@@ -115,7 +115,7 @@ export let MENU_ITEM_HEADMASTER = [
 
       {
         path: 'timetable-edit',
-        title: 'Create/Edit Timetable',
+        title: 'Create Course',
      }
 
     ]
