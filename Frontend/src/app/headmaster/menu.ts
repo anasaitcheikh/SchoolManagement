@@ -29,7 +29,7 @@ export let MENU_ITEM_HEADMASTER = [
     children: [
       {
         path: 'viewClassrooms',
-        title: 'Show classrooms'
+        title: 'All classrooms'
       },
       {
         path: 'bookRoom',
@@ -45,14 +45,14 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'user',
     children: [
       {
-        path: 'addStaff',
-        title: 'Add Staff'
-      },
-      {
         path: 'staffs',
         title: 'All Staffs',
 
       },
+      {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },      
     ]
   },
 
