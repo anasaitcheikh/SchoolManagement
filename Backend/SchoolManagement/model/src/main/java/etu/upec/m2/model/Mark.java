@@ -17,8 +17,8 @@ import javax.persistence.*;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"id_student", "id_subject"})})
 @NamedQueries({
     @NamedQuery(name = "findMarkById", query = "SELECT u FROM Mark u WHERE u.id =:id"),
-    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id WHERE u.student.id =:studentId"),
-    @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.markId.subjectId = s.id LEFT JOIN u.student e ON u.markId.studentId = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
+    @NamedQuery(name = "findAllMarkByIdStudent", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.subject.id = s.id WHERE u.student.id =:studentId"),
+    @NamedQuery(name = "findAllMarkBySujectIdAndClassId", query = "SELECT u FROM Mark u LEFT JOIN u.subject s ON u.subject.id = s.id LEFT JOIN u.student e ON u.student.id = e.id WHERE e.studentClass.id =:classId and s.id =:subjectId"),
 })
 
 public class Mark implements Serializable {
@@ -26,18 +26,18 @@ public class Mark implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     Long id;
     
-    @EmbeddedId
-    private MarkId markId;
+    //@EmbeddedId
+    //private MarkId markId;
     
     private double mark;
     
     @ManyToOne
-    @MapsId("studentId")
+    //@MapsId("id")
     @JoinColumn(name = "id_student")
     private Student student;
     
     @ManyToOne
-    @MapsId("subjectId")
+    //@MapsId("id")
     @JoinColumn(name = "id_subject")
     private Subject subject;
 
@@ -73,12 +73,12 @@ public class Mark implements Serializable {
         this.mark = mark;
     }
     
-    public MarkId getMarkId() {
+    /*public MarkId getMarkId() {
         return markId;
     }
 
     public void setMarkId(MarkId markId) {
         this.markId = markId;
-    }
+    }*/
     
 }
