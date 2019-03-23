@@ -14,21 +14,22 @@ import java.security.NoSuchAlgorithmException;
  */
 public class EncryptPassword {
     
-    static String encryptPassword(String password, String methode) throws NoSuchAlgorithmException{
+    public static String encryptPassword(String password, String methode) throws NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance(methode);
-		
         byte[] valBytes = password.getBytes();
         byte[] hashBytes = md.digest(valBytes);
-
         String passwordEncrypt=convertByteToString(hashBytes);
         return passwordEncrypt;
     }
     
-    static String convertByteToString(byte [] bytes){// regarde cela
+    public static String convertByteToString(byte [] bytes){
         StringBuffer sb = new StringBuffer();
+        System.err.print("bytes=>");
         for (int i = 0; i < bytes.length; i++) {
-            sb.append(bytes[i]);
+            System.err.print(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
         }
+        System.err.println();
 	return sb.toString(); 
     }  
 }

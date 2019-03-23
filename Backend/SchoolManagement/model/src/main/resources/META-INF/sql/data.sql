@@ -5,7 +5,7 @@
 
 /************************************* HEADMASTER CREATION *************************************/
 
-INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (1, '1970-07-09', 'headmaster@mail.com', 'headmaster', 'headmaster', 'password', 'HEADMASTER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (1, '1970-07-09', 'headmaster@mail.com', 'headmaster', 'headmaster', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'HEADMASTER');
 INSERT INTO `Headmaster` (`id`) VALUES ('1');
 
 /*************************************** CLASSES CREATION ***************************************/
@@ -19,10 +19,10 @@ INSERT INTO `Class` (`id`, `grade`, `level`, `name`, `schoolYear`) VALUES (6, 1,
 
 /*************************************** STUDENTS CREATION ***************************************/
 
-INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (2, '2019-07-07', 'student@mail.com', 'Stu', 'DENT', 'password', 'STUDENT');
-INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (3, '2019-07-07', 'student2@mail.com', 'Stu1', 'DENT1', 'password', 'STUDENT');
-INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (4, '2019-07-07', 'student3@mail.com', 'Stu2', 'DENT2', 'password', 'STUDENT');
-INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (5, '2019-07-07', 'student4@mail.com', 'Stu3', 'DENT3', 'password', 'STUDENT');
+INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (2, '2019-07-07', 'student@mail.com', 'Stu', 'DENT', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'STUDENT');
+INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (3, '2019-07-07', 'student2@mail.com', 'Stu1', 'DENT1', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'STUDENT');
+INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (4, '2019-07-07', 'student3@mail.com', 'Stu2', 'DENT2', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'STUDENT');
+INSERT INTO `User` (`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (5, '2019-07-07', 'student4@mail.com', 'Stu3', 'DENT3', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'STUDENT');
 
 INSERT INTO `Student` (`id`, `id_class`) VALUES (2, 1);
 INSERT INTO `Student` (`id`, `id_class`) VALUES (3, 1);
@@ -65,10 +65,10 @@ INSERT INTO `Subject`(`id`, `name`) VALUES (8, 'ENGLISH');
 
 /************************************* TEACHERS CREATION *************************************/
 
-INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (6, '1970-07-09', 'teacher1@mail.com', 'Teacher1', 'Teacher1', 'password', 'TEACHER');
-INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (7, '1970-07-09', 'teacher2@mail.com', 'Teacher2', 'Teacher2', 'password', 'TEACHER');
-INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (8, '1970-07-09', 'teacher3@mail.com', 'Teacher3', 'Teacher3', 'password', 'TEACHER');
-INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (9, '1970-07-09', 'teacher4@mail.com', 'Teacher4', 'Teacher4', 'password', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (6, '1970-07-09', 'teacher1@mail.com', 'Teacher1', 'Teacher1', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (7, '1970-07-09', 'teacher2@mail.com', 'Teacher2', 'Teacher2', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (8, '1970-07-09', 'teacher3@mail.com', 'Teacher3', 'Teacher3', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'TEACHER');
+INSERT INTO `User`(`id`, `birthDate`, `email`, `firstname`, `lastname`, `password`, `status`) VALUES (9, '1970-07-09', 'teacher4@mail.com', 'Teacher4', 'Teacher4', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'TEACHER');
 
 INSERT INTO `Teacher` (`id`, `specialty`) VALUES (6, 'MATHEMATICS');
 INSERT INTO `Teacher` (`id`, `specialty`) VALUES (7, 'MATHEMATICS');
