@@ -12,11 +12,26 @@ getMarkByStudent(id_s){
     return req;
   }
 
-enter_mark(id_s){
+enter_mark(id_s, id_c, m){
+  const mark = {
+    student :{
+      id : id_s
+    },
+    subject :{
+      id : id_c
+    },
+    mark : m
+  }
+  console.log(mark);
   return this.http.post(API_SERVER.BASE_URI + "/mark",{
-    
+    student :{
+      id : id_s
+    },
+    subject :{
+      id : id_c
+    },
+    mark : m
   });
-
 }
 
 }
