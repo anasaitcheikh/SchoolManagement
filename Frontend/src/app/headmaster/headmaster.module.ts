@@ -7,7 +7,9 @@ import { SharedModule } from '../shared/shared.module';
 
 /* components */
 import { HeadmasterComponent } from './headmaster.component';
-import { ClassesComponent } from './classes/classes.component';
+
+
+
 
 @NgModule({
     imports: [
@@ -18,8 +20,6 @@ import { ClassesComponent } from './classes/classes.component';
     ],
     declarations: [
         HeadmasterComponent,
-        ClassesComponent,
-        
     ]
 })
 export class HeadmasterModule { }

@@ -4,7 +4,6 @@ import {StaffService} from '../../../../services/staff.service';
 import {LoginService} from '../../../../services/login.service';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Staff } from '../../../../utils/types';
-
 @Component({
   selector: 'app-edit-staff',
   templateUrl: './edit-staff.component.html',
@@ -14,22 +13,18 @@ export class EditStaffComponent implements OnInit, OnDestroy {
   _editStaffSubscriber: Subscription;
   _getStaffSubscriber: Subscription;
   staffId : number;
-  firstname : string;
-  lastname : string;
-  salary : number;
-  role : string;
   staff: Staff;
 
   constructor(private staffService: StaffService, 
     private LoginService: LoginService, 
     private router: Router, 
-    private activatedRoute: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     if (!this.LoginService.is_loggedin()){
       this.router.navigate(['login'])
     }
-    this.staffId  = this.activatedRoute.snapshot.params['id'];
+    this.staffId  = this.route.snapshot.params['id'];
     console.log("staffId", this.staffId);
     this.getStaffById()
   }
@@ -44,27 +39,19 @@ export class EditStaffComponent implements OnInit, OnDestroy {
     }
   }
 
-  editStaff() {
-    this.staff.firstname=this.firstname;
-    this.staff.lastname=this.lastname;
-    this.staff.salary=this.salary;
-    this.staff.role=this.role;
-    this._editStaffSubscriber = this.staffService.updateStaff(this.staff, this.staffId).subscribe(
-      newStaff => {
-        this.router.navigate(['headmaster/staffs'])},
-      error => {console.log(error);}
+  editStaff(staff) {
+    console.error('edit staff', this.staffId);
+    this._editStaffSubscriber = this.staffService.updateStaff(staff, this.staffId).subscribe(
+      newStaff => console.log(newStaff),
+      error => console.log(error)
     );
   }
 
   getStaffById() {
     this._getStaffSubscriber = this.staffService.getStaffById(this.staffId).subscribe(
-      res => {
-        console.log(res)
-        this.staff = res;
-        this.firstname=res.firstname;
-        this.lastname=res.lastname;
-        this.salary=res.salary;
-        this.role=res.role;
+      staff => {
+        console.log(staff)
+        this.staff = staff
       },
       error => console.log(error)
     );

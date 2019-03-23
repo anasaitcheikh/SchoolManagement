@@ -12,4 +12,11 @@ getMarkByStudent(id_s){
     return req;
   }
 
+enter_mark(id_s){
+  return this.http.post(API_SERVER.BASE_URI + "/mark",{
+    
+  });
+
+}
+
 }

@@ -1,25 +1,4 @@
 export let MENU_ITEM_HEADMASTER = [
-  {
-    path: '',
-    title: 'Planning',
-    icon: 'calendar',
-    children: [
-       {
-         path: 'viewPlanning',
-         title: 'View Planning'
-       },
-      {
-        path: 'requestModifyPlanning',
-        title: 'Planning change requests'
-      },
-
-      {
-        path: 'timetable-edit',
-        title: 'Create/Edit Timetable',
-     }
-
-    ]
-  },
     {
         path: 'dashboardHeadmaster',
         title: 'Dashboard',
@@ -36,6 +15,8 @@ export let MENU_ITEM_HEADMASTER = [
       title: 'Upload Corse Materials',
       icon: 'book'
   },
+
+
   {
     path: '',
     title: 'Classrooms',
@@ -52,6 +33,24 @@ export let MENU_ITEM_HEADMASTER = [
       },
     ]
   },
+
+  {
+    path: '',
+    title: 'Staffs',
+    icon: 'user',
+    children: [
+      {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },
+      {
+        path: 'staff',
+        title: 'All Staffs',
+
+      },
+    ]
+  },
+
   {
     path: '',
     title: 'Classes',
@@ -65,17 +64,16 @@ export let MENU_ITEM_HEADMASTER = [
         path: 'addClass',
         title: 'Add Class',
 
-      },      
+      },
     ]
   },
-  
     {
         path: '',
         title: 'Teachers',
         icon: 'male',
         children: [
          {
-           path: 'teachers',
+           path: 'allTeachers',
            title: 'All Teachers'
          },
          {
@@ -100,22 +98,27 @@ export let MENU_ITEM_HEADMASTER = [
         }
       ]
   },
+
   {
     path: '',
-    title: 'Staffs',
-    icon: 'user',
+    title: 'Planning',
+    icon: 'calendar',
     children: [
+       {
+         path: 'viewPlanning',
+         title: 'View Planning'
+       },
       {
-        path: 'staffs',
-        title: 'All Staffs',
+        path: 'requestModifyPlanning',
+        title: 'Planning change requests'
+      },
 
-      },
       {
-        path: 'addStaff',
-        title: 'Add Staff'
-      },
+        path: 'timetable-edit',
+        title: 'Create/Edit Timetable',
+     }
+
     ]
   },
-  
 
 ];

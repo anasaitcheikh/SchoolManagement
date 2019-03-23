@@ -19,16 +19,18 @@ export class StaffService {
   }
 
   addStaff(_staff: Staff) {
+    console.log('in service staff', _staff);
+    console.log(API_SERVER.BASE_URI, '/', RESOURCE_NAME)
     return this.httpClient.post<Staff>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, _staff)
 
   }
 
   updateStaff(_staff: Staff, _id: number) {
+
     return this.httpClient.put<Staff>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`, _staff)
   }
 
   deleteStaff(_id: number) {
-    return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`)
+    return this.httpClient.delete(`${API_SERVER}/${RESOURCE_NAME}`)
   }
- 
 }
