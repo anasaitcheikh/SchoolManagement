@@ -45,6 +45,17 @@ public class CourseService implements ICourseService {
     }
 
     @Override
+    public Long updateStatusCourse(Long id, boolean status) {
+        Course course=getCourseById(id);
+        if(course == null) {
+            return new Long(0);
+        }
+        course.setStatus(status);
+        em.merge(course);
+        return null;
+    }
+    
+    @Override
     public Long updateCourse(Long id, Course newCourse) {
         Course course=getCourseById(id);
         if(course == null) {
