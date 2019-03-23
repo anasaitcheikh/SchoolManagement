@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {LoginService} from '../../../services/login.service';
 import { Router } from '@angular/router'
+import {CourseMaterialService} from '../../../services/courseMaterial.service';
 
 @Component({
   selector: 'app-uploadcorse-headmaster',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router'
 })
 export class UploadcorseHeadmasterComponent implements OnInit {
   fileToUpload: File = null;
-  constructor(private LoginService: LoginService, private router: Router) { }
+  constructor(private CourseMaterialService: CourseMaterialService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     if(! this.LoginService.is_loggedin()){
