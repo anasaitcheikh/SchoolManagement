@@ -20,5 +20,13 @@ export class UserService {
     return this.http.get(API_SERVER.BASE_URI+"/user/"+id_u);
   }
 
+  getAllEmail(status){
+    return this.http.get(API_SERVER.BASE_URI+"/user?status="+status);
+  }
+
+  getUserByEmail(email){
+    return this.http.get(API_SERVER.BASE_URI+"/user?email="+email);
+  }
+
 
 }

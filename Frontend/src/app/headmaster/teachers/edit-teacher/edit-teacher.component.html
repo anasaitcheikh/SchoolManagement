@@ -1,0 +1,47 @@
+
+<div class="col-md-12">
+  <card cardTitle="Edit Teacher">
+    <form (submit)="editTeacher()" class="form-group">
+      <label class="control-label">Last Name</label>
+      <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname" value="{{lastname}}">
+      <label class="control-label">First Name</label>
+      <input type="text" class="form-control" [(ngModel)]="firstname" name="firstname" value="{{firstname}}">
+      <label class="control-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" value="{{email}}">
+      <label class="control-label">Password</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password" value="{{password}}">
+      <label class="control-label">BirthDate</label>
+      <input type="text" class="form-control" [(ngModel)]="birthDate" name="birthDate" value="{{birthDate}}">
+      <label class="control-label">Specialty</label>
+      <select name="select" id="select1" class="form-control" [(ngModel)]="specialty" name="specialty" value="{{specialty}}">
+        <option value="MATHEMATICS">MATHEMATICS</option>
+        <option value="SCIENCE">SCIENCE</option>
+        <option value="PHYSICS">PHYSICS</option>
+        <option value="CHEMISTRY">CHEMISTRY</option>
+        <option value="GEOGRAPHY">GEOGRAPHY</option>
+        <option value="HISTORY">HISTORY</option>
+        <option value="FRENCH">FRENCH</option>
+        <option value="ENGLISH">ENGLISH</option>
+      </select>
+<!--
+      <label class="control-label">Class</label>
+      <select name="select" id="select1" class="form-control" ngModel name="class">
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+        <option value="option4">option4</option>
+      </select>
+
+      <label class="control-label">Course</label>
+      <select name="select" id="select2" class="form-control" ngModel name="course">
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+        <option value="option4">option4</option>
+      </select>
+    -->
+      <br>
+      <button type="submit" class="btn btn-primary" >Edit</button>
+    </form>
+  </card>
+</div>
