@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(this._loginSubscriber != null)
       this._loginSubscriber.unsubscribe();
   }
-
+  failed : boolean;
   loginError : boolean;
   email : string;
   password : string;
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
+    this.failed=false;
     this.user = JSON.parse(localStorage.getItem('user'));
     if( this.loginService.is_loggedin()){
       if(this.user.status=="HEADMASTER")
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
         },
         error => {
+          this.failed=true;
           console.log(error);
           this.loginError = true;
         }

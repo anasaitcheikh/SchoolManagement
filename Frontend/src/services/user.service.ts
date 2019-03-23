@@ -16,5 +16,9 @@ export class UserService {
       });
   }
 
+  getUserById(id_u : number) {
+    return this.http.get(API_SERVER.BASE_URI+"/user/"+id_u);
+  }
+
 
 }
