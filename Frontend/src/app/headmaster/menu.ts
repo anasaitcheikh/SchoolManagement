@@ -44,7 +44,7 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'Add Staff'
       },
       {
-        path: 'staff',
+        path: 'staffs',
         title: 'All Staffs',
 
       },
@@ -57,8 +57,8 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'users',
     children: [
       {
-        path: 'viewClasses',
-        title: 'Show classes'
+        path: 'classes',
+        title: 'All classes'
       },
       {
         path: 'addClass',

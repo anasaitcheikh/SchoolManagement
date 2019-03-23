@@ -5,12 +5,17 @@
  */
 package etu.upec.m2;
 
+import etu.upec.m2.model.Course;
+import etu.upec.m2.model.Mark;
+import etu.upec.m2.model.Message;
 import etu.upec.m2.model.Student;
 import etu.upec.utils.EncryptPassword;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -34,6 +39,12 @@ public class StudentService implements IStudentService {
     @PersistenceContext
     EntityManager em;
     
+    @EJB
+    IMessageService messageService;
+    
+    @EJB
+    IMarkService markService;
+    
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public Long createStudent(Student student) {
@@ -51,6 +62,22 @@ public class StudentService implements IStudentService {
 
     @Override
     public Long deleteStudent(Long id) {
+        List<Message> messages=messageService.getMessagesBySenderIdOrRecipientId(id);
+        for (Message message : messages){
+            if(Objects.equals(message.getRecipient().getId(), id)){
+                message.setRecipient(null);
+                messageService.UpdateMessage(message.getId(), message);
+            }
+            if(Objects.equals(message.getSender().getId(), id)){
+                message.setSender(null);
+                messageService.UpdateMessage(message.getId(), message);
+            }
+        }
+        
+        List<Mark> allMark=markService.getAllMarkByIdStudent(id);
+        for (Mark mark : allMark){
+            markService.deleteMark(mark.getId());
+        }
         em.remove(em.find(Student.class, id));
         return id;
     }
