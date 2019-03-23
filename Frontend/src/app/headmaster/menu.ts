@@ -44,7 +44,7 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'Add Staff'
       },
       {
-        path: 'allStaffs',
+        path: 'staff',
         title: 'All Staffs',
 
       },
