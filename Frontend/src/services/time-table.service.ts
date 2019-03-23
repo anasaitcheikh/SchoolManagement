@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Course} from '../utils/types';
 import {API_SERVER} from '../utils/server.conf';
-const RESOURCE_NAME = 'course'
+const RESOURCE_NAME = 'course';
+
 @Injectable()
 export class TimeTableService {
 
@@ -16,14 +17,14 @@ export class TimeTableService {
    getCoursesByStudentId(id_s: number) {
     return this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?studentId=' + id_s);
   }
-  getCourseByTeacher(id_t: number){
+  getCourseByTeacher(id_t: number) {
     const req = this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?teacherId=' + id_t);
     return req;
 
   }
 
-  updateCourse(_id, course){
-     return this.httpClient.put(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + _id, course);
+  updateCourseStatusById(_id: number) {
+     return this.httpClient.put(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/${_id}`, {});
   }
 
   deleteCourseById(_id: number) {

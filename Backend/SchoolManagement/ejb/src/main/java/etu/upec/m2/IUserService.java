@@ -25,4 +25,7 @@ public interface IUserService {
     User getUserById(Long id);
     Long resetPassword(Long id, String oldPassword, String newPassword);
     User getUserByEmailAndPassword(String email, String password);
+    List<String> getAllEmailForStudent();
+    List<String> getAllEmailForHeadmasterAndTeacher();
+    Long getUserByEmail(String email);
 }

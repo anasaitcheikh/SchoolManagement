@@ -23,6 +23,7 @@ import {MailService} from '../services/mail.service';
 import {SubjectService} from '../services/subject.service';
 import {TimeTableService} from '../services/time-table.service';
 import { MarkService } from '../services/mark.service';
+import { CourseMaterialService } from '../services/courseMaterial.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { MarkService } from '../services/mark.service';
       ClassroomService,
       MailService,
       MarkService,
-      LoginService,
+      CourseMaterialService,
+      LoginService, 
       {
         provide: HTTP_INTERCEPTORS,
         useClass: TokenInterceptor,
