@@ -29,12 +29,7 @@ export let MENU_ITEM_HEADMASTER = [
     children: [
       {
         path: 'viewClassrooms',
-        title: 'All classrooms'
-      },
-      {
-        path: 'bookRoom',
-        title: 'Book classroom',
-
+        title: 'All Classrooms'
       },
     ]
   },
@@ -63,7 +58,7 @@ export let MENU_ITEM_HEADMASTER = [
     children: [
       {
         path: 'classes',
-        title: 'All classes'
+        title: 'All Classes'
       },
       {
         path: 'addClass',
