@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Teacher } from '../../../../utils/types';
-import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from '../../../../services/login.service';
-import { TeacherService } from '../../../../services/teacher.service';
+import { Teacher } from '../../../utils/types';
+import { Router } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
+import { HeadmasterService } from '../../../services/headmaster.service';
 
 @Component({
   selector: 'app-all-teachers',
@@ -12,7 +12,6 @@ import { TeacherService } from '../../../../services/teacher.service';
 })
 export class AllTeachersComponent implements OnInit {
   private _allTeachersSubscriber: Subscription;
-  private _deleteTeachersSubscriber: Subscription;
   Json;
   teacher : Teacher[];
   
@@ -20,14 +19,8 @@ export class AllTeachersComponent implements OnInit {
     if (this._allTeachersSubscriber){
       this._allTeachersSubscriber.unsubscribe();
     }
-    if (this._deleteTeachersSubscriber){
-      this._deleteTeachersSubscriber.unsubscribe();
-    }
   }
-  constructor(private LoginService: LoginService, 
-    private router: Router,
-    private teacherService: TeacherService,
-    private activatedRoute: ActivatedRoute) { }
+  constructor(private LoginService: LoginService, private router: Router,private headmasterService: HeadmasterService) { }
 
   ngOnInit() {
     if(! this.LoginService.is_loggedin()){
@@ -37,26 +30,32 @@ export class AllTeachersComponent implements OnInit {
   }
 
   allteachers(){
-    this._allTeachersSubscriber = this.teacherService.getAllTeachers().subscribe(
+    this._allTeachersSubscriber = this.headmasterService.getAllTeachers().subscribe(
       res => {
         this.Json =JSON.parse(JSON.stringify(res));
+      
+        console.error("yaya",this.Json);
         this.teacher=this.Json;
+       /* this.teacher.firstname =this.Json.firstname;
+        this.teacher.lastname = this.Json.lastname;
+        this.teacher.birthDate = this.Json.birthDate;
+        this.teacher.speciality = this.Json.specialty;
+        this.teacher.email = this.Json.email;*/
       },
-      error => console.log(error) 
+      error => console.log(error)
    )
   }
 
   deleteTeacher(teacher_id){
-    this._allTeachersSubscriber = this.teacherService.deleteTeacher(teacher_id).subscribe(
-      res => { console.error("delete teacher",res);
-               window.location.reload();
+    this._allTeachersSubscriber = this.headmasterService.deleteTeacher(teacher_id).subscribe(
+      res => { console.error("bikhtissar",res);
          /*if(!res.success) {
         this._flash.show(res.message, { cssClass : 'alert-danger '});
       }else{
         this._fetchPlans();
         this._flash.show('Plan deleted', { cssClass : 'alert-success '});
       */},
-      error => console.error(error)
+      error => console.log(error)
    )
   }
 

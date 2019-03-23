@@ -36,7 +36,12 @@ export class HeadmasterService {
     return this.http.get(API_SERVER.BASE_URI+'/student');
   }
 
-  
+  getAllTeachers() {
+    return this.http.get(API_SERVER.BASE_URI+'/teacher');
+  }
+  deleteTeacher(_id: number) {
+    return this.http.delete(API_SERVER.BASE_URI+'/teacher/'+_id)
+  }
 
   getAllClasses() {
     return this.http.get(API_SERVER.BASE_URI+'/class'); 
