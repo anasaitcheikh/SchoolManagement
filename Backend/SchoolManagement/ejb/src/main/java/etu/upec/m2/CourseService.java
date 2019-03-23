@@ -46,7 +46,20 @@ public class CourseService implements ICourseService {
 
     @Override
     public Long updateCourse(Long id, Course newCourse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Course course=getCourseById(id);
+        if(course == null) {
+            return new Long(0);
+        }
+        
+        course.setClasse(newCourse.getClasse());
+        course.setClassroom(newCourse.getClassroom());
+        course.setDate(newCourse.getDate());
+        course.setStatus(newCourse.getStatus());
+        course.setSubject(newCourse.getSubject());
+        course.setTeacher(newCourse.getTeacher());
+        course.setTime(newCourse.getTime());
+        em.merge(course);
+        return null;
     }
 
     @Override

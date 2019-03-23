@@ -8,6 +8,7 @@ package etu.upec.m2.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
@@ -21,6 +22,7 @@ import javax.persistence.*;
     @NamedQuery(name = "findUserByIdAndPassword", query = "SELECT u FROM User u WHERE u.id =:id AND u.password = :password"),
     @NamedQuery(name = "findUserByEmailAndPassword", query = "SELECT u FROM User u WHERE u.email =:email AND u.password = :password"),
 })
+@JsonIgnoreProperties(value={"password","oldPassword"}, allowGetters = false, allowSetters = true)
 public class User implements Serializable {
 
     @Id

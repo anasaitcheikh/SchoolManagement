@@ -1,16 +1,40 @@
-<form #f="ngForm">
+<div class="col-md-12">
+  <card cardTitle="Add Student">
+    <form (submit)="editStaff()" class="form-group">
+      <label class="control-label">Last Name</label>
+      <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname" value="{{lastname}}">
+      <label class="control-label">First Name</label>
+      <input type="text" class="form-control" [(ngModel)]="firstname" name="firstname" value="{{firstname}}">
+      <label class="control-label">Salary</label>
+      <input type="text" class="form-control" [(ngModel)]="salary" name="salary" value="{{salary}}">
+
+      <label class="control-label">Role</label>
+      <select name="select" id="select1" class="form-control" [(ngModel)]="role" name="role" value="{{role}}">
+        <option value="CLEANER">CLEANER</option>
+        <option value="COOK">COOK</option>
+        <option value="LIBRARIAN">LIBRARIAN</option>
+        <option value="SECRETARY">SECRETARY</option>
+        <option value="MANAGER">MANAGER</option>
+      </select>
+      <br>
+      <button  type="submit" class="btn btn-primary">Edit</button>
+    </form>
+  </card>
+</div>
+
+<!--<form #f="ngForm">value="{{staff.lastname}}"
   <div class="col-md-12">
     <card cardTitle="Add Student">
       <div class="form-group">
         <label class="control-label">Last Name</label>
-        <input type="text" class="form-control" ngModel name="lastname" >
+        <input type="text" class="form-control" ngModel name="lastname" value="{{staff.lastname}}">
         <label class="control-label">First Name</label>
-        <input type="text" class="form-control" ngModel name="firstname" >
+        <input type="text" class="form-control" ngModel name="firstname" value="{{staff.firstname}}">
         <label class="control-label">Salary</label>
-        <input type="text" class="form-control" ngModel name="salary" >
+        <input type="text" class="form-control" ngModel name="salary" value="{{staff.salary}}">
 
         <label class="control-label">Role</label>
-        <select name="select" id="select1" class="form-control" ngModel name="role">
+        <select name="select" id="select1" class="form-control" ngModel name="role" value="{{staff.role}}">
           <option value="CLEANER">CLEANER</option>
           <option value="COOK">COOK</option>
           <option value="LIBRARIAN">LIBRARIAN</option>
@@ -23,3 +47,4 @@
     </card>
   </div>
 </form>
+-->
