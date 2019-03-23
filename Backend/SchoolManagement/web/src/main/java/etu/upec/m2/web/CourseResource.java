@@ -64,7 +64,7 @@ public class CourseResource {
                 
         if (courses.isEmpty()) {
             return Response
-                    .status(Response.Status.NOT_FOUND)
+                    .status(Response.Status.OK)
                     .entity(courses)
                     .build();
         }
@@ -94,7 +94,7 @@ public class CourseResource {
         
         if (courses.isEmpty()) {
             return Response
-                    .status(Response.Status.NOT_FOUND)
+                    .status(Response.Status.OK)
                     .entity(courses)
                     .build();
         }
