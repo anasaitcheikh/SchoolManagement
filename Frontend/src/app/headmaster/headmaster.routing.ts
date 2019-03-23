@@ -18,6 +18,7 @@ export const childRoutes: Routes = [
             { path: 'addStaff', loadChildren: './add-staff/add-staff.module#AddStaffModule' },
             { path: 'allStudents', loadChildren: './all-students/all-students.module#AllStudentsModule' },
             { path: 'allTeachers', loadChildren: './all-teachers/all-teachers.module#AllTeachersModule' },
+            { path: 'studs', loadChildren: './students/students.module#StudentsModule' },
             { path: 'staffs', loadChildren: './staffs/staffs.module#StaffsModule' },
             { path: 'classes', loadChildren: './classes/classes.module#ClassesModule' },
             { path: 'bookRoom', loadChildren: './book-room/book-room.module#BookRoomModule' },

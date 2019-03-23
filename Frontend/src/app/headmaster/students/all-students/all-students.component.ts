@@ -50,7 +50,7 @@ export class AllStudentsComponent implements OnInit,OnDestroy {
 
   deleteStudent(student_id){
     this._deleteStudentSubscriber = this.studentService.deleteStudent(student_id).subscribe(
-      res => { console.error("delete student",res);
+      res => { console.error("delete student",res); 
                 window.location.reload();
       /*   if(!res.id) {
         this._flash.show(res.message, { cssClass : 'alert-danger '});
@@ -58,7 +58,7 @@ export class AllStudentsComponent implements OnInit,OnDestroy {
         this._fetchPlans();
         this._flash.show('Plan deleted', { cssClass : 'alert-success '});
       */},
-      error => console.error(error)
+      error => {console.error(error);}
    )
   }
 }
