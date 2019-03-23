@@ -58,8 +58,8 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'users',
     children: [
       {
-        path: 'classes',
-        title: 'All classes'
+        path: 'viewClasses',
+        title: 'Show classes'
       },
       {
         path: 'addClass',
