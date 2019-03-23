@@ -7,6 +7,7 @@ package etu.upec.m2.web;
 
 import etu.upec.m2.ISubjectService;
 import etu.upec.m2.model.Subject;
+import etu.upec.m2.model.SubjectName;
 import etu.upec.m2.model.UserStatus;
 import etu.upec.m2.web.annotations.AllowedRoles;
 import etu.upec.m2.web.annotations.JwtTokenRequired;
@@ -20,8 +21,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -57,6 +60,20 @@ public class SubjectResource {
     }
     
     @GET
+    public Response getSubjects(@Context UriInfo uriInfo) {
+        if(uriInfo.getQueryParameters().containsKey("name")) {
+            SubjectName name = SubjectName.valueOf( uriInfo.getQueryParameters().getFirst("name"));
+            Subject subject = subjectService.getSubjectByName(name);
+        return Response
+                .status(Response.Status.OK)
+                .entity(subject)
+                .build();
+        }else{
+            return getAllSubject();
+        }
+
+    }
+
     public Response getAllSubject() {
         List<Subject> subject = subjectService.getAllSubject();
         return Response

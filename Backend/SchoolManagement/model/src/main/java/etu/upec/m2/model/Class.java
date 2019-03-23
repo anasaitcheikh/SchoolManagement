@@ -6,7 +6,6 @@
 package etu.upec.m2.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -28,16 +27,11 @@ public class Class implements Serializable {
     private Long id;
     
     private String name;
-    private int schoolYear;
+    private int schoolYear, grade;
     
     @Enumerated(EnumType.STRING)
     private ClassLevel level;
-    
-    private int grade;
-    /*
-    @OneToMany
-    List<Student> students;
-*/
+
     public Long getId() {
         return id;
     }
@@ -77,6 +71,5 @@ public class Class implements Serializable {
     public void setGrade(int grade) {
         this.grade = grade;
     }
-
     
 }
