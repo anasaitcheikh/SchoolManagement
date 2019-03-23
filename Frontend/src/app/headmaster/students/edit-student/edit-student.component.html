@@ -1,0 +1,27 @@
+    <div class="col-md-12">
+      <card cardTitle="Edit Student">
+          <form (submit)="editStudent()" class="form-group">
+          <label class="control-label">Last Name</label>
+          <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname" value="{{lastname}}">
+          <label class="control-label">First Name</label>
+          <input type="text" class="form-control" [(ngModel)]="firstname" name="firstname" value="{{firstname}}">
+          <label class="control-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="email" name="email" value="{{email}}">
+          
+          
+          <label class="control-label">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" value="{{password}}">
+          <label class="control-label">BirthDate</label>
+          <input type="text" class="form-control" [(ngModel)]="birthDate" name="birthDate" value="{{birthDate}}">
+          <label class="control-label">Class</label>
+          <select id="select1" class="form-control" [(ngModel)]="studentClass" name="studentClass" value="{{studentClass}}">
+            <option value="-1">Not assigned</option>
+            
+            <option value="{{class.id}}" *ngFor="let class of classes">name: {{ class.name }}  |  level: {{ class.level }}  |  grade: {{ class.grade }}</option>
+          </select>
+          <br>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        
+      </form>
+      </card>
+    </div>

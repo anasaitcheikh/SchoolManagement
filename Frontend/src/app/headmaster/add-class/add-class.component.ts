@@ -31,7 +31,8 @@ export class AddClassComponent implements OnInit, OnDestroy {
      console.log('click on add class');
      console.log('class', _class);
      this._addClassSubscriber = this.classService.addClass(_class).subscribe(
-       newClass => console.log('add class successfull', newClass),
+       newClass => {console.log('add class successfull', newClass),
+       this.router.navigate(['/headmaster/classes'])},
        error => console.log(error)
     );
   }

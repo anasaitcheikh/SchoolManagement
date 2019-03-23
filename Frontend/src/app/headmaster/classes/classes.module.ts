@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StaffsComponent } from './staffs.component';
-import { routing } from './staffs.routing';
+import { ClassesComponent } from './classes.component';
+import { routing } from './classes.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { EditStaffComponent } from './edit-staff/edit-staff.component';
-import { AllStaffComponent } from './all-staff/all-staff.component';
+import { EditClassComponent } from './edit-class/edit-class.component';
+import { AllClassesComponent } from './all-classes/all-classes.component';
 import { FormsModule } from '@angular/forms'
 
 @NgModule({
@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms'
     FormsModule
   ],
   declarations: [
-    StaffsComponent,
-    EditStaffComponent,
-    AllStaffComponent
+    ClassesComponent,
+    EditClassComponent,
+    AllClassesComponent
   ]
 })
-export class StaffsModule { }
+export class ClassesModule { }
