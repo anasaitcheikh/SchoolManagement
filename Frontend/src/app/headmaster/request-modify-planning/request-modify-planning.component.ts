@@ -42,7 +42,7 @@ export class RequestModifyPlanningComponent implements OnInit, OnDestroy {
 
   acceptCourse(idCourse) {
     console.log('course id', idCourse);
-    this._courseSubscriber = this.courseService.updateCourseStatusById(idCourse, true).subscribe(
+    this._courseSubscriber = this.courseService.updateCourseStatusById(idCourse).subscribe(
       _ => {
         console.log('success');
         window.location.reload(true);
@@ -53,7 +53,7 @@ export class RequestModifyPlanningComponent implements OnInit, OnDestroy {
 
   refuseCourse(idCourse) {
     this._courseSubscriber = this.courseService.deleteCourseById(idCourse).subscribe(
-       _ => {console.log('success'); window.location.reload(true);},
+       _ => {console.log('success'); window.location.reload(true); },
        error => console.log(error)
      );
   }
