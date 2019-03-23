@@ -21,7 +21,6 @@ export class TimetableStudentComponent implements OnInit {
     }
     this.user = JSON.parse(localStorage.getItem('user'));
     this.getCourses();
-    //this.fix_date()
   }
 
   comparator (time, date, expected_day, expect_time) : boolean{
@@ -43,13 +42,6 @@ isthis_week(date) {
     let d = new Date(date);
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return days[d.getDay()];
-  }
-
-  fix_date(){
-    for(let t of this.edt){
-      t.date= this.parse_date(t.date);
-      console.log(t.date);
-    }
   }
 
   getCourses(){
