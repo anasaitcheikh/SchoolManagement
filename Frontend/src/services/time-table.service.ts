@@ -21,5 +21,17 @@ export class TimeTableService {
     return req;
 
   }
+
+  deleteCourseById(_id: number) {
+     return this.httpClient.delete(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + _id);
+  }
+
+  getAllCourses() {
+      return this.httpClient.get<Course[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`);
+  }
+
+  getAllCoursesByStatus(status: boolean) {
+    return this.httpClient.get<Course[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`+ '?status=' + status);
+  }
 }
 //course?classId=1
