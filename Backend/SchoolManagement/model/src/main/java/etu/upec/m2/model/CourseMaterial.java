@@ -10,32 +10,45 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author ademo
  */
 @Entity
+@NamedQuery(name = "getAllCourseMaterials", query = "SELECT c FROM CourseMaterial c")
 public class CourseMaterial implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    private String link;
+    private String name;
+    
+    private String description;
+
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getLink() {
-        return link;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

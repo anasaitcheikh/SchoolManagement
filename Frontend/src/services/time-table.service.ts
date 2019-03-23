@@ -11,8 +11,11 @@ export class TimeTableService {
     return this.httpClient.post<Course>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}`, course);
   }
    getCoursesByClassId(_idClass: number) {
-     return this.httpClient.get<Course[]>(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?classId=' + _idClass);
+     return this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?classId=' + _idClass);
    }
+   getCoursesByStudentId(id_s: number) {
+    return this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?studentId=' + id_s);
+  }
   getCourseByTeacher(id_t: number){
     const req = this.httpClient.get(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}` + '?teacherId=' + id_t);
     return req;

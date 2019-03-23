@@ -8,8 +8,11 @@ package etu.upec.m2;
 import etu.upec.m2.model.Course;
 import etu.upec.m2.model.Message;
 import etu.upec.m2.model.Teacher;
+import etu.upec.utils.EncryptPassword;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -41,8 +44,16 @@ public class TeacherService implements ITeacherService {
     
     @Override
     public Long createTeacher(Teacher teacher) {
-        em.persist(teacher);
-        return teacher.getId();
+        try {
+            String encryptPassword=EncryptPassword.encryptPassword(teacher.getPassword(),"SHA1");
+            teacher.setPassword(encryptPassword);
+            System.out.println("encryptPasssword=>"+encryptPassword);
+            em.persist(teacher);
+            return teacher.getId();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            return new Long(0);
+        } 
     }
 
     @Override
@@ -108,36 +119,52 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public Long resetPassword(Long id, String oldPassword, String newPassword) {
-        Teacher teacher;
-        try{
-            TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByIdAndPassword", Teacher.class);
-            query.setParameter("id", id);
-            query.setParameter("password", oldPassword);
-            teacher = query.getSingleResult();
-        }catch(NoResultException e){
-            teacher= null;
-        }
-        
-        if(teacher == null) {
-            return new Long(0);
-        }
-        
-        teacher.setPassword(newPassword);
-        em.merge(teacher);
-        return teacher.getId();
+//        Teacher teacher;
+//        try{
+//            TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByIdAndPassword", Teacher.class);
+//            String encryptOldPassword=EncryptPassword.encryptPassword(oldPassword,"SHA1");
+//            System.out.println("resetPassword old=>"+encryptOldPassword);
+//            query.setParameter("id", id);
+//            query.setParameter("password", oldPassword);
+//            teacher = query.getSingleResult();
+//        }catch(NoResultException e){
+//            teacher= null;
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(TeacherService.class.getName()).log(Level.SEVERE, null, ex);
+//            teacher=null;
+//        }
+//        if(teacher == null) {
+//            return -1L;
+//        }
+//        
+//        try {
+//            String encryptPassword=EncryptPassword.encryptPassword(newPassword,"SHA1");
+//            System.out.println("resetPassword old=>"+encryptPassword);
+//            teacher.setPassword(encryptPassword);
+//            em.merge(teacher);
+//            return teacher.getId();
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(TeacherService.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return -1L;
     }
     
     @Override
     public Teacher getTeacherByEmailAndPassword(String email, String password) {
         try{
             TypedQuery<Teacher> query =  em.createNamedQuery("findTeacherByEmailAndPassword", Teacher.class);
+            String encryptPassword=EncryptPassword.encryptPassword(password,"SHA1");
+            System.out.println("etu.upec.m2.TeacherService.getTeacherByEmailAndPassword()=>"+encryptPassword);
             query.setParameter("email", email);
-            query.setParameter("password", password);
-
+            query.setParameter("password", encryptPassword);
+            
             return query.getSingleResult();
         }catch(NoResultException e){
             return null;
-        }    
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TeacherService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }  
     }
 
     @Override

@@ -12,10 +12,14 @@ import {Subscription} from 'rxjs/Subscription';
   styleUrls: ['./view-planning.component.scss']
 })
 export class ViewPlanningComponent implements OnInit {
-
+  Subscriber: Subscription;
+  edt;
+  user;
+  classId: number;
   classes: Class[] = [];
   _viewPlanningSubscriber: Subscription
-  constructor(private LoginService: LoginService,
+  constructor(private TimeTableService : TimeTableService,
+              private LoginService: LoginService,
               private timeTableService: TimeTableService,
               private classService: ClassService,
               private router: Router) { }
@@ -25,9 +29,6 @@ export class ViewPlanningComponent implements OnInit {
       this.router.navigate(['login'])
     }
     this.getClasses();
-    let d = new Date('2019-03-21');
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    document.getElementById('demo').innerHTML = days[d.getDay()];
   }
 
   getClasses() {
@@ -37,5 +38,42 @@ export class ViewPlanningComponent implements OnInit {
     );
   }
 
+  getCourses(){
+    this.Subscriber = this.TimeTableService.getCoursesByClassId(this.classId) .subscribe(
+      sen => {console.log(sen);
+      this.edt= JSON.parse(JSON.stringify(sen));
+      },
+      error => console.log(error)
+    );
+ 
+  }
+
+  comparator (time, date, expected_day, expect_time) : boolean{
+    return this.isthis_week(date) && time ==expect_time && this.parse_date(date)==expected_day;
+  }
+
+isthis_week(date) {
+  let curr = new Date;
+  let week = [];
+  for (let i = 1; i <= 7; i++) {
+    let first = curr.getDate() - curr.getDay() + i 
+    let day = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+    week.push(day)
+}
+  return week.includes(date);
+}
+
+  parse_date(date){
+    let d = new Date(date);
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[d.getDay()];
+  }
+
+  show_edt(id_class){
+    this.classId= id_class;
+    console.log(id_class);
+    if(id_class != -1)
+      this. getCourses();
+  }
 
 }
