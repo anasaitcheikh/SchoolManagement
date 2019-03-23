@@ -37,6 +37,8 @@ public class ClassResource {
     @EJB
     IClassService classService;
     
+
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
@@ -103,6 +105,7 @@ public class ClassResource {
     @Path("{id}")
     @AllowedRoles(roles = {UserStatus.HEADMASTER})
     public Response deleteClass(@PathParam("id")Long id) {
+   
         Long result_id=classService.deleteClass(id);
         return Response
                 .status(Response.Status.OK)

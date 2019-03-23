@@ -88,7 +88,7 @@ public class MarkResource {
         String responseJson = "[";
         for(Mark mark:marks){
             
-             responseJson =  responseJson + "{\"id\": " + mark.getId()+ ",\"mark\": \""
+             responseJson =  responseJson + "{\"mark\": \""
                 + mark.getMark()+ "\",\"subject\": {\"name\" : \""
                 + mark.getSubject().getName()+ "\" }},";
         }

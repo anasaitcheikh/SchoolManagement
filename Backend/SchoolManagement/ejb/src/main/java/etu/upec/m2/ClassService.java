@@ -6,7 +6,10 @@
 package etu.upec.m2;
 
 import etu.upec.m2.model.Class;
+import etu.upec.m2.model.Course;
+import etu.upec.m2.model.Student;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -28,6 +31,12 @@ public class ClassService implements IClassService{
     @PersistenceContext
     EntityManager em;
     
+        @EJB
+    IStudentService studentService;
+    
+    @EJB
+    ICourseService courseService;
+    
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public Long createClass(Class c) {
@@ -37,6 +46,15 @@ public class ClassService implements IClassService{
 
     @Override
     public Long deleteClass(Long id) {
+        List<Student> students = studentService.getAllStudentsByClassId(id);
+        for(Student student:students){
+            student.setStudentClass(null);
+        }
+        
+        List<Course> courses = courseService.getAllCoursesByClassId(id);
+        for(Course course:courses){
+            courseService.deleteCourse(course.getId());
+        }
         em.remove(em.find(Class.class, id));
         return id;
     }
