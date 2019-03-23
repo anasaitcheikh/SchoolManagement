@@ -61,10 +61,9 @@ export class EditStudentComponent implements OnInit, OnDestroy {
     this.student.birthDate=this.birthDate;
     this.student.email=this.email;
     this.student.password=this.password;
-    this.student.studentClass=this.studentClass;
-    console.log("befor",this.student);
+    this.student.id=this.studentClass;
     this._editStudentSubscriber = this.studentService.updateStudent(this.student, this.studentId).subscribe(
-      newStudent => {console.log("after",this.student);
+      newStudent => {
         this.router.navigate(['headmaster/studs'])},
       error => {console.log(error);}
     );
@@ -80,7 +79,7 @@ export class EditStudentComponent implements OnInit, OnDestroy {
         this.birthDate=res.birthDate;
         this.email=res.email;
         this.password=res.password;
-        this.studentClass=res.studentClass;
+        this.studentClass=res.id;
       },
       error => console.log(error)
     );

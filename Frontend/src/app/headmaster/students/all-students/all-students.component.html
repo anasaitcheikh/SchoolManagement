@@ -18,7 +18,7 @@
               <td>{{ s.birthDate }}</td>
               <td>{{ s.email }}</td>
               <td>
-                <button class="btn btn-primary">Show classe</button>
+                
                 <button [routerLink]="['../editStudent', s.id]" class="btn btn-success">Edit</button>
                 <button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button>
               </td>
