@@ -41,8 +41,7 @@ public class Course implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @Temporal(TemporalType.TIME)
-    private Date time;
+    private String time;
     
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -82,11 +81,11 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
