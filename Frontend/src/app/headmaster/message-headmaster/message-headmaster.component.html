@@ -3,8 +3,12 @@
     <card cardTitle="Send message">
       <form (submit)="send()" class="form-group">
         <label class="control-label">To</label>
-        <input name="recipient" [(ngModel)]="recipient" type="text" class="form-control" placeholder="example@example.com">
-        <br><br>
+
+        <select id="select1" name="reci" class="form-control" [(ngModel)]="recipient" name="studentClass">
+            <option value="-1" >-------------</option> 
+          <option value="{{email}}" *ngFor="let email of emails">{{ email }}</option>
+          
+         </select>        <br><br>
         <label class="control-label">Object</label>
         <input name="object" [(ngModel)]="object" type="text" class="form-control" placeholder="Object">
         <br><br>
