@@ -23,7 +23,7 @@ import {MailService} from '../services/mail.service';
 import {SubjectService} from '../services/subject.service';
 import {TimeTableService} from '../services/time-table.service';
 import { MarkService } from '../services/mark.service';
-import { CourseMaterialService } from '../services/CourseMaterial.service';
+import { CourseMaterialService } from '../services/courseMaterial.service';
 
 @NgModule({
   imports: [
