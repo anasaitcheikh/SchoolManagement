@@ -36,27 +36,6 @@ export class HeadmasterService {
     return this.http.get(API_SERVER.BASE_URI+'/student');
   }
 
-  
-
-  getAllClasses() {
-    return this.http.get(API_SERVER.BASE_URI+'/class'); 
-  }
-
-  addClass(classe) {
-    console.log('in add classe method');
-    console.log('classe', classe);
-    console.log('try call API');
-    const req = this.http.post(API_SERVER.BASE_URI + "xxx",
-      {
-        class: {
-          className : classe.className,
-          classGrade : classe.classGrade,
-          classLevel : classe.classLevel,
-          classYear : classe.year
-        }
-      })
-    return req;
-  }
 
   bookRoom(_idRoom) {
 

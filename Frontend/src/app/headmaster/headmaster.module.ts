@@ -17,9 +17,9 @@ import { HeadmasterComponent } from './headmaster.component';
         routing
     ],
     declarations: [
-        HeadmasterComponent,
-     
-        
+
+        HeadmasterComponent,        
+
     ]
 })
 export class HeadmasterModule { }
