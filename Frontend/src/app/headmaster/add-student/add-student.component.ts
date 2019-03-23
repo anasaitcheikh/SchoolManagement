@@ -53,7 +53,7 @@ export class AddStudentComponent implements OnInit, OnDestroy {
       }
       student.studentClass = studentClass;
     }
-
+    console.error("edit teacher object",student);
     this._addStudentSubscriber = this.studentService.addStudent(student).subscribe(
       newStudent => {
         this.statutAlert = true;

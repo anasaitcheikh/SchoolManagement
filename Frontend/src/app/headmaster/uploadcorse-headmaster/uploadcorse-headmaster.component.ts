@@ -23,4 +23,11 @@ export class UploadcorseHeadmasterComponent implements OnInit {
     this.fileToUpload = files.item(0);
 }
 
+uploadFile(form){
+  this.CourseMaterialService.uploadFile(form.description, this.fileToUpload).subscribe(
+    success => console.log('success', success),
+    error =>  console.log('error', error)
+  )
+}
+
 }
