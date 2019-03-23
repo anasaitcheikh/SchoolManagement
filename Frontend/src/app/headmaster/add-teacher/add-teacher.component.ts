@@ -30,8 +30,9 @@ export class AddTeacherComponent implements OnInit, OnDestroy {
     console.log('click on add teacher');
     console.log(teacher);
     this._addTeacherSubscriber = this.teacherService.addTeacher(teacher).subscribe(
-       newTeacher => console.log(newTeacher),
-       error => console.log(error)
+       newTeacher => {console.error(newTeacher),
+        this.router.navigate(['/headmaster/teachs'])}
+,       error => console.log(error)
     );
   }
 }
