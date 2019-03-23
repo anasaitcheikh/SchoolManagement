@@ -16,6 +16,11 @@ export let MENU_ITEM_HEADMASTER = [
       icon: 'book'
   },
 
+  {
+    path: 'message',
+    title: 'Message',
+    icon: 'envelope'
+  },
 
   {
     path: '',
@@ -99,7 +104,9 @@ export let MENU_ITEM_HEADMASTER = [
       ]
   },
 
-  {
+
+
+  /*{
     path: '',
     title: 'Planning',
     icon: 'calendar',
@@ -120,5 +127,5 @@ export let MENU_ITEM_HEADMASTER = [
 
     ]
   },
-
+*/
 ];

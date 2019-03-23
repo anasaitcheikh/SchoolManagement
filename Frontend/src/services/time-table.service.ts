@@ -22,8 +22,8 @@ export class TimeTableService {
 
   }
 
-  updateCourse(_id, course){
-     return this.httpClient.put(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + _id, course);
+  updateCourseStatusById(_id : number, status: boolean){
+     return this.httpClient.put(`${API_SERVER.BASE_URI}/${RESOURCE_NAME}/` + _id, status);
   }
 
   deleteCourseById(_id: number) {
