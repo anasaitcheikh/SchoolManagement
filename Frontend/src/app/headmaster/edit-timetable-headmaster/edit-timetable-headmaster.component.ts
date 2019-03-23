@@ -59,7 +59,7 @@ export class EditTimetableHeadmasterComponent implements OnInit {
     course.classe = classe;
     course.subject = subject;
     course.classroom = classroom;
-
+    course.status = true;
     console.log('course structured ', course);
     this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
       newCourse => console.log('add course successfull', newCourse),
