@@ -23,7 +23,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
     @NamedQuery(name = "findUserByEmailAndPassword", query = "SELECT u FROM User u WHERE u.email =:email AND u.password = :password"),
     
     @NamedQuery(name = "findAllEmailForStudent", query = "SELECT u.email FROM User u WHERE u.status=:status"),
-    @NamedQuery(name = "findAllEmailForHeadmasterAndTeacher", query = "SELECT u.email FROM User u")
+    @NamedQuery(name = "findAllEmailForHeadmasterAndTeacher", query = "SELECT u.email FROM User u"),
+    @NamedQuery(name = "findUserByEmail", query = "SELECT u FROM User u WHERE u.email =:email")
 })
 @JsonIgnoreProperties(value={"password","oldPassword"}, allowGetters = false, allowSetters = true)
 public class User implements Serializable {

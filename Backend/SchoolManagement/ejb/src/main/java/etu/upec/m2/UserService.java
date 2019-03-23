@@ -157,5 +157,16 @@ public class UserService implements IUserService{
             return null;
         }
     }
+
+    @Override
+    public Long getUserByEmail(String email) {
+        try{
+            TypedQuery<User> query =  em.createNamedQuery("findUserByEmail", User.class);
+            query.setParameter("email", email);
+            return query.getSingleResult().getId();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
     
 }
