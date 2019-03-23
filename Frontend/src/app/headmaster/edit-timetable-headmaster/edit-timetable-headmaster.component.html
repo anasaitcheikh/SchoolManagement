@@ -10,10 +10,10 @@
 
       <label class="control-label">Date</label>
       <input type="text" class="form-control" ngModel name="date">
-      <label class="control-label">Time</label>
-      <select name="select" id="selectTime" class="form-control" ngModel name="time">
-        <option value="{{time}}" *ngFor="let time of times">{{time}}</option>
-      </select>
+      <!--label class="control-label">Time</label>
+      <input type="text" class="form-control" ngModel name="time"!-->
+      <!--input type="number" class="form-control" ngModel name="time">
+      <input type="number" class="form-control" ngModel name="time"!-->
       <label class="control-label">Teacher</label>
       <select name="select" id="selectTeacher" class="form-control" ngModel name="teacher">
         <option value="{{teacher.id}}" *ngFor="let teacher of teachers">{{teacher.firstname}}  {{teacher.lastname}}</option>
@@ -38,6 +38,13 @@
         <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.name}}</option>
       </select>
       <br>
+
+      <!--label class="control-label">Status</label>
+      <select name="select" id="selectStatus" class="form-control" ngModel name="status">
+        <option value="false">False</option>
+        <option value="true">True</option>
+      </select>
+      <br!-->
 
       <br><br>
       <div class="col-md-2">
