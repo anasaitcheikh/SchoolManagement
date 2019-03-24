@@ -125,6 +125,13 @@ isthis_week(date) {
   }
 
   show_edt(id_class){
+    for (let i = 0; i < 12; i ++) {
+      this.myTable[i] = [];
+      for (let j = 0; j < 7; j ++) {
+        this.myTable[i][j] = " "
+      }
+    }
+  
     this.classId= id_class;
     console.log(id_class);
     if(id_class != -1)
