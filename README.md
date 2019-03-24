@@ -1,7 +1,7 @@
 # My School
 
 My School is a digital space for school management. 
-The project in divides in two parts: the backend side and the frontend side.
+The project is divide in two parts: the backend side and the frontend side.
 It contains three kinds of actors: Headmaster, Teacher, Student and resources related to the laters such as classes, classrooms, subjects. 
 
 Please: You can check the joined documention for further details.
