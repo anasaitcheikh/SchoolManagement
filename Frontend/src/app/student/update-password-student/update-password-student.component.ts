@@ -12,9 +12,10 @@ import {UserService} from '../../../services/user.service';
 export class UpdatePasswordStudentComponent implements OnInit {
   old_p : string;
   new_p : string;
-  conf_new : string;
+  confirm : string;
   user;  
   Subscriber: Subscription;
+  statutAlert=true;
 
   constructor(private UserService: UserService, private LoginService: LoginService, private router: Router) { }
 
@@ -27,10 +28,13 @@ export class UpdatePasswordStudentComponent implements OnInit {
   }
 
   change_password(){
+    if(this.new_p == this.confirm){
     this.Subscriber = this.UserService.reset_password(this.old_p,this.new_p,this.user.id).subscribe(
       sen => console.log(sen),
       error => console.log(error)
     );
-  }
-
+  }else{
+  this.statutAlert=false;
+}
+}
 }
