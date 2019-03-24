@@ -64,7 +64,7 @@ ng serve
 
 You can know acces to the client's interface throught [http://localhost:4200](http://localhost:4200)
 
-Note: If your backend serveur is binded to a different port but 8080, please change the port number in ${FRONTEND_FOLDER}/utils/server.conf.ts
+Note: If your backend server is binded to a different port but 8080, please change the port number in ${FRONTEND_FOLDER}/utils/server.conf.ts
  
 ## Documentation
 
