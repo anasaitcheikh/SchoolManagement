@@ -47,7 +47,7 @@ export class RequestModifyPlanningComponent implements OnInit, OnDestroy {
         console.log('success');
         window.location.reload(true);
       },
-      error => console.log(error)
+      error => console.error(error)
     );
    }
 
