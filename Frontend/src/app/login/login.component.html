@@ -21,8 +21,7 @@
         <button class="btn btn-lg btn-primary" type="submit">Login</button>
       </div>
     </form>
-  </div>
-
-  <div *ngIf="failed" class="col-md-4 alert alert-danger" style="margin-left: 34%; margin-top: 30%">
-    <strong>Failed!</strong> Login or password not exist.
+    <div class="alert alert-danger" style="height: 10%" *ngIf="failed">
+      <strong>Login or password is incorrect.</strong>
+    </div>
   </div>
