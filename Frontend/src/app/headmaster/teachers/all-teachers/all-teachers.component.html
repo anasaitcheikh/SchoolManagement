@@ -22,8 +22,8 @@
             <td>{{ t.specialty }}</td>
             <td>{{ t.email }}</td>
             <td>
-              <button class="btn btn-primary">Show classes</button>
-              <button [routerLink]="['../editTeacher', t.id]"class="btn btn-success">Edit</button>
+              <button [routerLink]="['../showClasses', t.id]" class="btn btn-primary">Show classes</button>
+              <button [routerLink]="['../editTeacher', t.id]" class="btn btn-success">Edit</button>
               <button (click)="deleteTeacher(t.id)" class="btn btn-danger">Delete</button>
             </td>
 

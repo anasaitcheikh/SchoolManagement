@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { EditTeacherComponent } from './edit-teacher/edit-teacher.component';
 import { AllTeachersComponent } from './all-teachers/all-teachers.component';
+import { ShowClassesComponent } from './show-classes/show-classes.component';
 import { FormsModule } from '@angular/forms'
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms'
   declarations: [
     TeachersComponent,
     EditTeacherComponent,
-    AllTeachersComponent
+    AllTeachersComponent,
+    ShowClassesComponent
   ]
 })
 export class TeachersModule { }

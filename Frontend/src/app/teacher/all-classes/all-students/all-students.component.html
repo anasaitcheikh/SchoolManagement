@@ -1,0 +1,26 @@
+<div class="col-md-12">
+    <card cardTitle="All Students">
+      <form class="form-group">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>BirthDate</th>
+              <th>Email</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of student">
+              <td>{{ s.firstname }}</td>
+              <td>{{ s.lastname }}</td>
+              <td>{{ s.birthDate }}</td>
+              <td>{{ s.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </card>
+  </div>
+  
