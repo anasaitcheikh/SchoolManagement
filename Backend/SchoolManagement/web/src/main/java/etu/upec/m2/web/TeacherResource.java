@@ -53,18 +53,55 @@ public class TeacherResource {
     @Path("{id}")
     public Response getTeacher(@PathParam("id")Long id) {
         Teacher teacher = teacherService.getTeacherById(id);
+        
+        if (teacher==null) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(teacher)
+                    .build();
+        }
+        String responseJson = "{";
+        responseJson =  responseJson + "\"id\": " 
+                + teacher.getId() + ", \n\"email\": \""
+                + teacher.getEmail() + "\", \n\"firstname\":  \""
+                + teacher.getFirstname() + "\",\n\"lastname\": \""
+                + teacher.getLastname() + "\",\n\"birthDate\": \""
+                + teacher.getBirthDate().toString() + "\" ,\n\"specialty\": \""
+                + teacher.getSpecialty() + "\",\n\"status\": \""
+                + teacher.getStatus() + "\"\n}";
         return Response
                 .status(Response.Status.OK)
-                .entity(teacher)
+                .entity(responseJson)
                 .build();
     }
     
     @GET
     public Response getAllTeacher() {
-        List<Teacher> teacher = teacherService.getAllTeacher();
+        List<Teacher> teachers = teacherService.getAllTeacher();
+        if (teachers.isEmpty()) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(teachers)
+                    .build();
+        }
+        
+        String responseJson = "[";
+        for(Teacher teacher:teachers){
+            
+            responseJson =  responseJson + "{\"id\": " 
+               + teacher.getId() + ", \n\"email\": \""
+               + teacher.getEmail() + "\", \n\"firstname\":  \""
+               + teacher.getFirstname() + "\",\n\"lastname\": \""
+               + teacher.getLastname() + "\",\n\"birthDate\": \""
+               + teacher.getBirthDate().toString() + "\" ,\n\"specialty\": \""
+               + teacher.getSpecialty() + "\",\n\"status\": \""
+               + teacher.getStatus() + "\"\n},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(teacher)
+                .entity(responseJson)
                 .build();
     }
     

@@ -51,9 +51,28 @@ public class StudentResource {
     @Path("{id}")
     public Response getStudent(@PathParam("id")Long id) {
         Student student = studentService.getStudentById(id);
+        if (student==null) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(student)
+                    .build();
+        }
+        String responseJson = "{";
+        responseJson =  responseJson + "\"id\": " 
+                + student.getId() + ", \n\"email\": \""
+                + student.getEmail() + "\", \n\"firstname\":  \""
+                + student.getFirstname() + "\",\n\"lastname\": \""
+                + student.getLastname() + "\",\n\"birthDate\": \""
+                + student.getBirthDate().toString() + "\",\n\"status\": \""
+                + student.getStatus() + "\",\n\"studentClass\": { \"id\": "
+                + student.getStudentClass().getId()+ ",\n \"name\": \""
+                + student.getStudentClass().getName()+ "\",\n \"schoolYear\": "
+                + student.getStudentClass().getSchoolYear()+ ",\n\"grade\": "
+                + student.getStudentClass().getGrade()+ ",\n\"level\": \""
+                + student.getStudentClass().getLevel()+ "\"\n}\n}";
         return Response
                 .status(Response.Status.OK)
-                .entity(student)
+                .entity(responseJson)
                 .build();
     }
     
@@ -72,10 +91,36 @@ public class StudentResource {
     
     @GET
     public Response getAllStudents() {
-        List<Student> staff = studentService.getAllStudent();
+        List<Student> students = studentService.getAllStudent();
+        
+        if (students.isEmpty()) {
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(students)
+                    .build();
+        }
+        
+        String responseJson = "[";
+        for(Student student:students){
+            
+            responseJson =  responseJson + "{\"id\": " 
+                + student.getId() + ", \n\"email\": \""
+                + student.getEmail() + "\", \n\"firstname\":  \""
+                + student.getFirstname() + "\",\n\"lastname\": \""
+                + student.getLastname() + "\",\n\"birthDate\": \""
+                + student.getBirthDate().toString() + "\",\n\"status\": \""
+                + student.getStatus() + "\",\n\"studentClass\": { \"id\": "
+                + student.getStudentClass().getId()+ ",\n \"name\": \""
+                + student.getStudentClass().getName()+ "\",\n \"schoolYear\": "
+                + student.getStudentClass().getSchoolYear()+ ",\n\"grade\": "
+                + student.getStudentClass().getGrade()+ ",\n\"level\": \""
+                + student.getStudentClass().getLevel()+ "\"\n}\n},";
+        }
+        
+        responseJson =  responseJson.substring(0,  responseJson.length()-1) + "]";
         return Response
                 .status(Response.Status.OK)
-                .entity(staff)
+                .entity(responseJson)
                 .build();
     }
     
