@@ -1,25 +1,28 @@
-<div class="card card-block login-card">
-  <h3 class="form-label">School Management</h3>
-  <span class="form-label">sign in to continue </span>
-  <form (submit)="login()"> 
-  <div class="form-group" >
-    <div class="input-group">
-      <span class="input-group-addon addon-left" id="username">
-        <i class="fa fa-user fa-fw"></i>
-      </span>
-      <input name="email" [(ngModel)]="email" class="form-control with-primary-addon" placeholder="User Account" type="text">
-    </div>
-    <div class="input-group">
-      <span class="input-group-addon addon-left" id="password">
-        <i class="fa fa-lock fa-fw"></i>
-      </span>
-      <input name="pass" [(ngModel)]="password" class="form-control with-primary-addon" placeholder="Password" type="password">
-    </div>
-    <button class="btn btn-lg btn-primary" type="submit" >Login</button>
+<div>
+  <div class="card card-block login-card">
+    <h3 class="form-label center text">My School</h3>
+    <hr>
+    <span class="form-label center">sign in to continue </span>
+    <form (submit)="login()">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon addon-left" id="username">
+            <i class="fa fa-user fa-fw"></i>
+          </span>
+          <input name="email" [(ngModel)]="email" class="form-control with-primary-addon" placeholder="User Account"
+            type="text">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon addon-left" id="password">
+            <i class="fa fa-lock fa-fw"></i>
+          </span>
+          <input name="pass" [(ngModel)]="password" class="form-control with-primary-addon" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit">Login</button>
+      </div>
+    </form>
   </div>
-  </form> 
-</div>
 
- <div *ngIf="failed"class="col-md-4 alert alert-danger" style="margin-left: 34%; margin-top: 30%" >
+  <div *ngIf="failed" class="col-md-4 alert alert-danger" style="margin-left: 34%; margin-top: 30%">
     <strong>Failed!</strong> Login or password not exist.
   </div>

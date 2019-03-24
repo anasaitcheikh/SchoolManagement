@@ -7,6 +7,9 @@
     transform: translate(-50%, -50%);
     width: 400px;
     height: auto;
+    border-style: solid;
+    border-color:#00688B;
+    border-radius: 2em;
     .form-group {
         padding: 0;
     }
@@ -14,6 +17,7 @@
         display: block;
         color: $fonts-color;
         padding: 0 10px;
+        text-align: center;
     }
     span.form-label {
         color: lighten($fonts-color, 30%);
@@ -38,5 +42,9 @@
     .btn-link {
         margin: 10px 0;
         color: lighten($fonts-color, 30%);
+    }
+    .text {
+        font-size: 3em;
+        color: #00688B;
     }
 }
