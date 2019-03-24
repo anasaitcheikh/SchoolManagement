@@ -10,11 +10,11 @@ import { API_SERVER } from '../../../utils/server.conf';
 const RESOURCE_NAME = 'course-material';
 
 @Component({
-  selector: 'app-uploadcorse-headmaster',
-  templateUrl: './uploadcorse-headmaster.component.html',
-  styleUrls: ['./uploadcorse-headmaster.component.scss']
+  selector: 'app-uploadcourse-teacher',
+  templateUrl: './uploadcourse-teacher.component.html',
+  styleUrls: ['./uploadcourse-teacher.component.scss']
 })
-export class UploadcorseHeadmasterComponent implements OnInit, OnDestroy {
+export class UploadcourseTeacherComponent implements OnInit, OnDestroy {
   private _uploadSubscription: Subscription;
   private _getSubscription: Subscription;
 
@@ -52,7 +52,7 @@ export class UploadcorseHeadmasterComponent implements OnInit, OnDestroy {
     console.log("desc", this.description);
     this._uploadSubscription = this.CourseMaterialService.uploadFile(this.description, this.fileToUpload).subscribe(
       success => {
-        console.log('success', success)
+        console.log('success', success);
         window.location.reload(true);
       },
       error => console.log('error', error)
@@ -63,7 +63,7 @@ export class UploadcorseHeadmasterComponent implements OnInit, OnDestroy {
     this._getSubscription = this.CourseMaterialService.getAllCourseMaterial().subscribe(
       courseMaterials => {
         console.log('success', courseMaterials);
-        this.courseMaterials = courseMaterials
+        this.courseMaterials = courseMaterials;
       },
       error => console.log('error', error)
     )

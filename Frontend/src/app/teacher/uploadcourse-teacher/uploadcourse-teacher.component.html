@@ -1,0 +1,68 @@
+<div class="row center">
+    <div class="col-md-offset-2 col-md-8">
+        <card cardTitle="Drop a course material" isCollapse="flase">
+            <form #f="ngForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="description" [(ngModel)] = "description" class="" name="description" id="description" />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary" (click)="uploadFile()">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </card>
+    </div>
+</div>
+
+<div class="row center">
+    <div class="col-md-offset-2 col-md-8">
+        <card cardTitle="Course Materials" isCollapse="flase">
+            <div class="row">
+                <div class="col-md-5">
+                    <div>
+                        <p>File name</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div>
+                        <p>File description</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <p>Download</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngFor="let courseMaterial of courseMaterials">
+                <div class="col-md-5">
+                    <div>
+                        <p>{{courseMaterial.name}}</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div>
+                        <p>{{courseMaterial.description}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <p>
+                            <a href="{{DOWNLOAD_RESSOURCE}}/{{courseMaterial.id}}" >
+                                download
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </card>
+    </div>
+</div>

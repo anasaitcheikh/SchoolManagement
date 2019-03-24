@@ -19,6 +19,7 @@ export const childRoutes: Routes = [
             { path: 'saisirnotes', loadChildren: './saisirnotes-teacher/saisirnotes-teacher.module#SaisirnotesTeacherModule' },
            // { path: 'classes-list', loadChildren: './list-classes-teacher/list-classes-teacher.module#ListClassesTeacherModule' },
            { path: 'classes-list', loadChildren: './all-classes/all-classes.module#AllClassesModule' },
+           { path: 'uploadcourse', loadChildren: './uploadcourse-teacher/uploadcourse-teacher.module#UploadcourseTeacherModule' },
         ]
     }
 ];

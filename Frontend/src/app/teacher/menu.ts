@@ -16,6 +16,11 @@ export let MENU_ITEM_TEACHER = [
         icon: 'user'
     },
     {
+        path: 'uploadcourse',
+        title: 'Course Materials',
+        icon: 'book'
+    },
+    {
         path: 'edit-edt',
         title: 'Create course',
         icon: 'pencil'
