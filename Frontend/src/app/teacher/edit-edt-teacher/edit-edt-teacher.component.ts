@@ -20,11 +20,10 @@ export class EditEdtTeacherComponent implements OnInit, OnDestroy {
   classes: Class[] = [];
   classrooms: Classroom[] = [];
   subject;
- // teacher;
   times: string[] = [];
   teacherId = JSON.parse(localStorage.getItem('user')).id;
   _createTimeTableSubscriber: Subscription;
-
+  statutAlert: boolean;
   constructor(private LoginService: LoginService,
               private classroomService: ClassroomService,
               private classService: ClassService,
@@ -75,8 +74,14 @@ export class EditEdtTeacherComponent implements OnInit, OnDestroy {
     course.status = false;
     console.log('course structured ', course);
     this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
-      newCourse => console.log('add course successfull', newCourse),
-      error => console.log(error)
+      newCourse => {
+        this.statutAlert = true;
+        console.log('add course successfull', newCourse)
+      },
+      error => {
+        this.statutAlert = false;
+        console.log(error)
+      }
     );
 
   }

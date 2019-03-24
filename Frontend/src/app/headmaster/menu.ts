@@ -40,14 +40,14 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'user',
     children: [
       {
+        path: 'addStaff',
+        title: 'Add Staff'
+      },
+      {
         path: 'staffs',
         title: 'All Staffs',
 
       },
-      {
-        path: 'addStaff',
-        title: 'Add Staff'
-      },      
     ]
   },
 
@@ -57,13 +57,13 @@ export let MENU_ITEM_HEADMASTER = [
     icon: 'users',
     children: [
       {
-        path: 'classes',
-        title: 'All Classes'
-      },
-      {
         path: 'addClass',
         title: 'Add Class',
 
+      },
+      {
+        path: 'classes',
+        title: 'All Classes'
       },
     ]
   },
@@ -72,14 +72,14 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'Teachers',
         icon: 'male',
         children: [
+          {
+            path: 'addTeacher',
+            title: 'Add Teacher'
+          },
          {
            path: 'teachs',
            title: 'All Teachers'
          },
-         {
-           path: 'addTeacher',
-           title: 'Add Teacher'
-      }
     ]
   },
 
@@ -88,39 +88,15 @@ export let MENU_ITEM_HEADMASTER = [
         title: 'Students',
         icon: 'user',
         children: [
-         {
-          path: 'studs',
-          title: 'All Students'
-         },
         {
           path: 'addStudent',
           title: 'Add Student'
-        }
+        },
+          {
+            path: 'studs',
+            title: 'All Students'
+          },
       ]
   },
 
-
-
-  /*{
-    path: '',
-    title: 'Planning',
-    icon: 'calendar',
-    children: [
-       {
-         path: 'viewPlanning',
-         title: 'View Planning'
-       },
-      {
-        path: 'requestModifyPlanning',
-        title: 'Planning change requests'
-      },
-
-      {
-        path: 'timetable-edit',
-        title: 'Create Course',
-     }
-
-    ]
-  },
-*/
 ];

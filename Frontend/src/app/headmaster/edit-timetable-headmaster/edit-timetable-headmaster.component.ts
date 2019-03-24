@@ -20,7 +20,7 @@ export class EditTimetableHeadmasterComponent implements OnInit, OnDestroy {
   classrooms: Classroom[] = [];
   subjects: Subject[] = [];
   times: string[] = [];
-
+  statutAlert: boolean;
   _createTimeTableSubscriber: Subscription;
 
   constructor(private LoginService: LoginService,
@@ -72,8 +72,14 @@ export class EditTimetableHeadmasterComponent implements OnInit, OnDestroy {
     course.status = true;
     console.log('course structured ', course);
     this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
-      newCourse => console.log('add course successfull', newCourse),
-      error => console.log(error)
+      newCourse => {
+        this.statutAlert = true;
+        console.log('add course successfull', newCourse)
+      },
+      error => {
+        this.statutAlert = false;
+        console.log(error)
+      }
     );
 
   }

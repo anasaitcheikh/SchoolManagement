@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="row">
   <card cardTitle="Create course">
     <form class="form-group" #f = "ngForm">
       <label class="control-label">Date</label>
@@ -32,4 +32,10 @@
       </div>
     </form>
   </card>
+</div>
+<div class="alert alert-success" style="height: 10%" *ngIf="statutAlert">
+  <strong>COURSE HAS BEEN ADDED !</strong>
+</div>
+<div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+  <strong>ERROR WHILE ADDING COURSE!</strong>
 </div>
