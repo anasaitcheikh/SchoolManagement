@@ -22,6 +22,7 @@
   </card>
 
   <card class="col-md-6" cardTitle="Change Password">
+    <div class="row">
     <div class="form-group">
       <label class="control-label">Old password</label>
       <input type="password" class="form-control" name="old" [(ngModel)]="old_p">
@@ -31,8 +32,12 @@
 
       <label class="control-label">Confirm password</label>
       <input type="password" class="form-control"  name="confirm" [(ngModel)]="confirm">
-
+      <BR>
       <button type="button" (click)="change_password()" class="btn btn-primary">Save change</button>
     </div>
-  </card>
+  </div>
+  <div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+      <strong>ERROR WHILE CHANGING PASSWORD !</strong>
+    </div>
+</card>
 </div>

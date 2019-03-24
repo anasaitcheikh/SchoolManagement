@@ -14,7 +14,7 @@ import { Class } from '../../../utils/types';
 export class AddStudentComponent implements OnInit, OnDestroy {
 
   classes: Class[] = [];
-
+  statutAlert: boolean;
   _addStudentSubscriber: Subscription;
   constructor(private studentService: StudentService,
               private classService: ClassService, 
@@ -55,9 +55,14 @@ export class AddStudentComponent implements OnInit, OnDestroy {
     }
     console.error("edit teacher object",student);
     this._addStudentSubscriber = this.studentService.addStudent(student).subscribe(
-      newStudent => {console.log('add student successfull', newStudent),
-      this.router.navigate(['/headmaster/studs'])},
-      error => console.log(error)
+      newStudent => {
+        this.statutAlert = true;
+        console.log('add student successfull', newStudent),
+      this.router.navigate(['/headmaster/studs']) },
+      error => {
+        this.statutAlert = false;
+        console.log(error);
+      }
     );
   }
 

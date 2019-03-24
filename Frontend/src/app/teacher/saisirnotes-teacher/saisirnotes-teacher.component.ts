@@ -24,6 +24,7 @@ export class SaisirnotesTeacherComponent implements OnInit {
 
   class_id;
   stu_id;
+  statutAlert: boolean;
   constructor(private MarkService : MarkService ,private StudentService: StudentService, private ClassService : ClassService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -62,19 +63,16 @@ fill_student(stu){
 
 add_mark(){
   this.Subscriber = this.MarkService.enter_mark(this.stu_id , this.class_id, this.score).subscribe(
-    sen => {console.log(sen);
+    sen => {
+      this.statutAlert = true;
+      console.log(sen);
     this.res= JSON.parse(JSON.stringify(sen));
     },
-    error => console.log(error)
+    error => {
+      this.statutAlert = false;
+      console.log(error)
+    }
   );
 }
 
-
-/*  changescore(){
-    console.log(this.firstname);
-    console.log(this.lastname);
-    console.log(this.score);
-    console.log(this.subject);
-  }
-*/
 }
