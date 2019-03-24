@@ -1,5 +1,4 @@
 <card cardTitle="Timetable">
-
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -14,107 +13,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of edt">
-        <td>8h-9h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>status : {{e.status}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>status : {{e.status}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>status : {{e.status}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '08:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>9h-10h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '09:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>10h-11h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '10:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>11h-12h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '11:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>12h-13h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '12:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>13h-14h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '13:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>14h-15h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '14:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>15h-16h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '15:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>16h-17h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '16:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-      </tr>
-      <tr *ngFor="let e of edt">
-        <td>17h-18h</td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Monday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Tuesday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Wednesday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Thursday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Friday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Saturday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
-        <td><ng-container *ngIf="comparator (e.time, e.date, 'Sunday', '17:00:00')" >Subject : {{e.subject.name}}<br>Classroom : {{e.classroom.roomNumber }}<br>teacher : {{e.teacher.lastname}}</ng-container></td>
+      <tr *ngFor="let day of myTable; let i = index;">
+        <td>{{schedules[i]}}</td>
+        <td *ngFor="let course of day">
+          <span [innerHTML]="course"></span>
+        </td>
       </tr>
     </tbody>
   </table>
-
 </card>
