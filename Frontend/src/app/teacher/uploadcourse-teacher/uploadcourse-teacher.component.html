@@ -8,7 +8,8 @@
                             <input type="file" id="file" (change)="handleFileInput($event.target.files)">
                         </div>
                         <div class="col-md-4">
-                            <input type="text" placeholder="description" [(ngModel)] = "description" class="" name="description" id="description" />
+                            <input type="text" placeholder="description" [(ngModel)]="description" class="" name="description"
+                                id="description" />
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary" (click)="uploadFile()">Upload</button>
@@ -55,14 +56,14 @@
                 <div class="col-md-2">
                     <div>
                         <p>
-                            <a href="{{DOWNLOAD_RESSOURCE}}/{{courseMaterial.id}}" >
+                            <a href="{{DOWNLOAD_RESSOURCE}}/{{courseMaterial.id}}">
                                 download
                             </a>
                         </p>
                     </div>
                 </div>
-                <hr>
             </div>
+            <hr>
         </card>
     </div>
 </div>
