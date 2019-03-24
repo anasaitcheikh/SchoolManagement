@@ -16,7 +16,7 @@
       <tr *ngFor="let day of myTable; let i = index;">
         <td>{{schedules[i]}}</td>
         <td *ngFor="let course of day">
-        <ng-container>{{course}}</ng-container>
+          <span [innerHTML]="course"></span>
         </td>
       </tr>
     </tbody>

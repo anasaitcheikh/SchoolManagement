@@ -95,12 +95,10 @@ export class EdtTeacherComponent implements OnInit {
             const indexDay = this.days[day];
             const indexHour = this.hours[hour];
 
-            //this.myTable[indexHour][indexDay] = JSON.stringify(e)
-
-            this.myTable[indexHour][indexDay] = `Class : ${e.subject.name}
-            \nSubject : ${e.subject.name}
-            \nClassroom : ${e.classroom.roomNumber}
-            \nstatus : ${e.status}`;
+            this.myTable[indexHour][indexDay] = `Class : ${e.class.name}
+            <br>Subject : ${e.subject.name}
+            <br>Classroom : ${e.classroom.roomNumber}
+            <br>status : ${e.status}`;
           }
         }
         for (let i = 0; i < 12; i ++) {
