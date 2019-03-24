@@ -74,6 +74,7 @@ export class EditTimetableHeadmasterComponent implements OnInit, OnDestroy {
     this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
       newCourse => {
         this.statutAlert = true;
+        window.location.reload(true);
         console.log('add course successfull', newCourse)
       },
       error => {
