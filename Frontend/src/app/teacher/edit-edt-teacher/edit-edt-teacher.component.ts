@@ -75,8 +75,11 @@ export class EditEdtTeacherComponent implements OnInit, OnDestroy {
     console.log('course structured ', course);
     this._createTimeTableSubscriber = this.timeTableService.addCourse(course).subscribe(
       newCourse => {
+
         this.statutAlert = true;
         console.log('add course successfull', newCourse)
+        //this.router.navigate(['teacher'])
+        window.location.reload();
       },
       error => {
         this.statutAlert = false;

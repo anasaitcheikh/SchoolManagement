@@ -41,8 +41,5 @@ export class ListClassesTeacherComponent implements OnInit,OnDestroy {
    )
   } 
 
-  student_list(id){
-    
-  }
 
 }
