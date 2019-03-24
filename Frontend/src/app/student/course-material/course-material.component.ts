@@ -16,20 +16,14 @@ export class CourseMaterialComponent implements OnInit, OnDestroy {
   private _getSubscription: Subscription;
   DOWNLOAD_RESSOURCE = `${API_SERVER.BASE_URI}/${RESOURCE_NAME}`;
 
-  fileToUpload: File = null;
-  description: string = '';
-
   courseMaterials: CourseMaterial[] = [];
   constructor(private CourseMaterialService: CourseMaterialService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.getAllCourseMaterial();
   }
 
   ngOnDestroy(): void {
-    if (this._getSubscription != null) {
-      this._getSubscription.unsubscribe()
-    }
-
     if (this._getSubscription != null) {
       this._getSubscription.unsubscribe()
     }
