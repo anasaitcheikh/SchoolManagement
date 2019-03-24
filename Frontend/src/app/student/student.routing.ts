@@ -15,6 +15,7 @@ export const childRoutes: Routes = [
             { path: 'result', loadChildren: './result-student/result-student.module#ResultStudentModule' },
             { path: 'timetable',  loadChildren: './timetable-student/timetable-student.module#TimetableStudentModule' },
             { path: 'message', loadChildren: './message-student/message-student.module#MessageStudentModule' },
+          { path: 'course-material', loadChildren: './course-material/course-material.module#CourseMaterialModule' },
             { path: 'update-password', loadChildren: './update-password-student/update-password-student.module#UpdatePasswordStudentModule' }
         ]
     }

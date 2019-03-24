@@ -19,6 +19,11 @@ export let MENU_ITEM_STUDENT = [
         title: 'Message',
         icon: 'far fa-envelope'
     },
+  {
+    path: 'course-material',
+    title: 'Course Materials',
+    icon: 'sticky-note-o'
+  },
     {
         path: 'update-password',
         title: 'Update your password',
