@@ -59,7 +59,7 @@ npm i
 ```
 2- Start the client with the command below:
 ```
-npm serve
+ng serve
 ```
 
 You can know acces to the client's interface throught [http://localhost:4200](http://localhost:4200)
