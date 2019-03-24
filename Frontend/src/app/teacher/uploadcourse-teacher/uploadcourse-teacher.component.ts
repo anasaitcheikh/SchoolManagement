@@ -51,7 +51,10 @@ export class UploadcourseTeacherComponent implements OnInit, OnDestroy {
   uploadFile() {
     console.log("desc", this.description);
     this._uploadSubscription = this.CourseMaterialService.uploadFile(this.description, this.fileToUpload).subscribe(
-      success => console.log('success', success),
+      success => {
+        console.log('success', success);
+        window.location.reload(true);
+      },
       error => console.log('error', error)
     )
   }
@@ -60,7 +63,7 @@ export class UploadcourseTeacherComponent implements OnInit, OnDestroy {
     this._getSubscription = this.CourseMaterialService.getAllCourseMaterial().subscribe(
       courseMaterials => {
         console.log('success', courseMaterials);
-        this.courseMaterials = courseMaterials
+        this.courseMaterials = courseMaterials;
       },
       error => console.log('error', error)
     )

@@ -51,7 +51,10 @@ export class UploadcorseHeadmasterComponent implements OnInit, OnDestroy {
   uploadFile() {
     console.log("desc", this.description);
     this._uploadSubscription = this.CourseMaterialService.uploadFile(this.description, this.fileToUpload).subscribe(
-      success => console.log('success', success),
+      success => {
+        console.log('success', success)
+        window.location.reload(true);
+      },
       error => console.log('error', error)
     )
   }
