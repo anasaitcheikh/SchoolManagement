@@ -27,7 +27,7 @@ import javax.persistence.*;
     
     @NamedQuery(name = "findAllCoursesByClassId", query = "SELECT co FROM Course co " +
                                                           "   LEFT JOIN Class cl ON co.classe.id=cl.id " +
-                                                          "   WHERE cl.id = :id_class" ),
+                                                          "   WHERE cl.id = :id_class AND co.status=true" ),
     @NamedQuery(name = "findAllCoursesByTeacherId", query = "SELECT co FROM Course co " +
                                                             "   LEFT JOIN Teacher t ON t.id=co.teacher.id " +
                                                             "   WHERE t.id = :id_teacher "),
