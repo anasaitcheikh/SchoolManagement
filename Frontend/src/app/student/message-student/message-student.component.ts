@@ -11,14 +11,7 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./message-student.component.scss']
 })
 export class MessageStudentComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    if(this.Subscriber!= null)
-      this.Subscriber.unsubscribe();
-    if(this.Subscriber2!= null)
-      this.Subscriber2.unsubscribe();
-    if(this.Subscriber3!= null)
-      this.Subscriber3.unsubscribe();
-  }
+
   //-----------send-----------
   object;
   recipient;
@@ -34,7 +27,7 @@ export class MessageStudentComponent implements OnInit, OnDestroy {
   contenu;
   Subscriber2 : Subscription;
 //-----------------------------
-
+  statutAlert: boolean;
   constructor(private UserService: UserService, private MailService:MailService, private LoginService: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -60,6 +53,15 @@ export class MessageStudentComponent implements OnInit, OnDestroy {
     );
 
   }
+
+  ngOnDestroy(): void {
+    if(this.Subscriber!= null)
+      this.Subscriber.unsubscribe();
+    if(this.Subscriber2!= null)
+      this.Subscriber2.unsubscribe();
+    if(this.Subscriber3!= null)
+      this.Subscriber3.unsubscribe();
+  }
   
   send(){
 
@@ -67,15 +69,23 @@ export class MessageStudentComponent implements OnInit, OnDestroy {
       sen => {//console.log(sen);
       this.recipient_id= JSON.parse(JSON.stringify(sen));
       this.Subscriber2 = this.MailService.sendMessage(this.sender.id, this.msg, this.object, this.recipient_id).subscribe(
-        sen => console.log(sen),
-        error => console.log(error)
+        sen => {
+          this.statutAlert = true;
+          window.location.reload(true);
+          console.log(sen);
+        },
+        error =>{
+          this.statutAlert = false;
+          console.log(error)
+        }
       );
       },
-      error => console.log(error)
+      error =>{
+        this.statutAlert = false;
+        console.log(error);
+      }
     );
     console.log(this.recipient_id);
-
- 
 
   }
 

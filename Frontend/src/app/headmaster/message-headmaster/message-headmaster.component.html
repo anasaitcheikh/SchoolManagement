@@ -1,3 +1,9 @@
+<div class="alert alert-success" style="height: 10%" *ngIf="statutAlert">
+  <strong>MESSAGE SENT !</strong>
+</div>
+<div class="alert alert-danger" style="height: 10%" *ngIf="statutAlert == false">
+  <strong>ERROR WHILE SENDING MESSAGE!</strong>
+</div>
 <div class="row">
   <div class="col-md-6">
     <card cardTitle="Send message">
